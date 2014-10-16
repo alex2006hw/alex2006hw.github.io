@@ -2,28 +2,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Random Password Generator</title>
-<script type="text/javascript">
+  <title>One Time Password Generator</title>
+  <script type="text/javascript" src="./js/build/bundle.js"></script>
 <!--
 
 
-/*
-  Password generator.
-
-  This application will generate strong random passwords in a variety of
-  forms.
-
-  Written by Dominic White <singe-passwdtool@singe.za.net>
-  http://singe.za.net/
-
-  The code to generate the random passwords is copywrite Bryan Harrington.
-  The code to translate into the Nato phonetic alphabet is copywrite L. Bower
-  and is subject to the terms of the GPL.
-
-*/
-
-
-function doWork()
+function otpJob()
 {
     
     //Check for compatible browser version
@@ -72,10 +56,10 @@ function GeneratePassword()
   //Generate password
   var i = 0;
     for (i=0; i < length; i++) {
-        numI = getRandomNum();
+        numI = getOTPNum();
         if (noSpecial) {
           while (checkSpecial(numI)) {
-            numI = getRandomNum();
+            numI = getOTPNum();
           }
         }
         sPassword = sPassword + String.fromCharCode(numI);
@@ -84,7 +68,7 @@ function GeneratePassword()
     return sPassword;
 }
 
-function getRandomNum()
+function getOTPNum()
 {
     // between 0 - 1
     var rndNum = Math.random()
@@ -219,7 +203,7 @@ function printOTP() {
        </td><td>
          <input type="checkbox" name="chkOTP" value="true" />
        </td></tr><tr><td colspan="2">
-         <input style="width:3in;" type="button" value="Generate Password" onclick="doWork()" /><br />
+         <input style="width:3in;" type="button" value="Generate Password" onclick="otpJob()" /><br />
        </td></tr><tr><td colspan="2">
          <br /><br /><br /><br /><br />
          <label>Single Password: </label><br />
