@@ -5,9 +5,24 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Know Your Life</description>
-    <pubDate>Sat, 04 Oct 2014 17:00:00 -0700</pubDate>
+    <pubDate>Sun, 05 Oct 2014 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Tools</title>
+      <link>http://localhost:8080/articles/tools/</link>
+      <pubDate>Sun, 05 Oct 2014 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/tools/</guid>
+      <author></author>
+      <description>&lt;h1 id=&quot;security&quot;&gt;Security&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;One Time Password &lt;a href=&quot;/articles/tools/otp.html&quot;&gt;Generator&lt;/a&gt;&lt;blockquote&gt;
+&lt;p&gt;Release 2014101520&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     <item>
       <title>waterfall</title>
       <link>http://localhost:8080/articles/waterfall/</link>
