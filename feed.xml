@@ -5,30 +5,9 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Know Your Life</description>
-    <pubDate>Fri, 31 Oct 2014 17:00:00 -0700</pubDate>
+    <pubDate>Sat, 04 Oct 2014 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
-    <item>
-      <title>Curriculum Vitae</title>
-      <link>http://localhost:8080/articles/curriculum-vitae/</link>
-      <pubDate>Fri, 31 Oct 2014 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/curriculum-vitae/</guid>
-      <author></author>
-      <description>&lt;p&gt;For more information visit &lt;a href=&quot;http://alex2006hw.com/&quot; target=&quot;_blank&quot;&gt;alex2006hw&lt;/a&gt;. This &lt;a href=&quot;http://localhost:8080/articles/curriculum-vitae/#writing&quot;&gt;writing&lt;/a&gt; is just random musings.&lt;/p&gt;
-&lt;p&gt;For more general informatin about me, please check out the &lt;a href=&quot;http://localhost:8080/resume/&quot;&gt;resume&lt;/a&gt; and the &lt;a href=&quot;http://localhost:8080/about/&quot;&gt;about&lt;/a&gt; page on this site.&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a name=&quot;publications&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;publications&quot;&gt;Publications&lt;/h2&gt;
-&lt;p&gt;Working on publication &lt;/p&gt;
-&lt;p&gt;&lt;a name=&quot;writing&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;writing&quot;&gt;Writing&lt;/h2&gt;
-&lt;p&gt;I have included a selection of writing from each of the last few years here:&lt;/p&gt;
-&lt;h3 id=&quot;2014&quot;&gt;2014&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&quot;name&quot;&gt;Medium&lt;/span&gt;: &lt;a href=&quot;https://github.com/compoundjs&quot; target=&quot;_blank&quot;&gt;current lession&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
     <item>
       <title>waterfall</title>
       <link>http://localhost:8080/articles/waterfall/</link>
@@ -81,6 +60,27 @@
 &lt;li&gt;We will protect personal information by reasonable security safeguards against loss or theft, as well as unauthorized access, disclosure, copying, use or modification.&lt;/li&gt;
 &lt;li&gt;We will make readily available to customers information about our policies and practices relating to the management of personal information.&lt;/li&gt;
 &lt;li&gt;We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Curriculum Vitae</title>
+      <link>http://localhost:8080/articles/curriculum-vitae/</link>
+      <pubDate>Thu, 31 Oct 2013 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/curriculum-vitae/</guid>
+      <author></author>
+      <description>&lt;p&gt;For more information visit &lt;a href=&quot;http://alex2006hw.com/&quot; target=&quot;_blank&quot;&gt;alex2006hw&lt;/a&gt;. This &lt;a href=&quot;http://localhost:8080/articles/curriculum-vitae/#writing&quot;&gt;writing&lt;/a&gt; is just random musings.&lt;/p&gt;
+&lt;p&gt;For more general informatin about me, please check out the &lt;a href=&quot;http://localhost:8080/resume/&quot;&gt;resume&lt;/a&gt; and the &lt;a href=&quot;http://localhost:8080/about/&quot;&gt;about&lt;/a&gt; page on this site.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;publications&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;publications&quot;&gt;Publications&lt;/h2&gt;
+&lt;p&gt;Working on publication &lt;/p&gt;
+&lt;p&gt;&lt;a name=&quot;writing&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;writing&quot;&gt;Writing&lt;/h2&gt;
+&lt;p&gt;I have included a selection of writing from each of the last few years here:&lt;/p&gt;
+&lt;h3 id=&quot;2014&quot;&gt;2014&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&quot;name&quot;&gt;Medium&lt;/span&gt;: &lt;a href=&quot;https://github.com/compoundjs&quot; target=&quot;_blank&quot;&gt;current lession&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
