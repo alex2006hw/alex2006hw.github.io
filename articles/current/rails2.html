@@ -15,7 +15,7 @@
       ga('send', 'pageview');
       
     </script>
-    <title>resume - Live Learn Grow
+    <title>rails2 - Live Learn Grow
     </title>
     <link rel="alternate" href="http://localhost:8080/feed.xml" type="application/rss+xml" title="Know Your Life">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
@@ -24,7 +24,7 @@
   <body class="article-detail">
     <header class="header">
       <div class="content-wrap">
-        <h1>resume</h1>
+        <h1>rails2</h1>
         <p class="author">Written by <span class="author"><a href="mailto:alex@alex2006hw.com">alex2006hw</a></span>
         </p>
       </div>
@@ -32,7 +32,27 @@
     <div id="content">
       <div class="content-wrap">
         <article class="article">
-          <section class="content"><p><a href="/resume">resume</a></p>
+          <section class="content"><h1 id="rails-2">Rails&nbsp;2</h1>
+<pre><code>   rails new depot
+</code></pre><ul>
+<li>Rails way of creating an <span class="caps">APP</span><ul>
+<li>Page&nbsp;flow</li>
+<li>Data&nbsp;flow</li>
+</ul>
+</li>
+</ul>
+<pre><code>   cd depot
+   rails generate scaffold Product \
+            title:string description:text image_url:string price:decimal
+</code></pre><pre><code>- create products data
+- migrate db
+</code></pre><pre><code>   rake db:migrate
+   rails server
+</code></pre><blockquote>
+<p>app/ config/ db/ Gemfile.lock log/ Rakefile test/ vendor/ bin/ config.ru
+Gemfile lib/ public/ <span class="caps">README</span>.rdoc&nbsp;tmp/</p>
+</blockquote>
+<p><img src="/articles/current/ruby-on-rails.png" alt="Ruby On Rails"></p>
 </section>
         </article>
       </div>
