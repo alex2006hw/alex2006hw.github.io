@@ -21,12 +21,12 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;   rails new depot
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;app/ config/ db/ Gemfile.lock log/ Rakefile test/ vendor/ bin/ config.ru
 Gemfile lib/ public/ README.rdoc tmp/&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/articles/current/ruby-on-rails.png&quot; alt=&quot;Ruby On Rails&quot;&gt;&lt;/p&gt;
 </description>
     </item>
