@@ -36,15 +36,29 @@
 <ul>
 <li>opinionated - structured layout of&nbsp;development</li>
 </ul>
-<p><span class="more"></span></p>
 <pre><code>- backend - ruby, 
 </code></pre><pre><code>   rails new depot
 </code></pre><blockquote>
 <p>app/ config/ db/ Gemfile.lock log/ Rakefile test/ vendor/ bin/ config.ru
 Gemfile lib/ public/ <span class="caps">README</span>.rdoc&nbsp;tmp/</p>
 </blockquote>
+<p><span class="more"></span></p>
 <p><img src="/articles/current/ruby-on-rails.png" alt="Ruby On Rails"></p>
-</section>
+<ul>
+<li>Rails way of creating an <span class="caps">APP</span><ul>
+<li>Page&nbsp;flow</li>
+<li>Data&nbsp;flow</li>
+</ul>
+</li>
+</ul>
+<pre><code>   cd depot
+   rails generate scaffold Product \
+            title:string description:text image_url:string price:decimal
+</code></pre><pre><code>- create products data
+- migrate db
+</code></pre><pre><code>   rake db:migrate
+   rails server
+</code></pre></section>
         </article>
       </div>
     </div>
@@ -64,7 +78,7 @@ Gemfile lib/ public/ <span class="caps">README</span>.rdoc&nbsp;tmp/</p>
 
         </section>
         <section class="copy">
-          <p>&copy; Sat Oct 18 2014 15:48:08 GMT-0700 (PDT) alex davis &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a></p>
+          <p>&copy; Sat Oct 18 2014 16:11:46 GMT-0700 (PDT) alex davis &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a></p>
         </section>
       </div>
     </footer>
