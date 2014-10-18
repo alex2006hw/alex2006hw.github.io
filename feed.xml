@@ -46,24 +46,6 @@ Gemfile lib/ public/ README.rdoc tmp/&lt;/p&gt;
 </description>
     </item>
     <item>
-      <title>Content and Code Usage Policy</title>
-      <link>http://localhost:8080/articles/content-policy/</link>
-      <pubDate>Wed, 04 Dec 2013 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/content-policy/</guid>
-      <author></author>
-      <description>&lt;p&gt;This site will hopefully to continue to grow and have a lot of valuable content both in terms of articles and code.  I hope that everyone finds it to be a valuable tool.  That being said, there are a few ground rules.&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
-&lt;p&gt;Any code that is included on this site is released under an &lt;a href=&quot;http://opensource.org/licenses/MIT&quot;&gt;MIT License&lt;/a&gt; unless another license is specified.&lt;/p&gt;
-&lt;p&gt;Some portions of code may be released under a license which does require attribution.  If you would like to use one of these pieces of software without attribution, please feel free to &lt;a href=&quot;http://localhost:8080/about/#contact&quot;&gt;contact me&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;articles&quot;&gt;Articles&lt;/h2&gt;
-&lt;p&gt;All articles on this site are licensed under a &lt;a rel=&quot;license&quot; target=&quot;_blank&quot; href=&quot;http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US&quot;&gt;Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License&lt;/a&gt;.  This means that all uses of this content must be attributed, and that no commercial uses are allowed.  If you wish to request a waiver of one or more of these terms, please &lt;a href=&quot;http://localhost:8080/about/#contact&quot;&gt;contact me&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;If at any point I reference one of my articles or publications which are published elsewhere, then that content remains under the license of the publisher.&lt;/p&gt;
-&lt;h2 id=&quot;additional-terms-and-policies&quot;&gt;Additional Terms and Policies&lt;/h2&gt;
-&lt;p&gt;Please take time to review the &lt;a href=&quot;http://localhost:8080/terms-of-use/&quot;&gt;Terms of Use&lt;/a&gt; and &lt;a href=&quot;http://localhost:8080/privacy-policy/&quot;&gt;Privacy Policy&lt;/a&gt; if you are interested in such things.&lt;/p&gt;
-</description>
-    </item>
-    <item>
       <title>Privacy Policy</title>
       <link>http://localhost:8080/articles/privacy-policy/</link>
       <pubDate>Wed, 04 Dec 2013 16:00:00 -0800</pubDate>
@@ -81,6 +63,24 @@ Gemfile lib/ public/ README.rdoc tmp/&lt;/p&gt;
 &lt;li&gt;We will make readily available to customers information about our policies and practices relating to the management of personal information.&lt;/li&gt;
 &lt;li&gt;We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained.&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+    </item>
+    <item>
+      <title>Content and Code Usage Policy</title>
+      <link>http://localhost:8080/articles/content-policy/</link>
+      <pubDate>Wed, 04 Dec 2013 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/content-policy/</guid>
+      <author></author>
+      <description>&lt;p&gt;This site will hopefully to continue to grow and have a lot of valuable content both in terms of articles and code.  I hope that everyone finds it to be a valuable tool.  That being said, there are a few ground rules.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+&lt;p&gt;Any code that is included on this site is released under an &lt;a href=&quot;http://opensource.org/licenses/MIT&quot;&gt;MIT License&lt;/a&gt; unless another license is specified.&lt;/p&gt;
+&lt;p&gt;Some portions of code may be released under a license which does require attribution.  If you would like to use one of these pieces of software without attribution, please feel free to &lt;a href=&quot;http://localhost:8080/about/#contact&quot;&gt;contact me&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;articles&quot;&gt;Articles&lt;/h2&gt;
+&lt;p&gt;All articles on this site are licensed under a &lt;a rel=&quot;license&quot; target=&quot;_blank&quot; href=&quot;http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US&quot;&gt;Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License&lt;/a&gt;.  This means that all uses of this content must be attributed, and that no commercial uses are allowed.  If you wish to request a waiver of one or more of these terms, please &lt;a href=&quot;http://localhost:8080/about/#contact&quot;&gt;contact me&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If at any point I reference one of my articles or publications which are published elsewhere, then that content remains under the license of the publisher.&lt;/p&gt;
+&lt;h2 id=&quot;additional-terms-and-policies&quot;&gt;Additional Terms and Policies&lt;/h2&gt;
+&lt;p&gt;Please take time to review the &lt;a href=&quot;http://localhost:8080/terms-of-use/&quot;&gt;Terms of Use&lt;/a&gt; and &lt;a href=&quot;http://localhost:8080/privacy-policy/&quot;&gt;Privacy Policy&lt;/a&gt; if you are interested in such things.&lt;/p&gt;
 </description>
     </item>
     <item>
