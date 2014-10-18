@@ -2,27 +2,25 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Live Learn Grow</title>
-    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <link>http://localhost:8080</link>
+    <atom:link href="http://alex2006hw.com/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://alex2006hw.com</link>
     <description>Know Your Life</description>
     <pubDate>Mon, 06 Oct 2014 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
       <title>Current interests</title>
-      <link>http://localhost:8080/articles/current/</link>
+      <link>http://alex2006hw.com/articles/current/</link>
       <pubDate>Mon, 06 Oct 2014 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/current/</guid>
+      <guid isPermaLink="true">http://alex2006hw.com/articles/current/</guid>
       <author></author>
       <description>&lt;h1 id=&quot;rails&quot;&gt;Rails&lt;/h1&gt;
 &lt;ul&gt;
-&lt;li&gt;opinionated - structured layout of development&lt;ul&gt;
-&lt;li&gt;backend - ruby, &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
+&lt;li&gt;opinionated - structured layout of development&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;   rails new depot
+&lt;pre&gt;&lt;code&gt;- backend - ruby, 
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;   rails new depot
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;app/ config/ db/ Gemfile.lock log/ Rakefile test/ vendor/ bin/ config.ru
 Gemfile lib/ public/ README.rdoc tmp/&lt;/p&gt;
@@ -32,9 +30,9 @@ Gemfile lib/ public/ README.rdoc tmp/&lt;/p&gt;
     </item>
     <item>
       <title>waterfall</title>
-      <link>http://localhost:8080/articles/waterfall/</link>
+      <link>http://alex2006hw.com/articles/waterfall/</link>
       <pubDate>Sat, 04 Oct 2014 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/waterfall/</guid>
+      <guid isPermaLink="true">http://alex2006hw.com/articles/waterfall/</guid>
       <author></author>
       <description>&lt;h1 id=&quot;live-learn-grow&quot;&gt;Live Learn Grow&lt;/h1&gt;
 &lt;blockquote&gt;
@@ -48,10 +46,28 @@ Gemfile lib/ public/ README.rdoc tmp/&lt;/p&gt;
 </description>
     </item>
     <item>
-      <title>Privacy Policy</title>
-      <link>http://localhost:8080/articles/privacy-policy/</link>
+      <title>Content and Code Usage Policy</title>
+      <link>http://alex2006hw.com/articles/content-policy/</link>
       <pubDate>Wed, 04 Dec 2013 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/privacy-policy/</guid>
+      <guid isPermaLink="true">http://alex2006hw.com/articles/content-policy/</guid>
+      <author></author>
+      <description>&lt;p&gt;This site will hopefully to continue to grow and have a lot of valuable content both in terms of articles and code.  I hope that everyone finds it to be a valuable tool.  That being said, there are a few ground rules.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+&lt;p&gt;Any code that is included on this site is released under an &lt;a href=&quot;http://opensource.org/licenses/MIT&quot;&gt;MIT License&lt;/a&gt; unless another license is specified.&lt;/p&gt;
+&lt;p&gt;Some portions of code may be released under a license which does require attribution.  If you would like to use one of these pieces of software without attribution, please feel free to &lt;a href=&quot;http://alex2006hw.com/about/#contact&quot;&gt;contact me&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;articles&quot;&gt;Articles&lt;/h2&gt;
+&lt;p&gt;All articles on this site are licensed under a &lt;a rel=&quot;license&quot; target=&quot;_blank&quot; href=&quot;http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US&quot;&gt;Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License&lt;/a&gt;.  This means that all uses of this content must be attributed, and that no commercial uses are allowed.  If you wish to request a waiver of one or more of these terms, please &lt;a href=&quot;http://alex2006hw.com/about/#contact&quot;&gt;contact me&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If at any point I reference one of my articles or publications which are published elsewhere, then that content remains under the license of the publisher.&lt;/p&gt;
+&lt;h2 id=&quot;additional-terms-and-policies&quot;&gt;Additional Terms and Policies&lt;/h2&gt;
+&lt;p&gt;Please take time to review the &lt;a href=&quot;http://alex2006hw.com/terms-of-use/&quot;&gt;Terms of Use&lt;/a&gt; and &lt;a href=&quot;http://alex2006hw.com/privacy-policy/&quot;&gt;Privacy Policy&lt;/a&gt; if you are interested in such things.&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>Privacy Policy</title>
+      <link>http://alex2006hw.com/articles/privacy-policy/</link>
+      <pubDate>Wed, 04 Dec 2013 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.com/articles/privacy-policy/</guid>
       <author></author>
       <description>&lt;p&gt;Your privacy is very important to us. Accordingly, we have developed this Policy in order for you to understand how we collect, use, communicate and disclose and make use of personal information. The following outlines our privacy policy.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
@@ -68,28 +84,10 @@ Gemfile lib/ public/ README.rdoc tmp/&lt;/p&gt;
 </description>
     </item>
     <item>
-      <title>Content and Code Usage Policy</title>
-      <link>http://localhost:8080/articles/content-policy/</link>
-      <pubDate>Wed, 04 Dec 2013 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/content-policy/</guid>
-      <author></author>
-      <description>&lt;p&gt;This site will hopefully to continue to grow and have a lot of valuable content both in terms of articles and code.  I hope that everyone finds it to be a valuable tool.  That being said, there are a few ground rules.&lt;/p&gt;
-&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
-&lt;p&gt;Any code that is included on this site is released under an &lt;a href=&quot;http://opensource.org/licenses/MIT&quot;&gt;MIT License&lt;/a&gt; unless another license is specified.&lt;/p&gt;
-&lt;p&gt;Some portions of code may be released under a license which does require attribution.  If you would like to use one of these pieces of software without attribution, please feel free to &lt;a href=&quot;http://localhost:8080/about/#contact&quot;&gt;contact me&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;articles&quot;&gt;Articles&lt;/h2&gt;
-&lt;p&gt;All articles on this site are licensed under a &lt;a rel=&quot;license&quot; target=&quot;_blank&quot; href=&quot;http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en_US&quot;&gt;Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License&lt;/a&gt;.  This means that all uses of this content must be attributed, and that no commercial uses are allowed.  If you wish to request a waiver of one or more of these terms, please &lt;a href=&quot;http://localhost:8080/about/#contact&quot;&gt;contact me&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;If at any point I reference one of my articles or publications which are published elsewhere, then that content remains under the license of the publisher.&lt;/p&gt;
-&lt;h2 id=&quot;additional-terms-and-policies&quot;&gt;Additional Terms and Policies&lt;/h2&gt;
-&lt;p&gt;Please take time to review the &lt;a href=&quot;http://localhost:8080/terms-of-use/&quot;&gt;Terms of Use&lt;/a&gt; and &lt;a href=&quot;http://localhost:8080/privacy-policy/&quot;&gt;Privacy Policy&lt;/a&gt; if you are interested in such things.&lt;/p&gt;
-</description>
-    </item>
-    <item>
       <title>Terms of Use</title>
-      <link>http://localhost:8080/articles/terms-of-use/</link>
+      <link>http://alex2006hw.com/articles/terms-of-use/</link>
       <pubDate>Fri, 04 Oct 2013 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/terms-of-use/</guid>
+      <guid isPermaLink="true">http://alex2006hw.com/articles/terms-of-use/</guid>
       <author></author>
       <description>&lt;p&gt;By accessing this web site, you are agreeing to be bound by these web site Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this web site are protected by applicable copyright and trade mark law.&lt;/p&gt;
 &lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
