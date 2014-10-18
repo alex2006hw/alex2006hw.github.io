@@ -16,16 +16,15 @@
       <author></author>
       <description>&lt;h1 id=&quot;rails&quot;&gt;Rails&lt;/h1&gt;
 &lt;ul&gt;
-&lt;li&gt;opinionated - structured layout of development&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;- backend - ruby, 
-&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;   rails new depot
-&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;app/ config/ db/ Gemfile.lock log/ Rakefile test/ vendor/ bin/ config.ru
-Gemfile lib/ public/ README.rdoc tmp/&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;opinionated - structured layout of development&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;backend - ruby, &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   rails new depot
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
 &lt;li&gt;Rails way of creating an APP&lt;ul&gt;
 &lt;li&gt;Page flow&lt;/li&gt;
 &lt;li&gt;Data flow&lt;/li&gt;
@@ -39,7 +38,11 @@ Gemfile lib/ public/ README.rdoc tmp/&lt;/p&gt;
 - migrate db
 &lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;   rake db:migrate
    rails server
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;/articles/current/ruby-on-rails.png&quot; alt=&quot;Ruby On Rails&quot;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;app/ config/ db/ Gemfile.lock log/ Rakefile test/ vendor/ bin/ config.ru
+Gemfile lib/ public/ README.rdoc tmp/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/current/ruby-on-rails.png&quot; alt=&quot;Ruby On Rails&quot;&gt;&lt;/p&gt;
 </description>
     </item>
     <item>
