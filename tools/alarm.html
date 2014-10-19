@@ -107,6 +107,33 @@ var jsalarm={
 
 <body>
 
+  <h3>Go URL</h3>
+  <p>
+    This will fire off a page hit when the timer triggers.
+  </p>
+
+<form action="" method="">
+<div id="jsalarmclock">
+<div><div class="leftcolumn">Current Time:</div> <span id="jsalarm_ct" style="letter-spacing: 2px"></span></div>
+<div><div class="leftcolumn">Set Alarm:</div> <span><select></select> Hour</span> <span><select></select> Minutes</span> <span><select></select> Seconds</span></div>
+<div><div class="leftcolumn">Set Alarm Action:</div> <input type="text" id="musicloc" size="55" value="http://www.youtube.com/watch?v=u_DogLZMCgs" /> <span style="font: normal 11px Tahoma">Downtemplo</span></div>
+<input type="submit" value="Set Alarm!" id="submitbutton" /> <input type="reset" value="reset" id="resetbutton" />
+</div>
+</form>
+
+<script type="text/javascript">
+  jsalarm.init()
+</script>
+
+<h3> one is not enough </h3>
+<p>
+  .
+  .
+  .
+  .
+  .
+</p>
+
 <div id="liveclock" class="outer_face">
 
 <div class="marker oneseven"></div>
@@ -123,7 +150,6 @@ var jsalarm={
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
 <script type="text/javascript">
 
 /***********************************************
@@ -152,26 +178,7 @@ function updateclock(){
 }
 
 requestAnimationFrame(updateclock)
-
-
 </script>
 
-
-<form action="" method="">
-<div id="jsalarmclock">
-<div><div class="leftcolumn">Current Time:</div> <span id="jsalarm_ct" style="letter-spacing: 2px"></span></div>
-<div><div class="leftcolumn">Set Alarm:</div> <span><select></select> Hour</span> <span><select></select> Minutes</span> <span><select></select> Seconds</span></div>
-<div><div class="leftcolumn">Set Alarm Action:</div> <input type="text" id="musicloc" size="55" value="http://www.youtube.com/watch?v=u_DogLZMCgs" /> <span style="font: normal 11px Tahoma">Downtemplo</span></div>
-<input type="submit" value="Set Alarm!" id="submitbutton" /> <input type="reset" value="reset" id="resetbutton" />
-</div>
-</form>
-
-
-<script type="text/javascript">
-
-jsalarm.init()
-
-</script>
-   
 </body>
 
