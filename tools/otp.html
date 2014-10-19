@@ -9,21 +9,33 @@
 
 
 
-<script language="javascript" type="text/javascript">
-function randomString() {
+    <script language="javascript" type="text/javascript">
+
+var m_w = 123456789;
+var m_z = 987654321;
+var mask = 0xffffffff;
+
+// Takes any integer
+function seed(i) {
+    m_w = i;
+}
+
+      function randomString() {
+
   var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz#.*+-_={}";
-  var string_length = 10;
+  var string_length = 15;
   var randomstring = '';
   for (var i=0; i<string_length; i++) {
     var rnum = Math.floor(Math.random() * chars.length);
     randomstring += chars.substring(rnum,rnum+1);
   }
+
   document.randform.randomfield.value = randomstring;
 }
 </script>
 
   </head>
-  <body>
+  <body onload="randomString();">
     <form name="randform">
       <input type="button" value="Create Random String" onClick="randomString();">&nbsp;
       <input type="text" name="randomfield" value="">
