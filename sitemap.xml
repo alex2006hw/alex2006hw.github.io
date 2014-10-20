@@ -2,13 +2,13 @@
 <urlset xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://localhost:8080</loc>
-    <lastmod>2014-10-19T21:41:11.057Z</lastmod>
+    <lastmod>2014-10-20T22:08:54.977Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://localhost:8080/archive.html</loc>
-    <lastmod>2014-10-19T21:41:11.057Z</lastmod>
+    <lastmod>2014-10-20T22:08:54.977Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>http://localhost:8080/archive/2014</loc>
-    <lastmod>2014-10-19T21:41:11.057Z</lastmod>
+    <lastmod>2014-10-20T22:08:54.977Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
