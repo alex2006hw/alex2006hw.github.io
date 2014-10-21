@@ -14,20 +14,19 @@
       <pubDate>Sun, 19 Oct 2014 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://localhost:8080/articles/musings/</guid>
       <author></author>
-      <description>&lt;h1 id=&quot;live&quot;&gt;Live&lt;/h1&gt;
+      <description>&lt;h1 id=&quot;-live-live-&quot;&gt;&lt;a href=&quot;http://localhost:8080/articles/musings/live&quot;&gt;Live&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Is is hard for me to improve my social skills when everyone is so plugged-in and tuned-out.&lt;/p&gt;
+&lt;p&gt;Is is hard for me to improve my social skills when everyone is so plugged-in and tuned-out.&lt;br&gt;&lt;a href=&quot;http://localhost:8080/articles/musings/live/tuned-out&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://localhost:8080/articles/musings/live/live.html&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;learn&quot;&gt;Learn&lt;/h1&gt;
+&lt;h1 id=&quot;-learn-learn-&quot;&gt;&lt;a href=&quot;http://localhost:8080/articles/musings/learn&quot;&gt;Learn&lt;/a&gt;&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;I had a moment of time today to reflect&lt;/p&gt;
+&lt;p&gt;I had a moment of time today to reflect 
+&lt;a href=&quot;http://localhost:8080/articles/musings/learn/reflect-today&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://localhost:8080/articles/musings/learn/learn.html&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;trying-to-grow&quot;&gt;Trying to Grow&lt;/h1&gt;
+&lt;h1 id=&quot;trying-to-grow-grow-&quot;&gt;Trying to &lt;a href=&quot;http://localhost:8080/articles/musings/grow&quot;&gt;Grow&lt;/a&gt;&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Better at &lt;a href=&quot;http://localhost:8080/articles/musings/grow/rails&quot;&gt;rails&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Better at &lt;a href=&quot;http://localhost:8080/articles/musings/grow/stocks.html&quot;&gt;stocks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Better at &lt;a href=&quot;http://localhost:8080/articles/musings/grow/stocks&quot;&gt;stocks&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -42,9 +41,6 @@
 &lt;p&gt;A year ago I had an encounter with a waterfall and it changed my way of thinking …&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Thailand&lt;/li&gt;
-&lt;/ul&gt;
 &lt;p&gt;&lt;img src=&quot;/articles/waterfall/bigisland.jpg&quot; alt=&quot;Waterfalls&quot;&gt;&lt;/p&gt;
 </description>
     </item>
