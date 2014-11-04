@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Live Learn Grow</title>
-    <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <link>http://localhost:8080</link>
+    <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <link>http://alex2006hw.github.io</link>
     <description>Know Your Life</description>
     <pubDate>Sun, 02 Nov 2014 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
       <title>devops</title>
-      <link>http://localhost:8080/articles/devops/</link>
+      <link>http://alex2006hw.github.io/articles/devops/</link>
       <pubDate>Sun, 02 Nov 2014 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/devops/</guid>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/devops/</guid>
       <author></author>
       <description>&lt;h1&gt;Better Devops&lt;/h1&gt;
 
@@ -23,9 +23,9 @@
     </item>
     <item>
       <title>Musings</title>
-      <link>http://localhost:8080/articles/musings/</link>
+      <link>http://alex2006hw.github.io/articles/musings/</link>
       <pubDate>Sun, 19 Oct 2014 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/musings/</guid>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/musings/</guid>
       <author></author>
       <description>&lt;h1&gt;&lt;a href=&quot;/articles/musings/live&quot;&gt;Live&lt;/a&gt;&lt;/h1&gt;
 
@@ -50,9 +50,9 @@
     </item>
     <item>
       <title>waterfall</title>
-      <link>http://localhost:8080/articles/waterfall/</link>
+      <link>http://alex2006hw.github.io/articles/waterfall/</link>
       <pubDate>Sat, 04 Oct 2014 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/waterfall/</guid>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/waterfall/</guid>
       <author></author>
       <description>&lt;h1&gt;Live Learn Grow&lt;/h1&gt;
 
