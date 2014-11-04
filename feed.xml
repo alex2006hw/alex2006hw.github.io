@@ -14,27 +14,27 @@
       <pubDate>Mon, 03 Nov 2014 16:00:00 -0800</pubDate>
       <guid isPermaLink="true">http://localhost:8080/articles/musings/</guid>
       <author></author>
-      <description>&lt;h1&gt;&lt;a href=&quot;live&quot;&gt;Live&lt;/a&gt;&lt;/h1&gt;
+      <description>&lt;h1&gt;&lt;a href=&quot;/musings/live&quot;&gt;Live&lt;/a&gt;&lt;/h1&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Is is hard for me to improve my social skills when everyone is so plugged-in and tuned-out. &lt;br&gt;
-  &lt;a href=&quot;live/tuned-out&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
+  &lt;a href=&quot;/musings/live/tuned-out&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h1&gt;&lt;a href=&quot;learn&quot;&gt;Learn&lt;/a&gt;&lt;/h1&gt;
+&lt;h1&gt;&lt;a href=&quot;/musings/learn&quot;&gt;Learn&lt;/a&gt;&lt;/h1&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;I had a moment of time today to reflect  &lt;br&gt;
-   - Rails for zombies &lt;a href=&quot;grow/rails&quot;&gt;rails&lt;/a&gt;&lt;/p&gt;
+   - Rails for zombies &lt;a href=&quot;/musings/grow/rails&quot;&gt;rails&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;a href=&quot;learn/reflect-today&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/musings/learn/reflect-today&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1&gt;&lt;a href=&quot;grow&quot;&gt;Grow&lt;/a&gt;&lt;/h1&gt;
+&lt;h1&gt;&lt;a href=&quot;/musings/grow&quot;&gt;Grow&lt;/a&gt;&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Better at &lt;a href=&quot;/articles/devops&quot;&gt;devops&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;investments &lt;a href=&quot;grow/stocks&quot;&gt;stocks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;investments &lt;a href=&quot;/musings/grow/stocks&quot;&gt;stocks&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     <item>
@@ -59,7 +59,7 @@
 &lt;li&gt;CIA : Confidentiality, Integrity, Availability&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;devops.gif&quot; alt=&quot;devops&quot; title=&quot;&quot; /&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&quot;/images/devops.gif&quot; alt=&quot;devops&quot; title=&quot;&quot; /&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>waterfall</title>
@@ -75,7 +75,7 @@
 
 &lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;bigisland.jpg&quot; alt=&quot;Waterfalls&quot; title=&quot;&quot; /&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&quot;/images/bigisland.jpg&quot; alt=&quot;Waterfalls&quot; title=&quot;&quot; /&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
