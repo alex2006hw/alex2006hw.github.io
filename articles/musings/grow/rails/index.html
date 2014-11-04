@@ -32,34 +32,38 @@
     <div id="content">
       <div class="content-wrap">
         <article class="article">
-          <section class="content"><h1 id="rails">Rails</h1>
+          <section class="content"><h1>Rails</h1>
+
 <ul>
-<li>Opinionated - structured layout of development<ul>
-<li>backend -&nbsp;ruby,</li>
+<li>Opinionated - structured layout of development <br>
+<ul><li>backend -&nbsp;ruby,</li></ul></li>
 </ul>
-</li>
+
+<pre><code>   rails new depot</code></pre>
+
+<ul>
+<li>Rails way of creating an <span class="caps">APP</span> <br>
+<ul><li>Page&nbsp;flow</li>
+<li>Data&nbsp;flow</li></ul></li>
 </ul>
-<pre><code>   rails new depot
-</code></pre><ul>
-<li>Rails way of creating an <span class="caps">APP</span><ul>
-<li>Page&nbsp;flow</li>
-<li>Data&nbsp;flow</li>
-</ul>
-</li>
-</ul>
+
 <pre><code>   cd depot
    rails generate scaffold Product \
-            title:string description:text image_url:string price:decimal
-</code></pre><pre><code>- create products data
+            title:string description:text image_url:string price:decimal</code></pre>
+
+<pre><code>- create products data
 - migrate db
-</code></pre><pre><code>   rake db:migrate
-   rails server
-</code></pre><blockquote>
-<p>app/ config/ db/ Gemfile.lock log/ Rakefile test/ vendor/ bin/ config.ru
-Gemfile lib/ public/ <span class="caps">README</span>.rdoc&nbsp;tmp/</p>
+</code></pre>
+
+<pre><code>   rake db:migrate
+   rails server</code></pre>
+
+<blockquote>
+  <p>app/ config/ db/ Gemfile.lock log/ Rakefile test/ vendor/ bin/ config.ru <br>
+  Gemfile lib/ public/ <span class="caps">README</span>.rdoc&nbsp;tmp/</p>
 </blockquote>
-<p><img src="/articles/musings/grow/rails/ruby-on-rails.png" alt="Ruby On Rails"></p>
-</section>
+
+<p><img src="ruby-on-rails.png" alt="Ruby On Rails" title="" /></p></section>
         </article>
       </div>
     </div>
@@ -67,22 +71,17 @@ Gemfile lib/ public/ <span class="caps">README</span>.rdoc&nbsp;tmp/</p>
       <div class="content-wrap">
         <div class="nav"><a href="/">« Full blog</a></div>
         <section class="about"><ul>
-<li>I found <a href="/content-policy">this</a>, <a href="/privacy-policy">this</a>, and <a href="/terms-of-use">this</a> to be helpful if anyone needs to see them.</li>
-</ul>
-<ul>
-<li><p>All Rights Reserved ©Alex Davis [2014] - <a href="/ackowledgements">Ackowledgements</a></p>
-<ul>
-<li><a href="http://alex2006hw.com">alex2006hw.com</a></li>
+<li><p>I found <a href="/content-policy">this</a>, <a href="/privacy-policy">this</a>, and <a href="/terms-of-use">this</a> to be helpful if anyone needs to see them.</p></li>
+<li><p>All Rights Reserved ©Alex Davis [2014] - <a href="ackowledgements">Ackowledgements</a></p>
+
+<ul><li><a href="http://alex2006hw.com">alex2006hw.com</a></li>
 <li><a href="mailto:alex@alex2006hw.com">alex@alex2006hw.com</a></li>
 <li><a href="/tools">tools</a></li>
-<li><a href="/resume">resume</a></li>
+<li><a href="/resume">resume</a></li></ul></li>
 </ul>
-</li>
-</ul>
-
         </section>
         <section class="copy">
-          <p>&copy; Tue Nov 04 2014 12:27:24 GMT-0800 (PST) &mdash; &copy; alex davis &mdash;</p>
+          <p>&copy; Tue Nov 04 2014 13:28:44 GMT-0800 (PST) &mdash; &copy; alex davis &mdash;</p>
         </section>
       </div>
     </footer>

@@ -9,41 +9,57 @@
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
-      <title>devops</title>
-      <link>http://localhost:8080/articles/devops/</link>
-      <pubDate>Mon, 03 Nov 2014 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://localhost:8080/articles/devops/</guid>
-      <author></author>
-      <description>&lt;h1 id=&quot;better-devops&quot;&gt;Better Devops&lt;/h1&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Recently I have been thinking what is devops …&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Coming from the security world, I want to add CIA to devops list of definitions.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/articles/devops/devops.gif&quot; alt=&quot;devops&quot;&gt;&lt;/p&gt;
-</description>
-    </item>
-    <item>
       <title>Musings</title>
       <link>http://localhost:8080/articles/musings/</link>
-      <pubDate>Sun, 19 Oct 2014 17:00:00 -0700</pubDate>
+      <pubDate>Mon, 03 Nov 2014 16:00:00 -0800</pubDate>
       <guid isPermaLink="true">http://localhost:8080/articles/musings/</guid>
       <author></author>
-      <description>&lt;h1 id=&quot;-live-live-&quot;&gt;&lt;a href=&quot;http://localhost:8080/articles/musings/live&quot;&gt;Live&lt;/a&gt;&lt;/h1&gt;
+      <description>&lt;h1&gt;&lt;a href=&quot;live&quot;&gt;Live&lt;/a&gt;&lt;/h1&gt;
+
 &lt;blockquote&gt;
-&lt;p&gt;Is is hard for me to improve my social skills when everyone is so plugged-in and tuned-out.&lt;br&gt;&lt;a href=&quot;http://localhost:8080/articles/musings/live/tuned-out&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;Is is hard for me to improve my social skills when everyone is so plugged-in and tuned-out. &lt;br&gt;
+  &lt;a href=&quot;live/tuned-out&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;-learn-learn-&quot;&gt;&lt;a href=&quot;http://localhost:8080/articles/musings/learn&quot;&gt;Learn&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h1&gt;&lt;a href=&quot;learn&quot;&gt;Learn&lt;/a&gt;&lt;/h1&gt;
+
 &lt;blockquote&gt;
-&lt;p&gt;I had a moment of time today to reflect 
-&lt;a href=&quot;http://localhost:8080/articles/musings/learn/reflect-today&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;I had a moment of time today to reflect  &lt;br&gt;
+   - Rails for zombies &lt;a href=&quot;grow/rails&quot;&gt;rails&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;-grow-grow-&quot;&gt;&lt;a href=&quot;http://localhost:8080/articles/musings/grow&quot;&gt;Grow&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;learn/reflect-today&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;&lt;a href=&quot;grow&quot;&gt;Grow&lt;/a&gt;&lt;/h1&gt;
+
 &lt;ul&gt;
-&lt;li&gt;Better at &lt;a href=&quot;http://localhost:8080/articles/musings/grow/rails&quot;&gt;rails&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Better at &lt;a href=&quot;http://localhost:8080/articles/musings/grow/stocks&quot;&gt;stocks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Better at &lt;a href=&quot;/articles/devops&quot;&gt;devops&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;investments &lt;a href=&quot;grow/stocks&quot;&gt;stocks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>devops</title>
+      <link>http://localhost:8080/articles/devops/</link>
+      <pubDate>Sun, 02 Nov 2014 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/devops/</guid>
+      <author></author>
+      <description>&lt;h1&gt;Better Devops&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Recently I have been thinking what is devops &amp;#8230;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Coming from the security world, I want to add CIA to devops list of definitions.&lt;/p&gt;
+
+&lt;h4&gt;devops definitions:&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CIA : Confidentiality, Integrity, Availability&lt;/li&gt;
 &lt;/ul&gt;
-</description>
+
+&lt;p&gt;&lt;img src=&quot;devops.gif&quot; alt=&quot;devops&quot; title=&quot;&quot; /&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>waterfall</title>
@@ -51,13 +67,15 @@
       <pubDate>Sat, 04 Oct 2014 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://localhost:8080/articles/waterfall/</guid>
       <author></author>
-      <description>&lt;h1 id=&quot;live-learn-grow&quot;&gt;Live Learn Grow&lt;/h1&gt;
+      <description>&lt;h1&gt;Live Learn Grow&lt;/h1&gt;
+
 &lt;blockquote&gt;
-&lt;p&gt;A year ago I had an encounter with a waterfall and it changed my way of thinking …&lt;/p&gt;
+  &lt;p&gt;A year ago I had an encounter with a waterfall and it changed my way of thinking &amp;#8230;&lt;/p&gt;
 &lt;/blockquote&gt;
+
 &lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/articles/waterfall/bigisland.jpg&quot; alt=&quot;Waterfalls&quot;&gt;&lt;/p&gt;
-</description>
+
+&lt;p&gt;&lt;img src=&quot;bigisland.jpg&quot; alt=&quot;Waterfalls&quot; title=&quot;&quot; /&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
