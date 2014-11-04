@@ -5,9 +5,24 @@
     <atom:link href="http://localhost:8080/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://localhost:8080</link>
     <description>Know Your Life</description>
-    <pubDate>Sun, 19 Oct 2014 17:00:00 -0700</pubDate>
+    <pubDate>Mon, 03 Nov 2014 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>devops</title>
+      <link>http://localhost:8080/articles/devops/</link>
+      <pubDate>Mon, 03 Nov 2014 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://localhost:8080/articles/devops/</guid>
+      <author></author>
+      <description>&lt;h1 id=&quot;better-devops&quot;&gt;Better Devops&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Recently I have been thinking what is devops …&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Coming from the security world, I want to add CIA to devops list of definitions.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/articles/devops/devops.gif&quot; alt=&quot;devops&quot;&gt;&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>Musings</title>
       <link>http://localhost:8080/articles/musings/</link>
