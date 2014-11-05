@@ -1,0 +1,15 @@
+<pre>
+#!/bin/sh
+
+package=$1
+env=$2
+[ ! "$package" ] && ( echo "usuage : $0 package environment"; exit 1 )
+
+servers=$(osversion $env | awk '{print $1}')
+
+for server in $servers; do
+    host=`echo $server | awk '{print $1}'`
+    pkg=`grep $package ~/operations/inventory/${host}/dpkg/dpkg.list | tr '\n' ' '`
+    [ "$pkg" ] && echo "$host = $pkg"
+done
+</pre>

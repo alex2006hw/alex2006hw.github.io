@@ -37,7 +37,22 @@
 <li>email ticket for&nbsp;auditing</li>
 </ul>
 
-<p><img src="/images/patch-month.jpg" alt="patch-month" title="" /></p></section>
+<p><img src="/images/patch-month.jpg" alt="patch-month" title="" /></p>
+
+<ul>
+<li>using apt-mirror to build internal&nbsp;repo</li>
+<li><p><a href="/articles/projects/ubuntu-patch/patch-script.html">patch-script</a> template&nbsp;created</p>
+
+<ul><li>patch with curl : curl <a href="http://internal-repo/patch-script">http://internal-repo/patch-script</a> | sudo&nbsp;bash</li></ul></li>
+<li><p><a href="/articles/projects/ubuntu-patch/findpkg.html">findpkg</a> tool to identify installed&nbsp;packages</p></li>
+<li><p><a href="/articles/projects/ubuntu-patch/osversion.html">osversion</a> to show system&nbsp;version</p>
+
+<ul><li>directory layout : osversion expects ~/operations/inventory/$<span class="caps">ENVIRONMENT</span>/$SERVER/issue copy from $SERVER/etc/issue 
+  - directory layout : findpkg expects&nbsp;~/operations/inventory/$ENVIRONMENT/$SERVER/dpkg/dpkg.list</li>
+<li>dpkg.list is populated using&nbsp;: </li></ul>
+
+<p><code>dpkg -l | awk '{ print $2, $3}' | sed '1,5d' &gt; dpkg.list</code></p></li>
+</ul></section>
         </article>
       </div>
     </div>
@@ -56,7 +71,7 @@
 </ul>
         </section>
         <section class="copy">
-          <p>&copy; Wed Nov 05 2014 02:29:43 GMT-0800 (PST) &mdash; &copy; alex davis &mdash;</p>
+          <p>&copy; Wed Nov 05 2014 12:19:28 GMT-0800 (PST) &mdash; &copy; alex davis &mdash;</p>
         </section>
       </div>
     </footer>
