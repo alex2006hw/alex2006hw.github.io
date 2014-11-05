@@ -5,9 +5,24 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Mon, 03 Nov 2014 16:00:00 -0800</pubDate>
+    <pubDate>Tue, 04 Nov 2014 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Live</title>
+      <link>http://alex2006hw.github.io/articles/live/</link>
+      <pubDate>Tue, 04 Nov 2014 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/live/</guid>
+      <author></author>
+      <description>&lt;h3&gt;Tuned-out&lt;/h3&gt;
+
+&lt;p&gt;Is is hard for me to improve my social skills when everyone is so plugged-in and tuned-out. &lt;br&gt;
+&lt;a href=&quot;/articles/live/tuned-out&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Interesting Sites&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://movethewebforward.org/&quot;&gt;move the web forward&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Projects</title>
       <link>http://alex2006hw.github.io/articles/projects/</link>
@@ -44,17 +59,6 @@
       <guid isPermaLink="true">http://alex2006hw.github.io/articles/grow/</guid>
       <author></author>
       <description>&lt;h1&gt;Grow&lt;/h1&gt;</description>
-    </item>
-    <item>
-      <title>Live</title>
-      <link>http://alex2006hw.github.io/articles/live/</link>
-      <pubDate>Fri, 17 Oct 2014 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://alex2006hw.github.io/articles/live/</guid>
-      <author></author>
-      <description>&lt;h3&gt;Tuned-out&lt;/h3&gt;
-
-&lt;p&gt;Is is hard for me to improve my social skills when everyone is so plugged-in and tuned-out. &lt;br&gt;
-&lt;a href=&quot;/articles/live/tuned-out&quot;&gt;more&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>waterfall</title>
