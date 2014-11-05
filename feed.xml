@@ -5,32 +5,47 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Sun, 19 Oct 2014 17:00:00 -0700</pubDate>
+    <pubDate>Sat, 01 Nov 2014 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
-      <title>Live Learn Grow</title>
-      <link>http://alex2006hw.github.io/articles/livelearngrow/</link>
-      <pubDate>Sun, 19 Oct 2014 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://alex2006hw.github.io/articles/livelearngrow/</guid>
+      <title>Learn</title>
+      <link>http://alex2006hw.github.io/articles/learn/</link>
+      <pubDate>Sat, 01 Nov 2014 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/learn/</guid>
       <author></author>
-      <description>&lt;h1&gt;&lt;a href=&quot;/articles/livelearngrow/live&quot;&gt;Live&lt;/a&gt;&lt;/h1&gt;
+      <description>&lt;h3&gt;Reflect&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Learning is to make mistakes &lt;br&gt;
+  &lt;a href=&quot;/articles/learn/reflect-today&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;ul&gt;
-&lt;li&gt;every second&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1&gt;&lt;a href=&quot;/articles/livelearngrow/learn&quot;&gt;Learn&lt;/a&gt;&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Learn from mistakes&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1&gt;&lt;a href=&quot;/articles/livelearngrow/grow&quot;&gt;Grow&lt;/a&gt;&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;gain wisdom&lt;/li&gt;
+&lt;li&gt;Beat this &lt;a href=&quot;/articles/learn/stocks&quot;&gt;market&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Speak better &lt;a href=&quot;/articles/learn/rails&quot;&gt;rails&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;What is &lt;a href=&quot;/articles/learn/devops&quot;&gt;devops&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Grow</title>
+      <link>http://alex2006hw.github.io/articles/grow/</link>
+      <pubDate>Sun, 19 Oct 2014 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/grow/</guid>
+      <author></author>
+      <description>&lt;h1&gt;Grow&lt;/h1&gt;</description>
+    </item>
+    <item>
+      <title>Live</title>
+      <link>http://alex2006hw.github.io/articles/live/</link>
+      <pubDate>Fri, 17 Oct 2014 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/live/</guid>
+      <author></author>
+      <description>&lt;h1&gt;Tuned-out&lt;/h1&gt;
+
+&lt;p&gt;Is is hard for me to improve my social skills when everyone is so plugged-in and tuned-out.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/articles/live/tuned-out&quot;&gt;more&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>waterfall</title>

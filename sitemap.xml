@@ -2,19 +2,31 @@
 <urlset xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://alex2006hw.github.io</loc>
-    <lastmod>2014-11-05T08:33:23.734Z</lastmod>
+    <lastmod>2014-11-05T08:54:09.121Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://alex2006hw.github.io/archive.html</loc>
-    <lastmod>2014-11-05T08:33:23.734Z</lastmod>
+    <lastmod>2014-11-05T08:54:09.121Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://alex2006hw.github.io/articles/livelearngrow/</loc>
+    <loc>http://alex2006hw.github.io/articles/learn/</loc>
+    <lastmod>2014-11-02T00:00:00.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://alex2006hw.github.io/articles/grow/</loc>
     <lastmod>2014-10-20T00:00:00.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>http://alex2006hw.github.io/articles/live/</loc>
+    <lastmod>2014-10-18T00:00:00.000Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -26,7 +38,7 @@
   </url>
   <url>
     <loc>http://alex2006hw.github.io/archive/2014</loc>
-    <lastmod>2014-11-05T08:33:23.734Z</lastmod>
+    <lastmod>2014-11-05T08:54:09.121Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
