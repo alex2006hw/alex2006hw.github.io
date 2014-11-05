@@ -4,48 +4,32 @@
     <title>Live Learn Grow</title>
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
-    <description>Know Your Life</description>
-    <pubDate>Sun, 02 Nov 2014 16:00:00 -0800</pubDate>
+    <description>Know Thy Life</description>
+    <pubDate>Sun, 19 Oct 2014 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
-      <title>devops</title>
-      <link>http://alex2006hw.github.io/articles/devops/</link>
-      <pubDate>Sun, 02 Nov 2014 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://alex2006hw.github.io/articles/devops/</guid>
-      <author></author>
-      <description>&lt;h1&gt;Better Devops&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Recently I have been thinking what is devops &amp;#8230; &lt;br&gt;
-  &lt;a href=&quot;/articles/devops/index2.html&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</description>
-    </item>
-    <item>
-      <title>Musings</title>
-      <link>http://alex2006hw.github.io/articles/musings/</link>
+      <title>Live Learn Grow</title>
+      <link>http://alex2006hw.github.io/articles/livelearngrow/</link>
       <pubDate>Sun, 19 Oct 2014 17:00:00 -0700</pubDate>
-      <guid isPermaLink="true">http://alex2006hw.github.io/articles/musings/</guid>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/livelearngrow/</guid>
       <author></author>
-      <description>&lt;h1&gt;&lt;a href=&quot;/articles/musings/live&quot;&gt;Live&lt;/a&gt;&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Is is hard for me to improve my social skills when everyone is so plugged-in and tuned-out. &lt;br&gt;
-  &lt;a href=&quot;/articles/musings/live/tuned-out&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1&gt;&lt;a href=&quot;/articles/musings/learn&quot;&gt;Learn&lt;/a&gt;&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;I had a moment of time today to reflect  &lt;br&gt;
-  &lt;a href=&quot;/articles/musings/learn/reflect-today&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1&gt;&lt;a href=&quot;/articles/musings/grow&quot;&gt;Grow&lt;/a&gt;&lt;/h1&gt;
+      <description>&lt;h1&gt;&lt;a href=&quot;/articles/livelearngrow/live&quot;&gt;Live&lt;/a&gt;&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Better at &lt;a href=&quot;/articles/musings/grow/rails&quot;&gt;rails&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Better at &lt;a href=&quot;/articles/musings/grow/stocks&quot;&gt;stocks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;every second&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href=&quot;/articles/livelearngrow/learn&quot;&gt;Learn&lt;/a&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Learn from mistakes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1&gt;&lt;a href=&quot;/articles/livelearngrow/grow&quot;&gt;Grow&lt;/a&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;gain wisdom&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     <item>
@@ -54,9 +38,7 @@
       <pubDate>Sat, 04 Oct 2014 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://alex2006hw.github.io/articles/waterfall/</guid>
       <author></author>
-      <description>&lt;h1&gt;Live Learn Grow&lt;/h1&gt;
-
-&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
   &lt;p&gt;A year ago I had an encounter with a waterfall and it changed my way of thinking &amp;#8230;&lt;/p&gt;
 &lt;/blockquote&gt;
 
