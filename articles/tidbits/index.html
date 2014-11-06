@@ -15,7 +15,7 @@
       ga('send', 'pageview');
       
     </script>
-    <title>Ubuntu Patch Management - Live Learn Grow
+    <title>Tidbits - Live Learn Grow
     </title>
     <link rel="alternate" href="http://alex2006hw.github.io/feed.xml" type="application/rss+xml" title="Know Thy Life">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
@@ -24,7 +24,7 @@
   <body class="article-detail">
     <header class="header">
       <div class="content-wrap">
-        <h1>Ubuntu Patch Management</h1>
+        <h1>Tidbits</h1>
         <p class="author">Written by <span class="author"><a href="mailto:alex@alex2006hw.com">alex2006hw</a></span>
         </p>
       </div>
@@ -32,26 +32,11 @@
     <div id="content">
       <div class="content-wrap">
         <article class="article">
-          <section class="content"><ul>
-<li>deploy from internal&nbsp;repo</li>
-<li>email ticket for&nbsp;auditing</li>
-</ul>
-
-<p><img src="/images/patch-month.jpg" alt="patch-month" title="" /></p>
+          <section class="content"><h4>mysql</h4>
 
 <ul>
-<li>using apt-mirror to build internal&nbsp;repo</li>
-<li><p><a href="/articles/projects/ubuntu-patch/patch-script.html">patch-script</a> template&nbsp;created</p>
-
-<ul><li>patch with curl : curl <a href="http://internal-repo/patch-script">http://internal-repo/patch-script</a> | sudo&nbsp;bash</li></ul></li>
-<li><p><a href="/articles/projects/ubuntu-patch/findpkg.html">findpkg</a> tool to identify installed&nbsp;packages</p></li>
-<li><p><a href="/articles/projects/ubuntu-patch/osversion.html">osversion</a> to show system&nbsp;version</p>
-
-<ul><li>directory layout : osversion expects ~/operations/inventory/$<span class="caps">ENVIRONMENT</span>/$SERVER/issue copy from $SERVER/etc/issue 
-  - directory layout : findpkg expects&nbsp;~/operations/inventory/$ENVIRONMENT/$SERVER/dpkg/dpkg.list</li>
-<li>dpkg.list is populated using&nbsp;: </li></ul>
-
-<p><code>dpkg -l | awk '{ print $2, $3}' | sed '1,5d' &gt; dpkg.list</code></p></li>
+<li><span class="caps">SELECT</span> User, password, host FROM mysql.user; # show list of&nbsp;users</li>
+<li><span class="caps">UPDATE</span> mysql.user SET Password=PASSWORD(&#8216;[password]&#8217;) WHERE User=&#8217;[username]&#8217;; # reset&nbsp;password</li>
 </ul></section>
         </article>
       </div>

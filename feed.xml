@@ -9,6 +9,19 @@
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
+      <title>Tidbits</title>
+      <link>http://alex2006hw.github.io/articles/tidbits/</link>
+      <pubDate>Tue, 04 Nov 2014 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/tidbits/</guid>
+      <author></author>
+      <description>&lt;h4&gt;mysql&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SELECT User, password, host FROM mysql.user; # show list of users&lt;/li&gt;
+&lt;li&gt;UPDATE mysql.user SET Password=PASSWORD(&amp;#8216;[password]&amp;#8217;) WHERE User=&amp;#8217;[username]&amp;#8217;; # reset password&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
       <title>Live</title>
       <link>http://alex2006hw.github.io/articles/live/</link>
       <pubDate>Tue, 04 Nov 2014 16:00:00 -0800</pubDate>

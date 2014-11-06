@@ -2,15 +2,21 @@
 <urlset xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://alex2006hw.github.io</loc>
-    <lastmod>2014-11-05T20:19:28.964Z</lastmod>
+    <lastmod>2014-11-06T20:46:23.918Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://alex2006hw.github.io/archive.html</loc>
-    <lastmod>2014-11-05T20:19:28.964Z</lastmod>
+    <lastmod>2014-11-06T20:46:23.918Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://alex2006hw.github.io/articles/tidbits/</loc>
+    <lastmod>2014-11-05T00:00:00.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>http://alex2006hw.github.io/articles/live/</loc>
@@ -44,7 +50,7 @@
   </url>
   <url>
     <loc>http://alex2006hw.github.io/archive/2014</loc>
-    <lastmod>2014-11-05T20:19:28.964Z</lastmod>
+    <lastmod>2014-11-06T20:46:23.918Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
