@@ -17,8 +17,14 @@
       <description>&lt;h4&gt;mysql&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;SELECT User, password, host FROM mysql.user; # show list of users&lt;/li&gt;
-&lt;li&gt;UPDATE mysql.user SET Password=PASSWORD(&amp;#8216;[password]&amp;#8217;) WHERE User=&amp;#8217;[username]&amp;#8217;; # reset password&lt;/li&gt;
+&lt;li&gt;SELECT User, password, host FROM mysql.user;                                      # show list of users&lt;/li&gt;
+&lt;li&gt;UPDATE mysql.user SET Password=PASSWORD(&amp;#8216;[password]&amp;#8217;) WHERE User=&amp;#8217;[username]&amp;#8217;;    # reset password&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;network&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;curl -s checkip.dyndns.org|sed -e &amp;#8216;s/.&lt;em&gt;Current IP Address: //&amp;#8217; -e &amp;#8216;s/&amp;lt;.&lt;/em&gt;$//&amp;#8217;;     # get external IP address&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     <item>

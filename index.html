@@ -43,8 +43,14 @@
         <section class="content"><h4>mysql</h4>
 
 <ul>
-<li><span class="caps">SELECT</span> User, password, host FROM mysql.user; # show list of&nbsp;users</li>
-<li><span class="caps">UPDATE</span> mysql.user SET Password=PASSWORD(&#8216;[password]&#8217;) WHERE User=&#8217;[username]&#8217;; # reset&nbsp;password</li>
+<li><span class="caps">SELECT</span> User, password, host FROM mysql.user;                                      # show list of&nbsp;users</li>
+<li><span class="caps">UPDATE</span> mysql.user SET Password=PASSWORD(&#8216;[password]&#8217;) WHERE User=&#8217;[username]&#8217;;    # reset&nbsp;password</li>
+</ul>
+
+<h4>network</h4>
+
+<ul>
+<li>curl -s checkip.dyndns.org|sed -e &#8216;s/.<em>Current <span class="caps">IP</span> Address: //&#8217; -e &#8216;s/&lt;.</em>$//&#8217;;     # get external <span class="caps">IP</span>&nbsp;address</li>
 </ul></section>
         <article class="article intro"></article>
         <header>
@@ -136,7 +142,7 @@
 </ul>
         </section>
         <section class="copy">
-          <p>&copy; Thu Nov 06 2014 17:42:06 GMT-0800 (PST) &mdash; &copy; alex davis &mdash;</p>
+          <p>&copy; Thu Nov 06 2014 17:43:51 GMT-0800 (PST) &mdash; &copy; alex davis &mdash;</p>
         </section>
       </div>
     </footer>
