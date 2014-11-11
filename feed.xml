@@ -5,9 +5,20 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Tue, 04 Nov 2014 16:00:00 -0800</pubDate>
+    <pubDate>Wed, 05 Nov 2014 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Projects</title>
+      <link>http://alex2006hw.github.io/articles/projects/</link>
+      <pubDate>Wed, 05 Nov 2014 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/projects/</guid>
+      <author></author>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/articles/projects/ubuntu-patch&quot;&gt;ubuntu&lt;/a&gt; patch management&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/articles/projects/docker&quot;&gt;docker&lt;/a&gt; containers&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Tidbits</title>
       <link>http://alex2006hw.github.io/articles/tidbits/</link>
@@ -41,16 +52,6 @@
 &lt;h3&gt;Interesting Sites&lt;/h3&gt;
 
 &lt;p&gt;github.com/h5bp : &lt;a href=&quot;http://movethewebforward.org/&quot;&gt;move the web forward&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Projects</title>
-      <link>http://alex2006hw.github.io/articles/projects/</link>
-      <pubDate>Mon, 03 Nov 2014 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://alex2006hw.github.io/articles/projects/</guid>
-      <author></author>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/articles/projects/ubuntu-patch&quot;&gt;ubuntu&lt;/a&gt; patch management&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Learn</title>
