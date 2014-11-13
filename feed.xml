@@ -5,9 +5,30 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Wed, 05 Nov 2014 16:00:00 -0800</pubDate>
+    <pubDate>Wed, 12 Nov 2014 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Tidbits</title>
+      <link>http://alex2006hw.github.io/articles/tidbits/</link>
+      <pubDate>Wed, 12 Nov 2014 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/tidbits/</guid>
+      <author></author>
+      <description>&lt;h4&gt;mysql&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SELECT User, password, host FROM mysql.user;                                      # show list of users&lt;/li&gt;
+&lt;li&gt;UPDATE mysql.user SET Password=PASSWORD(&amp;#8216;[password]&amp;#8217;) WHERE User=&amp;#8217;[username]&amp;#8217;;    # reset password&lt;/li&gt;
+&lt;li&gt;CREATE USER &amp;#8216;USER&amp;#8217;@&amp;#8217;localhost&amp;#8217; IDENTIFIED BY &amp;#8216;PASSWD&amp;#8217;;                            # create a monitor user&lt;/li&gt;
+&lt;li&gt;GRANT PROCESS, REPLICATION CLIENT ON &lt;em&gt;.&lt;/em&gt; TO &amp;#8216;USER&amp;#8217;@&amp;#8217;localhost&amp;#8217;;                   # grant monitoring permission to user&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;network&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;curl -s checkip.dyndns.org|sed -e &amp;#8216;s/.&lt;em&gt;Current IP Address: //&amp;#8217; -e &amp;#8216;s/&amp;lt;.&lt;/em&gt;$//&amp;#8217;;     # get external IP address&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Projects</title>
       <link>http://alex2006hw.github.io/articles/projects/</link>
@@ -17,25 +38,6 @@
       <description>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/articles/projects/ubuntu-patch&quot;&gt;ubuntu&lt;/a&gt; patch management&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;/articles/projects/docker&quot;&gt;docker&lt;/a&gt; containers&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Tidbits</title>
-      <link>http://alex2006hw.github.io/articles/tidbits/</link>
-      <pubDate>Tue, 04 Nov 2014 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://alex2006hw.github.io/articles/tidbits/</guid>
-      <author></author>
-      <description>&lt;h4&gt;mysql&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;SELECT User, password, host FROM mysql.user;                                      # show list of users&lt;/li&gt;
-&lt;li&gt;UPDATE mysql.user SET Password=PASSWORD(&amp;#8216;[password]&amp;#8217;) WHERE User=&amp;#8217;[username]&amp;#8217;;    # reset password&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;network&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;curl -s checkip.dyndns.org|sed -e &amp;#8216;s/.&lt;em&gt;Current IP Address: //&amp;#8217; -e &amp;#8216;s/&amp;lt;.&lt;/em&gt;$//&amp;#8217;;     # get external IP address&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     <item>
