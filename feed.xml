@@ -17,10 +17,10 @@
       <description>&lt;h4&gt;mysql&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code&gt;- SELECT User, password, host FROM mysql.user;                                      # show list of users
-- UPDATE mysql.user SET Password=PASSWORD('[password]') WHERE User='[username]';    # reset password
+- SET PASSWORD FOR 'username'@'%.example.org' = PASSWORD('cleartext password');     # reset password
 - CREATE USER 'USER'@'localhost' IDENTIFIED BY 'PASSWD';                            # create a monitor user
-- GRANT PROCESS, REPLICATION CLIENT ON *.* TO 'USER'@'localhost';                   # grant monitoring permission to user
 - GRANT ALL PRIVILEGES ON mydb.* TO 'username'@'localhost' WITH GRANT OPTION;       # grant a user to a db
+- GRANT PROCESS, REPLICATION CLIENT ON *.* TO 'USER'@'localhost';                   # grant monitoring permission to user
 - flush privileges;                                                                 # update accounts&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4&gt;network&lt;/h4&gt;
