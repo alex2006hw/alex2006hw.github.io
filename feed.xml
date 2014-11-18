@@ -25,7 +25,11 @@
 
 &lt;h4&gt;network&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;- curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/&lt;.*$//';     # get external IP address&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;pre&gt;&lt;code&gt;- curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/&lt;.*$//';     # get external IP address&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;sed&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;- sed -i &quot;/.*XXXX.*/ c\YYYY&quot; filename                                              # change a line in a file&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Projects</title>
