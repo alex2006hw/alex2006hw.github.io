@@ -20,6 +20,7 @@
 - UPDATE mysql.user SET Password=PASSWORD('[password]') WHERE User='[username]';    # reset password
 - CREATE USER 'USER'@'localhost' IDENTIFIED BY 'PASSWD';                            # create a monitor user
 - GRANT PROCESS, REPLICATION CLIENT ON *.* TO 'USER'@'localhost';                   # grant monitoring permission to user
+- GRANT ALL PRIVILEGES ON mydb.* TO 'username'@'localhost' WITH GRANT OPTION;       # grant a user to a db
 - flush privileges;                                                                 # update accounts&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4&gt;network&lt;/h4&gt;
