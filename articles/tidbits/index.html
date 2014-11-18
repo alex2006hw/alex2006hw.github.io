@@ -36,19 +36,15 @@
         <article class="article">
           <section class="content"><h4>mysql</h4>
 
-<ul>
-<li><span class="caps">SELECT</span> User, password, host FROM mysql.user;                                      # show list of&nbsp;users</li>
-<li><span class="caps">UPDATE</span> mysql.user SET Password=PASSWORD(&#8216;[password]&#8217;) WHERE User=&#8217;[username]&#8217;;    # reset&nbsp;password</li>
-<li><span class="caps">CREATE</span> USER &#8216;USER&#8217;@&#8217;localhost&#8217; IDENTIFIED BY &#8216;PASSWD&#8217;;                            # create a monitor&nbsp;user</li>
-<li><span class="caps">GRANT</span> PROCESS, REPLICATION CLIENT ON <em>.</em> <span class="caps">TO</span> &#8216;USER&#8217;@&#8217;localhost&#8217;;                   # grant monitoring permission to&nbsp;user</li>
-<li>flush privileges;                                                                 # update&nbsp;accounts</li>
-</ul>
+<pre><code>- SELECT User, password, host FROM mysql.user;                                      # show list of users
+- UPDATE mysql.user SET Password=PASSWORD('[password]') WHERE User='[username]';    # reset password
+- CREATE USER 'USER'@'localhost' IDENTIFIED BY 'PASSWD';                            # create a monitor user
+- GRANT PROCESS, REPLICATION CLIENT ON *.* TO 'USER'@'localhost';                   # grant monitoring permission to user
+- flush privileges;                                                                 # update accounts</code></pre>
 
 <h4>network</h4>
 
-<ul>
-<li>curl -s checkip.dyndns.org|sed -e &#8216;s/.<em>Current <span class="caps">IP</span> Address: //&#8217; -e &#8216;s/&lt;.</em>$//&#8217;;     # get external <span class="caps">IP</span>&nbsp;address</li>
-</ul></section>
+<pre><code>- curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//';     # get external IP address</code></pre></section>
         </article>
       </div>
     </div>
@@ -85,7 +81,7 @@
 </ul>
         </section>
         <section class="copy">
-          <p>&copy; Mon Nov 17 2014 10:34:31 GMT-0800 (PST) &mdash; &copy; alex davis &mdash;</p>
+          <p>&copy; Mon Nov 17 2014 16:36:36 GMT-0800 (PST) &mdash; &copy; alex davis &mdash;</p>
         </section>
       </div>
     </footer>
