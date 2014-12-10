@@ -44,20 +44,19 @@
         </header>
         <section class="content"><h4>mysql</h4>
 
-<pre><code>- SELECT User, password, host FROM mysql.user;                                      # show list of users
-- SET PASSWORD FOR 'username'@'%.example.org' = PASSWORD('cleartext password');     # reset password
-- CREATE USER 'USER'@'localhost' IDENTIFIED BY 'PASSWD';                            # create a monitor user
-- GRANT ALL PRIVILEGES ON mydb.* TO 'username'@'localhost' WITH GRANT OPTION;       # grant a user to a db
-- GRANT PROCESS, REPLICATION CLIENT ON *.* TO 'USER'@'localhost';                   # grant monitoring permission to user
-- flush privileges;                                                                 # update accounts</code></pre>
+<ul>
+<li><span class="caps">SELECT</span> User, password, host FROM mysql.user;                                      # show list of&nbsp;users</li>
+<li><span class="caps">UPDATE</span> mysql.user SET Password=PASSWORD(&#8216;[password]&#8217;) WHERE User=&#8217;[username]&#8217;;    # reset&nbsp;password</li>
+<li><span class="caps">CREATE</span> USER &#8216;USER&#8217;@&#8217;localhost&#8217; IDENTIFIED BY &#8216;PASSWD&#8217;;                            # create a monitor&nbsp;user</li>
+<li><span class="caps">GRANT</span> PROCESS, REPLICATION CLIENT ON <em>.</em> <span class="caps">TO</span> &#8216;USER&#8217;@&#8217;localhost&#8217;;                   # grant monitoring permission to&nbsp;user</li>
+<li>flush privileges;                                                                 # update&nbsp;accounts</li>
+</ul>
 
 <h4>network</h4>
 
-<pre><code>- curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//';     # get external IP address</code></pre>
-
-<h4>sed</h4>
-
-<pre><code>- sed -i "/.*XXXX.*/ c\YYYY" filename                                              # change a line in a file</code></pre></section>
+<ul>
+<li>curl -s checkip.dyndns.org|sed -e &#8216;s/.<em>Current <span class="caps">IP</span> Address: //&#8217; -e &#8216;s/&lt;.</em>$//&#8217;;     # get external <span class="caps">IP</span>&nbsp;address</li>
+</ul></section>
         <article class="article intro"></article>
         <header>
           <h2><a href="/articles/projects/">Projects</a></h2>
@@ -112,6 +111,7 @@
 <li>Beat this <a href="/articles/learn/stocks">market</a></li>
 <li>Speak better <a href="/articles/learn/rails">rails</a></li>
 <li>What is <a href="/articles/learn/devops">devops</a></li>
+<li>Be in the <a href="/articles/learn/present">present</a></li>
 </ul>
         </section>
         <article class="article intro"></article>
@@ -157,7 +157,7 @@
 </ul>
         </section>
         <section class="copy">
-          <p>&copy; Thu Dec 04 2014 20:19:31 GMT-0800 (PST) &mdash; &copy; alex davis &mdash;</p>
+          <p>&copy; Tue Dec 09 2014 16:26:04 GMT-0800 (PST) &mdash; &copy; alex davis &mdash;</p>
         </section>
       </div>
     </footer>
