@@ -5,13 +5,13 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Mon, 08 Dec 2014 16:00:00 -0800</pubDate>
+    <pubDate>Tue, 09 Dec 2014 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
       <title>Learn</title>
       <link>http://alex2006hw.github.io/articles/learn/</link>
-      <pubDate>Mon, 08 Dec 2014 16:00:00 -0800</pubDate>
+      <pubDate>Tue, 09 Dec 2014 16:00:00 -0800</pubDate>
       <guid isPermaLink="true">http://alex2006hw.github.io/articles/learn/</guid>
       <author></author>
       <description>&lt;h3&gt;Reflect&lt;/h3&gt;
@@ -25,12 +25,13 @@
 &lt;li&gt;Beat this &lt;a href=&quot;/articles/learn/stocks&quot;&gt;market&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Speak better &lt;a href=&quot;/articles/learn/rails&quot;&gt;rails&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;What is &lt;a href=&quot;/articles/learn/devops&quot;&gt;devops&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Be more &lt;a href=&quot;/articles/learn/present&quot;&gt;present&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     <item>
       <title>Tidbits</title>
       <link>http://alex2006hw.github.io/articles/tidbits/</link>
-      <pubDate>Wed, 12 Nov 2014 16:00:00 -0800</pubDate>
+      <pubDate>Sun, 07 Dec 2014 16:00:00 -0800</pubDate>
       <guid isPermaLink="true">http://alex2006hw.github.io/articles/tidbits/</guid>
       <author></author>
       <description>&lt;h4&gt;mysql&lt;/h4&gt;
@@ -47,6 +48,12 @@
 
 &lt;ul&gt;
 &lt;li&gt;curl -s checkip.dyndns.org|sed -e &amp;#8216;s/.&lt;em&gt;Current IP Address: //&amp;#8217; -e &amp;#8216;s/&amp;lt;.&lt;/em&gt;$//&amp;#8217;;     # get external IP address&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;date time&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;python -c &amp;#8220;from datetime import date; print (-1*(date(2014,01,01)-date(2014,12,31))).days&amp;#8221;  # = 364 days from now to then&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     <item>
@@ -81,7 +88,9 @@
 
 &lt;h3&gt;Interesting Sites&lt;/h3&gt;
 
-&lt;p&gt;github.com/h5bp : &lt;a href=&quot;http://movethewebforward.org/&quot;&gt;move the web forward&lt;/a&gt;&lt;/p&gt;</description>
+&lt;ul&gt;
+&lt;li&gt;move the web forward &lt;a href=&quot;http://movethewebforward.org/&quot;&gt;&gt;&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Grow</title>
