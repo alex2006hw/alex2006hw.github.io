@@ -67,9 +67,6 @@
 <ul>
 <li><span class="caps">SELECT</span> User, password, host FROM mysql.user;                                      # show list of&nbsp;users</li>
 <li><span class="caps">UPDATE</span> mysql.user SET Password=PASSWORD(&#8216;[password]&#8217;) WHERE User=&#8217;[username]&#8217;;    # reset&nbsp;password</li>
-<li><span class="caps">CREATE</span> USER &#8216;USER&#8217;@&#8217;localhost&#8217; IDENTIFIED BY &#8216;PASSWD&#8217;;                            # create a monitor&nbsp;user</li>
-<li><span class="caps">GRANT</span> PROCESS, REPLICATION CLIENT ON <em>.</em> <span class="caps">TO</span> &#8216;USER&#8217;@&#8217;localhost&#8217;;                   # grant monitoring permission to&nbsp;user</li>
-<li>flush privileges;                                                                 # update&nbsp;accounts</li>
 </ul>
 
 <h4>network</h4>
@@ -78,22 +75,10 @@
 <li>curl -s checkip.dyndns.org|sed -e &#8216;s/.<em>Current <span class="caps">IP</span> Address: //&#8217; -e &#8216;s/&lt;.</em>$//&#8217;;     # get external <span class="caps">IP</span>&nbsp;address</li>
 </ul>
 
-<h3>date&nbsp;time</h3>
+<h4>date&nbsp;time</h4>
 
 <ul>
 <li>python -c &#8220;from datetime import date; print (-1*(date(2014,01,01)-date(2014,12,31))).days&#8221;  # = 364 days from now to&nbsp;then</li>
-</ul>
-        </section>
-        <article class="article intro"></article>
-        <header>
-          <h2><a href="/articles/projects/">Projects</a></h2>
-          <div class="date"><span>05. November 2014</span></div>
-          <p class="author"><span class="author"><a href="mailto:alex@alex2006hw.com">alex2006hw</a></span>
-          </p>
-        </header>
-        <section class="content"><ul>
-<li><a href="/articles/projects/ubuntu-patch">ubuntu</a> patch&nbsp;management</li>
-<li><a href="/articles/projects/docker">docker</a>&nbsp;containers</li>
 </ul>
         </section>
         <article class="article intro"></article>
@@ -103,23 +88,26 @@
           <p class="author"><span class="author"><a href="mailto:alex@alex2006hw.com">alex2006hw</a></span>
           </p>
         </header>
-        <section class="content"><h3>Walk&nbsp;Around</h3>
+        <section class="content"><h3>Tuned-out</h3>
 
 <p>Is is hard for me to improve my social skills when everyone is so plugged-in and tuned-out. <br>
 <a href="/articles/live/tuned-out">more</a></p>
-
-<p>Big Brother in the house&#8230; <br>
-<a href="/articles/live/nothingtohide">more</a></p>
-
-<h3>Personal&nbsp;Security</h3>
-
-<p>Simple Personal Security <br>
-<a href="/articles/live/security">more</a></p>
 
 <h3>Interesting&nbsp;Sites</h3>
 
 <ul>
 <li>move the web forward <a href="http://movethewebforward.org/">>></a></li>
+</ul>
+        </section>
+        <article class="article intro"></article>
+        <header>
+          <h2><a href="/articles/projects/">Projects</a></h2>
+          <div class="date"><span>03. November 2014</span></div>
+          <p class="author"><span class="author"><a href="mailto:alex@alex2006hw.com">alex2006hw</a></span>
+          </p>
+        </header>
+        <section class="content"><ul>
+<li><a href="/articles/projects/ubuntu-patch">ubuntu</a> patch&nbsp;management</li>
 </ul>
         </section>
         <article class="article intro"></article>
@@ -165,7 +153,7 @@
 </ul>
         </section>
         <section class="copy">
-          <p>&copy; Wed Dec 10 2014 23:05:53 GMT-0800 (PST) &mdash; &copy; alex davis &mdash;</p>
+          <p>&copy; Wed Dec 10 2014 23:54:27 GMT-0800 (PST) &mdash; &copy; alex davis &mdash;</p>
         </section>
       </div>
     </footer>
