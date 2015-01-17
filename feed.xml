@@ -5,9 +5,43 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Sun, 04 Jan 2015 16:00:00 -0800</pubDate>
+    <pubDate>Wed, 14 Jan 2015 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Tidbits</title>
+      <link>http://alex2006hw.github.io/articles/tidbits/</link>
+      <pubDate>Wed, 14 Jan 2015 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/tidbits/</guid>
+      <author></author>
+      <description>&lt;h3&gt;Resources&lt;/h3&gt;
+
+&lt;h4&gt;eBooks&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://jsbooks.revolunet.com/&quot;&gt;JavaScripts&lt;/a&gt; Books&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://pythonbooks.revolunet.com/&quot;&gt;Python&lt;/a&gt; Books&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;mysql&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SELECT User, password, host FROM mysql.user;                                      # show list of users&lt;/li&gt;
+&lt;li&gt;UPDATE mysql.user SET Password=PASSWORD(&amp;#8216;[password]&amp;#8217;) WHERE User=&amp;#8217;[username]&amp;#8217;;    # reset password&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;network&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;curl -s checkip.dyndns.org|sed -e &amp;#8216;s/.&lt;em&gt;Current IP Address: //&amp;#8217; -e &amp;#8216;s/&amp;lt;.&lt;/em&gt;$//&amp;#8217;;     # get external IP address&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;date time&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;python -c &amp;#8220;from datetime import date; print (-1*(date(2014,01,01)-date(2014,12,31))).days&amp;#8221;  # = 364 days from now to then&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Projects</title>
       <link>http://alex2006hw.github.io/articles/projects/</link>
@@ -59,31 +93,6 @@
 &lt;li&gt;Speak better &lt;a href=&quot;/articles/learn/rails&quot;&gt;rails&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;What is &lt;a href=&quot;/articles/learn/devops&quot;&gt;devops&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Be more &lt;a href=&quot;/articles/learn/present&quot;&gt;present&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Tidbits</title>
-      <link>http://alex2006hw.github.io/articles/tidbits/</link>
-      <pubDate>Sun, 07 Dec 2014 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://alex2006hw.github.io/articles/tidbits/</guid>
-      <author></author>
-      <description>&lt;h4&gt;mysql&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;SELECT User, password, host FROM mysql.user;                                      # show list of users&lt;/li&gt;
-&lt;li&gt;UPDATE mysql.user SET Password=PASSWORD(&amp;#8216;[password]&amp;#8217;) WHERE User=&amp;#8217;[username]&amp;#8217;;    # reset password&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;network&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;curl -s checkip.dyndns.org|sed -e &amp;#8216;s/.&lt;em&gt;Current IP Address: //&amp;#8217; -e &amp;#8216;s/&amp;lt;.&lt;/em&gt;$//&amp;#8217;;     # get external IP address&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;date time&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;python -c &amp;#8220;from datetime import date; print (-1*(date(2014,01,01)-date(2014,12,31))).days&amp;#8221;  # = 364 days from now to then&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     <item>
