@@ -5,9 +5,20 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Wed, 14 Jan 2015 16:00:00 -0800</pubDate>
+    <pubDate>Sun, 18 Jan 2015 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Projects</title>
+      <link>http://alex2006hw.github.io/articles/projects/</link>
+      <pubDate>Sun, 18 Jan 2015 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/projects/</guid>
+      <author></author>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/articles/projects/2bees&quot;&gt;2bees&lt;/a&gt; connections&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/articles/projects/ubuntu-patch&quot;&gt;ubuntu&lt;/a&gt; patch management&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Tidbits</title>
       <link>http://alex2006hw.github.io/articles/tidbits/</link>
@@ -40,17 +51,6 @@
 
 &lt;ul&gt;
 &lt;li&gt;python -c &amp;#8220;from datetime import date; print (-1*(date(2014,01,01)-date(2014,12,31))).days&amp;#8221;  # = 364 days from now to then&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Projects</title>
-      <link>http://alex2006hw.github.io/articles/projects/</link>
-      <pubDate>Sun, 04 Jan 2015 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://alex2006hw.github.io/articles/projects/</guid>
-      <author></author>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/articles/projects/2bees&quot;&gt;2bees&lt;/a&gt; connections&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;/articles/projects/ubuntu-patch&quot;&gt;ubuntu&lt;/a&gt; patch management&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     <item>
