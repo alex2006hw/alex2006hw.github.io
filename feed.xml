@@ -14,8 +14,22 @@
       <pubDate>Sun, 18 Jan 2015 16:00:00 -0800</pubDate>
       <guid isPermaLink="true">http://alex2006hw.github.io/articles/projects/</guid>
       <author></author>
-      <description>&lt;ul&gt;
+      <description>&lt;h4&gt;Let&amp;#8217;s build a robot&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/articles/projects/buildrobot&quot;&gt;Robot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Current projects&lt;/h4&gt;
+
+&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/articles/projects/2bees&quot;&gt;2bees&lt;/a&gt; connections&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/articles/projects/idgeod&quot;&gt;idgeod&lt;/a&gt; online identity&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;On the burner&lt;/h4&gt;
+
+&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/articles/projects/ubuntu-patch&quot;&gt;ubuntu&lt;/a&gt; patch management&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
