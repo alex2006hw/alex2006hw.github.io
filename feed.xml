@@ -5,13 +5,13 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Sun, 18 Jan 2015 16:00:00 -0800</pubDate>
+    <pubDate>Mon, 26 Jan 2015 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
       <title>Projects</title>
       <link>http://alex2006hw.github.io/articles/projects/</link>
-      <pubDate>Sun, 18 Jan 2015 16:00:00 -0800</pubDate>
+      <pubDate>Mon, 26 Jan 2015 16:00:00 -0800</pubDate>
       <guid isPermaLink="true">http://alex2006hw.github.io/articles/projects/</guid>
       <author></author>
       <description>&lt;h4&gt;Let&amp;#8217;s build a robot&lt;/h4&gt;
@@ -24,7 +24,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/articles/projects/2bees&quot;&gt;2bees&lt;/a&gt; connections&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;/articles/projects/idgeod&quot;&gt;idgeod&lt;/a&gt; online identity&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/articles/projects/idgeod&quot;&gt;idgeod.&lt;/a&gt; online identity&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4&gt;On the burner&lt;/h4&gt;
