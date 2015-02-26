@@ -5,9 +5,92 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Mon, 26 Jan 2015 16:00:00 -0800</pubDate>
+    <pubDate>Tue, 24 Feb 2015 16:00:00 -0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Tidbits</title>
+      <link>http://alex2006hw.github.io/articles/tidbits/</link>
+      <pubDate>Tue, 24 Feb 2015 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/tidbits/</guid>
+      <author></author>
+      <description>&lt;h3&gt;Resources&lt;/h3&gt;
+
+&lt;h4&gt;eBooks&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://jsbooks.revolunet.com/&quot;&gt;JavaScripts&lt;/a&gt; Books&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://pythonbooks.revolunet.com/&quot;&gt;Python&lt;/a&gt; Books&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Cool Development tools&lt;/h4&gt;
+
+&lt;h4&gt;Tools&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://jakiestfu.github.io/Medium.js&quot;&gt;Medium.js&lt;/a&gt; WYSIWYG Editor&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5&gt;DB related&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/medea&quot;&gt;medea&lt;/a&gt; a pure JS database &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5&gt;Frame work modules&lt;/h5&gt;
+
+&lt;h4&gt;mysql&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SELECT User, password, host FROM mysql.user;                                      # show list of users&lt;/li&gt;
+&lt;li&gt;UPDATE mysql.user SET Password=PASSWORD(&amp;#8216;[password]&amp;#8217;) WHERE User=&amp;#8217;[username]&amp;#8217;;    # reset password&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;network&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;curl -s checkip.dyndns.org|sed -e &amp;#8216;s/.&lt;em&gt;Current IP Address: //&amp;#8217; -e &amp;#8216;s/&amp;lt;.&lt;/em&gt;$//&amp;#8217;;     # get external IP address&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;date time&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;python -c &amp;#8220;from datetime import date; print (-1*(date(2014,01,01)-date(2014,12,31))).days&amp;#8221;  # = 364 days from now to then&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Recipes</title>
+      <link>http://alex2006hw.github.io/articles/recipes/</link>
+      <pubDate>Thu, 29 Jan 2015 16:00:00 -0800</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/recipes/</guid>
+      <author></author>
+      <description>&lt;p&gt;[Almond Rochers](/articles/recipes/Almond Rochers) &lt;br&gt;
+[Apple Nougatine Tart](/articles/recipes/Apple Nougatine Tart) &lt;br&gt;
+&lt;a href=&quot;/articles/recipes/Brioche&quot;&gt;Brioche&lt;/a&gt; &lt;br&gt;
+&lt;a href=&quot;/articles/recipes/Caramel&quot;&gt;Caramel&lt;/a&gt; &lt;br&gt;
+[Chocolate Chiffon Cake](/articles/recipes/Chocolate Chiffon Cake) &lt;br&gt;
+[Chocolate Souffle Cake](/articles/recipes/Chocolate Souffle Cake) &lt;br&gt;
+&lt;a href=&quot;/articles/recipes/Clafoutis&quot;&gt;Clafoutis&lt;/a&gt; &lt;br&gt;
+&lt;a href=&quot;/articles/recipes/Croissants&quot;&gt;Croissants&lt;/a&gt; &lt;br&gt;
+[Flaky Tart Shell](/articles/recipes/Flaky Tart Shell) &lt;br&gt;
+[Fresh Fruit Tart](/articles/recipes/Fresh Fruit Tart) &lt;br&gt;
+[Fruit Frozen Yogurt](/articles/recipes/Fruit Frozen Yogurt) &lt;br&gt;
+[Fruit Galettes](/articles/recipes/Fruit Galettes) &lt;br&gt;
+&lt;a href=&quot;/articles/recipes/Gougères&quot;&gt;Gougères&lt;/a&gt; &lt;br&gt;
+[Lemon Chiffon Cake](/articles/recipes/Lemon Chiffon Cake) &lt;br&gt;
+[Lemon Cream Tart](/articles/recipes/Lemon Cream Tart) &lt;br&gt;
+[Lemon Cream](/articles/recipes/Lemon Cream) &lt;br&gt;
+[Lemon Meringue Cake](/articles/recipes/Lemon Meringue Cake) &lt;br&gt;
+&lt;a href=&quot;/articles/recipes/Meringues&quot;&gt;Meringues&lt;/a&gt; &lt;br&gt;
+[Pastry Cream](/articles/recipes/Pastry Cream) &lt;br&gt;
+&lt;a href=&quot;/articles/recipes/Pissaladiere&quot;&gt;Pissaladiere&lt;/a&gt; &lt;br&gt;
+&lt;a href=&quot;/articles/recipes/Pizza&quot;&gt;Pizza&lt;/a&gt; &lt;br&gt;
+&lt;a href=&quot;/articles/recipes/Quiche&quot;&gt;Quiche&lt;/a&gt; &lt;br&gt;
+&lt;a href=&quot;/articles/recipes/Sorbet&quot;&gt;Sorbet&lt;/a&gt; &lt;br&gt;
+[Sweet Tart Shell](/articles/recipes/Sweet Tart Shell) &lt;br&gt;
+&lt;a href=&quot;/articles/recipes/eclairs&quot;&gt;eclairs&lt;/a&gt; &lt;br&gt;
+&lt;a href=&quot;/articles/recipes/index&quot;&gt;index&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Projects</title>
       <link>http://alex2006hw.github.io/articles/projects/</link>
@@ -31,40 +114,6 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/articles/projects/ubuntu-patch&quot;&gt;ubuntu&lt;/a&gt; patch management&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Tidbits</title>
-      <link>http://alex2006hw.github.io/articles/tidbits/</link>
-      <pubDate>Wed, 14 Jan 2015 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://alex2006hw.github.io/articles/tidbits/</guid>
-      <author></author>
-      <description>&lt;h3&gt;Resources&lt;/h3&gt;
-
-&lt;h4&gt;eBooks&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://jsbooks.revolunet.com/&quot;&gt;JavaScripts&lt;/a&gt; Books&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://pythonbooks.revolunet.com/&quot;&gt;Python&lt;/a&gt; Books&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;mysql&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;SELECT User, password, host FROM mysql.user;                                      # show list of users&lt;/li&gt;
-&lt;li&gt;UPDATE mysql.user SET Password=PASSWORD(&amp;#8216;[password]&amp;#8217;) WHERE User=&amp;#8217;[username]&amp;#8217;;    # reset password&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;network&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;curl -s checkip.dyndns.org|sed -e &amp;#8216;s/.&lt;em&gt;Current IP Address: //&amp;#8217; -e &amp;#8216;s/&amp;lt;.&lt;/em&gt;$//&amp;#8217;;     # get external IP address&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;date time&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;python -c &amp;#8220;from datetime import date; print (-1*(date(2014,01,01)-date(2014,12,31))).days&amp;#8221;  # = 364 days from now to then&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     <item>
