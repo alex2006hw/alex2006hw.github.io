@@ -5,9 +5,46 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Tue, 10 Mar 2015 17:00:00 -0700</pubDate>
+    <pubDate>Thu, 12 Mar 2015 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Todo</title>
+      <link>http://alex2006hw.github.io/articles/todo/</link>
+      <pubDate>Thu, 12 Mar 2015 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/todo/</guid>
+      <author></author>
+      <description>&lt;h4&gt;- Learn &lt;a href=&quot;/articles/todo/webdevelopment.html&quot;&gt;web development&lt;/a&gt;&lt;/h4&gt;
+
+&lt;h4&gt;- &lt;a href=&quot;/articles/todo/investigate.html&quot;&gt;Investigate&lt;/a&gt; things that are interesting&lt;/h4&gt;
+
+&lt;h4&gt;- Make &lt;a href=&quot;/articles/todo/something.html&quot;&gt;something&lt;/a&gt; to pay rent&lt;/h4&gt;</description>
+    </item>
+    <item>
+      <title>Projects</title>
+      <link>http://alex2006hw.github.io/articles/projects/</link>
+      <pubDate>Thu, 12 Mar 2015 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/projects/</guid>
+      <author></author>
+      <description>&lt;h4&gt;Let&amp;#8217;s build a robot&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/articles/projects/buildrobot&quot;&gt;Robot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Current projects&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/articles/projects/2bees&quot;&gt;2bees&lt;/a&gt; connections&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;/articles/projects/usertoken&quot;&gt;usertoken&lt;/a&gt; online identity&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;On the burner&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/articles/projects/ubuntu-patch&quot;&gt;ubuntu&lt;/a&gt; patch management&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Learn</title>
       <link>http://alex2006hw.github.io/articles/learn/</link>
@@ -111,31 +148,6 @@
 [Sweet Tart Shell](/articles/recipes/Sweet Tart Shell) &lt;br&gt;
 &lt;a href=&quot;/articles/recipes/eclairs&quot;&gt;eclairs&lt;/a&gt; &lt;br&gt;
 &lt;a href=&quot;/articles/recipes/index&quot;&gt;index&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Projects</title>
-      <link>http://alex2006hw.github.io/articles/projects/</link>
-      <pubDate>Mon, 26 Jan 2015 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://alex2006hw.github.io/articles/projects/</guid>
-      <author></author>
-      <description>&lt;h4&gt;Let&amp;#8217;s build a robot&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/articles/projects/buildrobot&quot;&gt;Robot&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;Current projects&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/articles/projects/2bees&quot;&gt;2bees&lt;/a&gt; connections&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;/articles/projects/idgeod&quot;&gt;idgeod.&lt;/a&gt; online identity&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4&gt;On the burner&lt;/h4&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/articles/projects/ubuntu-patch&quot;&gt;ubuntu&lt;/a&gt; patch management&lt;/li&gt;
-&lt;/ul&gt;</description>
     </item>
     <item>
       <title>Live</title>
