@@ -5,9 +5,30 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Tue, 24 Feb 2015 16:00:00 -0800</pubDate>
+    <pubDate>Tue, 10 Mar 2015 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>Learn</title>
+      <link>http://alex2006hw.github.io/articles/learn/</link>
+      <pubDate>Tue, 10 Mar 2015 17:00:00 -0700</pubDate>
+      <guid isPermaLink="true">http://alex2006hw.github.io/articles/learn/</guid>
+      <author></author>
+      <description>&lt;h3&gt;Reflect&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Learning is to make mistakes &lt;br&gt;
+  &lt;a href=&quot;/articles/learn/reflects&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Becoming a &lt;a href=&quot;/articles/learn/developer&quot;&gt;developer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Beat this &lt;a href=&quot;/articles/learn/stocks&quot;&gt;market&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Speak better &lt;a href=&quot;/articles/learn/rails&quot;&gt;rails&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;What is &lt;a href=&quot;/articles/learn/devops&quot;&gt;devops&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Be more &lt;a href=&quot;/articles/learn/present&quot;&gt;present&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>Tidbits</title>
       <link>http://alex2006hw.github.io/articles/tidbits/</link>
@@ -136,26 +157,6 @@
 
 &lt;ul&gt;
 &lt;li&gt;move the web forward &lt;a href=&quot;http://movethewebforward.org/&quot;&gt;&gt;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Learn</title>
-      <link>http://alex2006hw.github.io/articles/learn/</link>
-      <pubDate>Tue, 09 Dec 2014 16:00:00 -0800</pubDate>
-      <guid isPermaLink="true">http://alex2006hw.github.io/articles/learn/</guid>
-      <author></author>
-      <description>&lt;h3&gt;Reflect&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Learning is to make mistakes &lt;br&gt;
-  &lt;a href=&quot;/articles/learn/reflects&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Beat this &lt;a href=&quot;/articles/learn/stocks&quot;&gt;market&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Speak better &lt;a href=&quot;/articles/learn/rails&quot;&gt;rails&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;What is &lt;a href=&quot;/articles/learn/devops&quot;&gt;devops&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Be more &lt;a href=&quot;/articles/learn/present&quot;&gt;present&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     <item>
