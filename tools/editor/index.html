@@ -1,81 +1,43 @@
-<!doctype html>
-
-<title>CodeMirror</title>
-<meta charset="utf-8"/>
-
-<link rel="stylesheet" href="codemirror-4.11/lib/codemirror.css">
-<link rel="stylesheet" href="codemirror-4.11/addon/hint/show-hint.css" />
-<script src="codemirror-4.11/lib/codemirror.js"></script>
-<script src="codemirror-4.11/addon/edit/matchbrackets.js"></script>
-<script src="codemirror-4.11/mode/ruby/ruby.js"></script>
-<script src="codemirror-4.11/addon/comment/continuecomment.js"></script>
-<script src="codemirror-4.11/addon/comment/comment.js"></script>
-<script src="codemirror-4.11/mode/javascript/javascript.js"></script>
-<script src="codemirror-4.11/addon/hint/show-hint.js"></script>
-<script src="codemirror-4.11/addon/hint/sql-hint.js"></script>
-<script src="codemirror-4.11/mode/sql/sql.js"></script>
-<style>
-      .CodeMirror {border: 1px solid black; height: 120px; width: 500px;}
-</style>
-
-<article>
-<h2>Ruby mode</h2>
-  <textarea id="code" name="code">
-  # Sample Comment
-  class Test
-    def hello
-      p "hello"
-    end  
-  end
-  </textarea>
-    <script>
-      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-        mode: "text/x-ruby",
-        lineNumbers: true,
-        matchBrackets: true,
-        indentUnit: 4
-      });
-    </script>
-</article>
-
-<article>
-<h2>Javascript mode</h2>
-  <textarea id="code1" name="code">
-  // Sample function
-   function test(col) {
-    var myvar = col;
-    return false;
-  }
-    
-  </textarea>
-    <script>
-      var editor = CodeMirror.fromTextArea(document.getElementById("code1"), {
-        mode: "text/javascript",
-        lineNumbers: true,
-        matchBrackets: true,
-        continueComments: "Enter",
-        extraKeys: {"Ctrl-Q": "toggleComment"}
-      });
-    </script>
-</article>
-
-<h2>SQL mode</h2>
-  <textarea id="code2" name="code">
-  SELECT * from my_table;
-  -- comment
-  /* multiline
-     comment */ 
-    
-  </textarea>
-    <script>
-      var editor = CodeMirror.fromTextArea(document.getElementById("code2"), {
-        mode: "text/x-sql",
-        smartIndent: true,
-        lineNumbers: true,
-        matchBrackets : true,
-        autofocus: true,
-        extraKeys: {"Ctrl-Space": "autocomplete"}
-      });
-    </script>
-</article>
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/editor.css" />
+    <link rel="stylesheet" type="text/css" href="/css/chosen.css" />
+    <link href="//fonts.googleapis.com/css?family=Amaranth" rel="stylesheet" type="text/css">
+    <title>js-workshop</title>
+  </head>
+  <body>
+    <div id="header">
+      <a id="logo" href="/">js-workshop</a>
+      <select id="tasks" data-placeholder="Choose a task..."></select>
+      <div class="chzn-container chzn-container-single">
+        <a id="run" href="#" class="chzn-single button">Run code</a>
+        <a id="reset" href="#" class="chzn-single button">Reset task</a>
+        <a id="clear" href="#" class="chzn-single button">Clear console</a>
+      </div>
+    </div>
+    <div id="description" class="header">
+      Choose a task in the drop down list to get started!
+    </div>
+    <div id="editor"></div>
+    <div id="sidebar">
+      <div id="log">
+        <div class="header">Console</div>
+        <div class="content"></div>
+      </div>
+      <div id="lint">
+        <div class="header">JSLint</div>
+        <div class="content"></div>
+      </div>
+    </div>
+    <script src="/js/stacktrace.js"></script>
+    <script src="/js/ace/ace.js"></script>
+    <script src="/js/ace/theme-textmate.js"></script>
+    <script src="/js/ace/mode-javascript.js"></script>
+    <script src="/js/fulljslint.js"></script>
+    <script src="/js/jquery-1.4.3.min.js"></script>
+    <script src="/js/chosen.jquery.min.js"></script>
+    <script src="/js/globals.js"></script>
+    <script src="/js/editor.js"></script>
+  </body>
+</html>
