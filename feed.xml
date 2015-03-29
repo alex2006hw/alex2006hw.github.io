@@ -5,16 +5,20 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Thu, 12 Mar 2015 17:00:00 -0700</pubDate>
+    <pubDate>Fri, 27 Mar 2015 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
       <title>Todo</title>
       <link>http://alex2006hw.github.io/articles/todo/</link>
-      <pubDate>Thu, 12 Mar 2015 17:00:00 -0700</pubDate>
+      <pubDate>Fri, 27 Mar 2015 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://alex2006hw.github.io/articles/todo/</guid>
       <author></author>
       <description>&lt;h4&gt;- Learn &lt;a href=&quot;/articles/todo/webdevelopment.html&quot;&gt;web development&lt;/a&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;/articles/todo/references.html&quot;&gt;references&lt;/a&gt; nodejs mongodb template. &lt;a href=&quot;/articles/todo/references-text.html&quot;&gt;txt&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h4&gt;- &lt;a href=&quot;/articles/todo/investigate.html&quot;&gt;Investigate&lt;/a&gt; things that are interesting&lt;/h4&gt;
 
@@ -35,8 +39,8 @@
 &lt;h4&gt;Current projects&lt;/h4&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/articles/projects/2bees&quot;&gt;2bees&lt;/a&gt; connections&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;/articles/projects/usertoken&quot;&gt;usertoken&lt;/a&gt; online identity&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/articles/projects/2bees&quot;&gt;2bees&lt;/a&gt; connections&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/articles/projects/usertoken&quot;&gt;usertoken&lt;/a&gt; online identity&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4&gt;On the burner&lt;/h4&gt;
@@ -54,12 +58,13 @@
       <description>&lt;h3&gt;Reflect&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Learning is to make mistakes &lt;br&gt;
-  &lt;a href=&quot;/articles/learn/reflects&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;Learning is to make mistakes&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;p&gt;&lt;a href=&quot;/articles/learn/reflects&quot;&gt;more&lt;/a&gt;&lt;/p&gt;
+
 &lt;ul&gt;
-&lt;li&gt;Becoming a &lt;a href=&quot;/articles/learn/developer&quot;&gt;developer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Becoming a &lt;a href=&quot;/articles/learn/dev&quot;&gt;developer&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Beat this &lt;a href=&quot;/articles/learn/stocks&quot;&gt;market&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Speak better &lt;a href=&quot;/articles/learn/rails&quot;&gt;rails&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;What is &lt;a href=&quot;/articles/learn/devops&quot;&gt;devops&lt;/a&gt;&lt;/li&gt;
