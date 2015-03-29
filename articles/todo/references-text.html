@@ -49,14 +49,16 @@
 //require node modules (see package.json)
 var MongoClient = require('mongodb').MongoClient
     , format = require('util').format;
+var databaseName = 'course',
+  collectionName = 'grades';
 
 //connect away
-MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
+MongoClient.connect('mongodb://127.0.0.1:27017/'+databaseName, function(err, db) {
   if (err) throw err;
   console.log("Connected to Database");
   db.dropDatabase(function() {
     // Fetch the collection test
-    var collection = db.collection('test');
+    var collection = db.collection(collectionName);
     // Remove all records in collection if any
     collection.remove(function(err, result) {
       // Insert three records
@@ -183,7 +185,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/test', function(err, db) {
 </ul>
         </section>
         <section class="copy">
-          <p>&copy; Sun Mar 29 2015 00:31:26 GMT-0700 (PDT) &mdash; &copy; alex davis &mdash;</p>
+          <p>&copy; Sun Mar 29 2015 00:40:35 GMT-0700 (PDT) &mdash; &copy; alex davis &mdash;</p>
         </section>
       </div>
     </footer>
