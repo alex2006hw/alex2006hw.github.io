@@ -49,8 +49,8 @@
 <li><p><a href="/articles/projects/ubuntu-patch/findpkg.html">findpkg</a> tool to identify installed&nbsp;packages</p></li>
 <li><p><a href="/articles/projects/ubuntu-patch/osversion.html">osversion</a> to show system&nbsp;version</p>
 
-<ul><li>directory layout : osversion expects ~/operations/inventory/$<span class="caps">ENVIRONMENT</span>/$SERVER/issue copy from&nbsp;$SERVER/etc/issue </li>
-<li>directory layout : findpkg expects&nbsp;~/operations/inventory/$<span class="caps">ENVIRONMENT</span>/$SERVER/dpkg/dpkg.list</li>
+<ul><li>directory layout : osversion expects ~/operations/inventory/$<span class="caps">ENVIRONMENT</span>/$SERVER/issue copy from $SERVER/etc/issue 
+  - directory layout : findpkg expects&nbsp;~/operations/inventory/$ENVIRONMENT/$SERVER/dpkg/dpkg.list</li>
 <li>dpkg.list is populated using&nbsp;: </li></ul>
 
 <p><code>dpkg -l | awk '{ print $2, $3}' | sed '1,5d' &gt; dpkg.list</code></p></li>
@@ -92,7 +92,7 @@
 </ul>
         </section>
         <section class="copy">
-          <p>&copy; Sun Mar 29 2015 00:40:35 GMT-0700 (PDT) &mdash; &copy; alex davis &mdash;</p>
+          <p>&copy; Thu Apr 02 2015 22:28:55 GMT-0700 (PDT) &mdash; &copy; alex davis &mdash;</p>
         </section>
       </div>
     </footer>
