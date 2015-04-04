@@ -5,16 +5,18 @@
     <atom:link href="http://alex2006hw.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://alex2006hw.github.io</link>
     <description>Know Thy Life</description>
-    <pubDate>Wed, 01 Apr 2015 17:00:00 -0700</pubDate>
+    <pubDate>Thu, 02 Apr 2015 17:00:00 -0700</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
       <title>Todo</title>
       <link>http://alex2006hw.github.io/articles/todo/</link>
-      <pubDate>Wed, 01 Apr 2015 17:00:00 -0700</pubDate>
+      <pubDate>Thu, 02 Apr 2015 17:00:00 -0700</pubDate>
       <guid isPermaLink="true">http://alex2006hw.github.io/articles/todo/</guid>
       <author></author>
-      <description>&lt;h4&gt;- Learn &lt;a href=&quot;/articles/todo/webdevelopment.html&quot;&gt;web development&lt;/a&gt;&lt;/h4&gt;
+      <description>&lt;h4&gt;- &lt;a href=&quot;/articles/todo/tools.html&quot;&gt;Tools I use&lt;/a&gt; for development.&lt;/h4&gt;
+
+&lt;h4&gt;- Learn &lt;a href=&quot;/articles/todo/webdevelopment.html&quot;&gt;web development&lt;/a&gt;&lt;/h4&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;/articles/todo/templates.html&quot;&gt;Templates&lt;/a&gt; and boilderplates.&lt;/li&gt;
