@@ -1,0 +1,2 @@
+#! /bin/sh
+exec /root/buildroot-2022.08/output/host/bin/python /usr/lib/python3.10/site-packages/fetchmailconf.py "$@"

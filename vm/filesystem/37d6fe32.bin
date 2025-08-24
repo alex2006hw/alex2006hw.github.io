@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuremap [
+  <!ELEMENT configuremap (configure)+>
+  <!ATTLIST configuremap xmlns CDATA #FIXED ''>
+  <!ELEMENT configure EMPTY>
+  <!ATTLIST configure xmlns CDATA #FIXED '' name NMTOKEN #REQUIRED
+    value CDATA #REQUIRED>
+]>
+<!--
+  ImageMagick build configuration.
+-->
+<configuremap>
+  <configure name="CC" value="/root/buildroot-2022.08/output/host/bin/i686-buildroot-linux-musl-gcc"/>
+  <configure name="CFLAGS" value="-I/root/buildroot-2022.08/output/host/bin/../i686-buildroot-linux-musl/sysroot/usr/include/libxml2   -I/root/buildroot-2022.08/output/host/bin/../i686-buildroot-linux-musl/sysroot/usr/include/libpng16       -Wall -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -Os -g0  -fexceptions -pthread -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16"/>
+  <configure name="CODER_PATH" value="/usr/lib/ImageMagick-7.1.0/modules-Q16HDRI/coders"/>
+  <configure name="CONFIGURE_PATH" value="/etc/ImageMagick-7/"/>
+  <configure name="CONFIGURE" value="./configure  '--target=i686-buildroot-linux-musl' '--host=i686-buildroot-linux-musl' '--build=x86_64-pc-linux-gnu' '--prefix=/usr' '--exec-prefix=/usr' '--sysconfdir=/etc' '--localstatedir=/var' '--program-prefix=' '--disable-gtk-doc' '--disable-gtk-doc-html' '--disable-doc' '--disable-docs' '--disable-documentation' '--with-xmlto=no' '--with-fop=no' '--disable-dependency-tracking' '--enable-ipv6' '--enable-nls' '--enable-static' '--enable-shared' '--program-transform-name=s,,,' '--disable-opencl' '--disable-openmp' '--without-djvu' '--without-dps' '--without-flif' '--without-fpx' '--without-gslib' '--without-gvc' '--without-heic' '--without-jbig' '--without-jxl' '--without-lqr' '--without-openexr' '--without-openjp2' '--without-perl' '--without-raqm' '--without-wmf' '--without-x' '--with-gs-font-dir=/usr/share/fonts/gs' '--without-fontconfig' '--without-freetype' '--with-jpeg' '--without-lcms' '--with-png' '--without-raw' '--without-rsvg' '--with-xml' '--with-zip' '--with-zstd' '--without-pango' '--without-tiff' '--with-lzma' '--without-fftw' '--with-webp' '--with-zlib' '--with-bzlib' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=i686-buildroot-linux-musl' 'target_alias=i686-buildroot-linux-musl' 'CC=/root/buildroot-2022.08/output/host/bin/i686-buildroot-linux-musl-gcc' 'CFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -Os -g0 ' 'LDFLAGS=' 'CPPFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64' 'CPP=/root/buildroot-2022.08/output/host/bin/i686-buildroot-linux-musl-cpp' 'PKG_CONFIG=/root/buildroot-2022.08/output/host/bin/pkg-config' 'CXX=/root/buildroot-2022.08/output/host/bin/i686-buildroot-linux-musl-g++' 'CXXFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -Os -g0 '"/>
+  <configure name="COPYRIGHT" value="Copyright (C) 1999 ImageMagick Studio LLC"/>
+  <configure name="CPPFLAGS" value="-I/usr/include/ImageMagick-7"/>
+  <configure name="CXXFLAGS" value="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -Os -g0  -pthread"/>
+  <configure name="CXX" value="/root/buildroot-2022.08/output/host/bin/i686-buildroot-linux-musl-g++"/>
+  <configure name="DEFS" value="-DHAVE_CONFIG_H"/>
+  <configure name="DELEGATES" value="bzlib jng jpeg lzma png webp xml zip zlib zstd"/>
+  <configure name="DISTCHECK_CONFIG_FLAGS" value="'CC=/root/buildroot-2022.08/output/host/bin/i686-buildroot-linux-musl-gcc' 'CFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -Os -g0 ' 'CPPFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64' 'CXX=/root/buildroot-2022.08/output/host/bin/i686-buildroot-linux-musl-g++' 'LDFLAGS='  --disable-deprecated  --with-quantum-depth=16  --with-jemalloc=no  --with-umem=no  --with-autotrace=no  --with-dps=no  --with-fftw=no  --with-flif=no  --with-fpx=no  --with-djvu=no  --with-fontconfig=no  --with-freetype=no  --with-raqm=no  --with-gslib=no  --with-fontpath=  --with-gs-font-dir=/usr/share/fonts/gs  --with-gvc=no  --with-heic=no  --with-lcms=no  --with-openjp2=no  --with-lqr=no  --with-openexr=no  --with-pango=no  --with-libraw=no  --with-rsvg=no  --with-tiff=no  --with-wmf=no  --with-perl=no "/>
+  <configure name="DOCUMENTATION_PATH" value="/usr/share/doc/ImageMagick-7"/>
+  <configure name="EXEC-PREFIX" value="/usr"/>
+  <configure name="EXECUTABLE_PATH" value="/usr/bin"/>
+  <configure name="FEATURES" value="DPC HDRI Cipher"/>
+  <configure name="FILTER_PATH" value="/usr/lib/ImageMagick-7.1.0/modules-Q16HDRI/filters"/>
+  <configure name="GIT_REVISION" value="d80f6a7cd:20220731" />
+  <configure name="HOST" value="i686-buildroot-linux-musl"/>
+  <configure name="INCLUDE_PATH" value="/usr/include/ImageMagick-7"/>
+  <configure name="LDFLAGS" value="-L/usr/lib "/>
+  <configure name="LIBRARY_PATH" value="/usr/lib/ImageMagick-7.1.0"/>
+  <configure name="LIBS" value="      -ljpeg    -L/root/buildroot-2022.08/output/host/bin/../i686-buildroot-linux-musl/sysroot/usr/lib -lpng16 -lz          -L/root/buildroot-2022.08/output/host/bin/../i686-buildroot-linux-musl/sysroot/usr/lib -lwebp        -L/root/buildroot-2022.08/output/host/bin/../i686-buildroot-linux-musl/sysroot/usr/lib -llzma  -lbz2      -L/root/buildroot-2022.08/output/host/bin/../i686-buildroot-linux-musl/sysroot/usr/lib -lxml2   -L/root/buildroot-2022.08/output/host/bin/../i686-buildroot-linux-musl/sysroot/usr/lib -lz  -L/root/buildroot-2022.08/output/host/bin/../i686-buildroot-linux-musl/sysroot/usr/lib -lzip     -lm    -lpthread  "/>
+  <configure name="LIB_VERSION_NUMBER" value="7,1,0,45"/>
+  <configure name="LIB_VERSION" value="0x710"/>
+  <configure name="NAME" value="ImageMagick"/>
+  <configure name="PCFLAGS" value="-DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16"/>
+  <configure name="PREFIX" value="/usr"/>
+  <configure name="QuantumDepth" value="16"/>
+  <configure name="RELEASE_DATE" value="2022-07-31"/>
+  <configure name="SHAREARCH_PATH" value="/usr/lib/ImageMagick-7.1.0/config-Q16HDRI"/>
+  <configure name="SHARE_PATH" value="/usr/share/ImageMagick-7"/>
+  <configure name="TARGET_CPU" value="i686"/>
+  <configure name="TARGET_OS" value="linux-musl"/>
+  <configure name="TARGET_VENDOR" value="buildroot"/>
+  <configure name="VERSION" value="7.1.0"/>
+  <configure name="WEBSITE" value="https://imagemagick.org"/>
+</configuremap>

@@ -1,0 +1,3 @@
+[v1]
+"du-dust 0.8.1 (path+file:///root/buildroot-2022.08/output/build/dust-0.8.1)" = ["dust"]
+"ripgrep 13.0.0 (path+file:///root/buildroot-2022.08/output/build/ripgrep-af6b6c543b224d348a8876f0c06245d9ea7929c5)" = ["rg"]

@@ -1,0 +1,1146 @@
+#!/bin/sh
+#
+# Cukinia a firmware validation framework
+#
+# Copyright (C) 2017-2021 Savoir-faire Linux Inc.
+#
+# This program is free software, distributed under the Apache License
+# version 2.0, as well as the GNU General Public License version 3, at
+# your own convenience. See LICENSE and LICENSE.GPLv3 for details.
+
+CUKINIA_VERSION="0.6.0"
+
+# Default configuration file
+CUKINIA_CONF='/etc/cukinia/cukinia.conf'
+
+# Generic user functions templated to _cukinia_xxx()
+GENERIC_FUNCTS='cmd
+		http_request
+		group
+		gpio_libgpiod
+		gpio_sysfs
+		i2c
+		kconf
+		kmod
+		knoerror
+		kversion
+		listen4
+		mount
+		process
+		python_pkg
+		symlink
+		systemd_failed
+		systemd_unit
+		test
+		user'
+
+# By default log to stdout
+__log_file="/dev/stdout"
+
+# Ensure cleanup of temporary files
+trap cleanup 0
+
+# Cleanup of temporary files
+cleanup()
+{
+	rm -f $__stderr_tmp $__stdout_tmp $__logfile_tmp $__junitfile_tmp
+
+	if [ -n "$__logfile_tmp" ]; then
+		rm -f $__logfile_tmp.*
+	fi
+}
+
+# Standard help message
+usage()
+{
+	cat <<EOF
+NAME:
+	Cukinia - portable firmware validation framework.
+	Copyright (C) 2017-2021 Savoir-faire Linux Inc.
+
+	The name means "zucchini" in Polish. It is a nod to Cucumber,
+	another neat test framework.
+
+
+USAGE:
+	cukinia [options] [config file]
+
+OPTIONS:
+	-h, --help	display this message
+	-v, --version	display the version string
+	-o <file>	output results to <file>
+	-f <format>	set output format to <format>, currently supported:
+       			csv  junitxml
+	--no-header	do not print headers in concerned output formats
+EOF
+}
+
+# Parse single character options (sh builtin does not support long options)
+while getopts ":o:f:hv-:" opt; do
+	case $opt in
+	o)
+		__log_file=$OPTARG
+		;;
+	f)
+		__log_format=$OPTARG
+		;;
+	h)
+		usage
+		exit 0
+		;;
+	v)
+		echo "Cukinia version $CUKINIA_VERSION"
+		exit 0
+		;;
+	# long options expantion (options without parameter only)
+	-)
+		case $OPTARG in
+		help)
+			usage
+			exit 0
+			;;
+		no-header)
+			__no_header=1
+			;;
+		version)
+			echo "Cukinia version $CUKINIA_VERSION"
+			exit 0
+			;;
+		*)
+			printf "cukinia: $OPTARG: unsupported long option\n"
+			;;
+		esac
+		;;
+	*)
+		printf "cukinia: $OPTARG: unsupported short option\n"
+		;;
+	esac
+done
+shift $((OPTIND-1))
+
+# Temporary files
+__logfile_tmp=$(mktemp)
+__stderr_tmp=$(mktemp)
+__stdout_tmp=$(mktemp)
+
+# Init logging
+cukinia_epoch=$(date +%s)
+case "$__log_format" in
+csv)
+	if [ -z "$__no_header" ]; then
+		echo "TEST MESSAGE, RESULT" >"$__logfile_tmp"
+	else
+		: >"$__logfile_tmp"
+	fi
+	;;
+
+junitxml)
+	if [ "$__log_file" = "/dev/stdout" ]; then
+		usage
+		echo "Fatal: junitxml requires -o <file>"
+		exit 1
+	fi
+	;;
+
+*)
+	: >"$__logfile_tmp"
+	;;
+esac
+
+# Take config file as first trailing argument
+if [ -r "$1" ]; then
+	CUKINIA_CONF="$1"
+	if [ "$(dirname "$CUKINIA_CONF")" = "." ]; then
+		CUKINIA_CONF="./$CUKINIA_CONF"
+	fi
+fi
+
+# Use this file to override default config
+if [ -r /etc/default/cukinia ]; then
+	. /etc/default/cukinia
+fi
+
+# cukinia_conf_include: source additional configs
+# arg: $* - configs to include
+cukinia_conf_include()
+{
+	local f
+
+	for f in "$@"; do
+		# TODO: include the case where arg is a dir
+		# in this case, we load every file in it!
+
+		if [ ! -r "$f" ]; then
+			echo >&2 "cukinia: warning: can't include \"$f\""
+			continue
+		fi
+		. "$f"
+	done
+}
+
+# logging: change log string options
+# args: prefix "str" - prefix logs with "str"
+# args: class "str" - sets classname for junitxml results
+# args: suite "str" - sets testsuite for junitxml results
+logging()
+{
+	case "$1" in
+	prefix)
+		shift
+		__log_pfx="$*"
+		;;
+	class)
+		if [ "$__log_format" = "junitxml" ]; then
+			shift
+			__log_class="$*"
+		fi
+		;;
+	suite)
+		if [ "$__log_format" = "junitxml" ]; then
+			shift
+			_junitxml_add_suite "$1"
+		fi
+		;;
+	*)
+		cukinia_log "logging: invalid parameter"
+		return 1
+		;;
+	esac
+
+	return 0
+}
+
+# cukinia_log: log results to the output media
+cukinia_log()
+{
+	local message="$1"
+	local result="$2"
+
+	case "$__log_format" in
+	csv)
+		if [ "$result" = "PASS" ] || [ "$result" = "FAIL" ]; then
+			message=$(echo $message | sed -e "s/'/\\'/g") # ' -> \'
+			echo "'$message',$result" >>"$__logfile_tmp"
+		fi
+		;;
+
+	junitxml)
+		if [ "$result" = "PASS" ] || [ "$result" = "FAIL" ]; then
+			_junitxml_add_case "$message" "$result"
+		fi
+		;;
+
+	*)
+		echo "${__log_pfx}$*"
+		;;
+	esac
+}
+
+# run the test and its context
+# arg1..n: command to run and their arguments
+cukinia_runner()
+{
+	local ret
+
+	if [ -n "$__verbose" ]; then
+	       "$@"
+	else
+		"$@" >/dev/null 2>&1
+	fi
+	ret=$?
+
+	if [ -n "$CUKINIA_ALWAYS_PASS" ]; then
+		__not="pass"
+	fi
+
+	case "$__not..$ret" in
+	pass..*)
+		_cukinia_result PASS
+		;;
+	1..0)
+		_cukinia_result FAIL
+		cukinia_failures=$((cukinia_failures + 1))
+		;;
+	1..*)
+		_cukinia_result PASS
+		;;
+	..0)
+		_cukinia_result PASS
+		;;
+	..*)
+		_cukinia_result FAIL
+		cukinia_failures=$((cukinia_failures + 1))
+		;;
+	esac
+
+	cukinia_tests=$((cukinia_tests + 1))
+
+	return $ret
+}
+
+# cukinia_run_dir: run scripts in given directories
+# arg: $*: list of directories
+cukinia_run_dir()
+{
+	local dir
+
+	for dir in "$@"; do
+		[ -d "$dir" ] || continue
+		_cukinia_run_dir "$dir"
+	done
+}
+
+# as: change the description of what follows
+# arg1: "new description"
+# arg2..: command
+as()
+{
+	local ret=0
+	__deco="$1"; shift
+
+	"$@" || ret=1
+	unset __deco
+
+	return $ret
+}
+
+# not: negate the issue of what follows
+not()
+{
+	local ret=1
+
+	__not=1
+	"$@" || ret=0
+	unset __not
+
+	return $ret
+}
+
+# verbose: the output of what follows will not be muted
+verbose()
+{
+	local ret=0
+
+	__verbose=1
+	"$@" || ret=1
+	unset __verbose
+
+	return $ret
+}
+
+# _cukinia_python_pkg: try to import the python package
+# arg1: the python package
+_cukinia_python_pkg()
+{
+	local python_interpreter
+	local package="$1"
+
+	for python_interpreter in "python" "python3" "python2"; do
+		python_interpreter="$(which "$python_interpreter")"
+		test -n "$python_interpreter" && break
+	done
+
+	if [ -z "$python_interpreter" ]; then
+		_cukinia_prepare "cukinia_python_pkg: interpreter not found"
+		return 1
+	fi
+
+	_cukinia_prepare "Checking python package \"$package\" is ${__not:+NOT }available"
+	"$python_interpreter" -c "import sys, pkgutil; sys.exit(0 if pkgutil.find_loader('$package') else 1)"
+}
+
+# _cukinia_prepare: Prepare test for result
+# arg1: description of test
+_cukinia_prepare()
+{
+	__cukinia_cur_test="${__deco:-${1}${__not:+ [!]}}"
+}
+
+# _cukinia_result: display test result
+# arg1: "PASS" or "FAIL"
+# arg2: optional error message
+_cukinia_result()
+{
+	local result="$1"
+
+	case "$result" in
+	PASS)
+		result=$(_colorize green "PASS")
+		;;
+	FAIL)
+		result=$(_colorize red "FAIL")
+		;;
+	*)
+		;;
+	esac
+
+	case "$__log_format" in
+	csv|junitxml)
+		cukinia_log "$__cukinia_cur_test" "$result"
+		;;
+	*)
+		cukinia_log "[$result] $__cukinia_cur_test"
+		;;
+	esac
+}
+
+# _cukinia_cmd: wrapper to any command
+# arg1..n: arguments
+_cukinia_cmd()
+{
+	_cukinia_prepare "Running \"$*\" is ${__not:+NOT }successful"
+	"$@"
+}
+
+# _cukinia_test: wrapper to test(1)
+# arg1..n: arguments to test(1)
+_cukinia_test()
+{
+	local desc="Running \"test $*\" ${__not:+NOT }returns success"
+
+	case "$1" in
+	-f) desc="Checking file \"$2\" ${__not:+NOT }exists" ;;
+	-s) desc="Checking file \"$2\" is ${__not:+NOT }non-empty" ;;
+	-d) desc="Checking directory \"$2\" ${__not:+NOT }exists" ;;
+	-b) desc="Checking \"$2\" ${__not:+NOT }exists and is block special" ;;
+	-c) desc="Checking \"$2\" ${__not:+NOT }exists and is character special" ;;
+	-L|-h) desc="Checking \"$2\" is ${__not:+NOT }a symlink" ;;
+	esac
+
+	_cukinia_prepare "$desc"
+	test "$@"
+}
+
+# _cukinia_user: checks if user $1 exists
+_cukinia_user()
+{
+	local user="$1"
+
+	_cukinia_prepare "Checking user \"$user\" ${__not:+NOT }exists"
+	grep -q "^$user:" /etc/passwd
+}
+
+# _cukinia_group: checks if group $1 exists
+_cukinia_group()
+{
+	local group="$1"
+
+	_cukinia_prepare "Checking group \"$group\" ${__not:+NOT }exists"
+	grep -q "^$group:" /etc/group
+}
+
+# _cukinia_kmod: checks if kernel module $1 is loaded
+_cukinia_kmod()
+{
+	local kmod="$1"
+
+	_cukinia_prepare "Checking kernel module \"$kmod\" is ${__not:+NOT }loaded"
+	grep -q "^$kmod " /proc/modules
+}
+
+# _cukinia_kconf: checks if kernel config option $1 is set as $2
+# arg: $1: kernel configuration symbol name (without the CONFIG_ prefix)
+# arg: $2: the desired setting for $1 option (y, m, n)
+_cukinia_kconf()
+{
+	local ikconfig="/proc/config.gz"
+	local kconf="$1"
+	local kset="$2"
+	local line=""
+
+	if [ ! -e "$ikconfig" ]; then
+		_cukinia_prepare "cukinia_kconf: $ikconfig (CONFIG_IKCONFIG_PROC=y) is ${__not:+NOT }required"
+		return 1
+	fi
+
+	_cukinia_prepare "Checking kernel config \"$kconf\" ${__not:+NOT }set to \"$kset\""
+
+	case "$kset" in
+	y|m) line="CONFIG_$kconf=$kset" ;;
+	n) line="# CONFIG_$kconf is not set" ;;
+	*)
+		_cukinia_prepare "cukinia_kconf: invalid 2nd argument (use y|m|n)"
+		return 1
+		;;
+	esac
+
+	zcat /proc/config.gz | grep -q "^$line"
+}
+
+# _cukinia_kversion: check if running kernel version is MAJ.MIN
+# arg1: the kernel version (MAJ.MIN format, e.g. 5.14)
+_cukinia_kversion()
+{
+	local kver="$1"
+	_cukinia_prepare "Checking if kernel version is $kver"
+	test "$(uname -r | cut -d. -f1,2)" = "$kver"
+}
+
+# cukinia_process: checks if process $pname runs
+# Optional: check if the process exist for a given username $puser
+# arg: $1: the process name
+# arg: $2: [optional] the user name
+_cukinia_process()
+{
+	local pname="$1"
+	local puser="$2"
+	local puser_uid
+	local owner_uid
+	local procdir
+	local pid
+
+	_cukinia_prepare "Checking process \"$pname\" ${__not:+NOT }running as ${puser:-any user}"
+
+	if [ -n "$puser" ]; then
+		# make sure $puser maps to a valid user
+		puser_uid="$(id -u "$puser" 2>/dev/null)"
+		[ -n "$puser_uid" ] || return 1
+	fi
+
+	# scan /proc to get process name and optionally process owner
+	for pid in $(pidof "$pname"); do
+		procdir="/proc/$pid"
+
+		# skip kernel threads
+		[ -x $procdir/exe ] || continue
+
+		# process found, no owner check
+		[ -z "$puser" ] && return 0
+
+
+		# check process owner
+		owner_uid=$(awk '/^Uid:/ { print $2 }' < $procdir/status)
+		[ "$owner_uid" = "$puser_uid" ] && return 0
+	done
+
+	return 1
+}
+
+# cukinia_http_request: test the request using wget and wait for a return.
+# arg1: url
+_cukinia_http_request()
+{
+	local url="$1"
+
+	_cukinia_prepare "Checking http url \"$url\" does ${__not:+NOT }return 200"
+	wget -q -O /dev/null "$url"
+}
+
+# _cukinia_symlink: validate the target of symlink
+# args1: link
+# args2: target
+_cukinia_symlink()
+{
+	local link="$1"
+	local target="$2"
+
+	_cukinia_prepare "Checking link \"$link\" does ${__not:+NOT }point to \"$target\""
+
+	# fail on non-symlinks
+	[ -L "$link" ] || return 1
+
+	[ "$(readlink -f "$link")" = "$(readlink -f "$target")" ] && return 0 || return 1
+}
+
+# _cukinia_systemd_active: Check for unit activity
+# arg1: The systemd unit name
+_cukinia_systemd_unit()
+{
+	local unit="$1"
+
+	_cukinia_prepare "Checking if systemd unit \"$unit\" is active"
+	systemctl is-active "$unit"
+}
+
+# _cukinia_systemd_failed: Fail on systemd unit failures
+_cukinia_systemd_failed()
+{
+	_cukinia_prepare "Checking for no failed systemd units"
+	if systemctl --failed | grep -qw "failed"; then
+		return 1
+	fi
+	return 0
+}
+
+# _cukinia_listen4: check for a locally bound ipv4 port
+# arg1: proto (tcp,udp,any)
+# arg2: local port# (numeric)
+_cukinia_listen4()
+{
+	local proto="$1"
+	local port="$2"
+	local opts="ln"
+	local re
+
+	case "$proto" in
+	tcp)
+		opts="${opts}t"
+		re="tcp"
+		;;
+	udp)
+		opts="${opts}u"
+		re="udp"
+		;;
+	any)
+		opts="${opts}tu"
+		re="tcp|udp"
+		;;
+	esac
+
+	_cukinia_prepare "Checking $re v4 port \"$port\" is ${__not:+NOT }open"
+
+	netstat -$opts | awk '
+		BEGIN {
+		    ret = 1;
+		}
+		$1 ~ /^('$re')$/ && $4 ~ /:'$port'$/ {
+		    ret = 0;
+		}
+		END {
+		    exit ret;
+	    }'
+}
+
+# _cukinia_mount: check for a specific mount point
+# arg1: the device
+# arg2: the mountpoint
+# arg3: (optional) the filesystem type (eg. ext4), or "any"
+# arg@: (optional) a list of options to look for
+_cukinia_mount()
+{
+	local device="$1"
+	local mountpoint="$2"
+	shift 2
+	local fstype="$1"; shift
+	local options="$*"
+	local found=0
+	local result
+
+	_cukinia_prepare "Checking $device on $mountpoint type ${fstype:-any} (${options:-any}) ${__not:+NOT} mounted"
+
+	# use fstype as an awk regex if present
+	if [ "$fstype" = "any" ] || [ -z "$fstype" ]; then
+		fstype=".*"
+	fi
+
+	result=$(awk '
+		$1 == "'$device'" && $2 == "'$mountpoint'" && $3 ~ /^'$fstype'$/ {
+			print $4;
+		}' /proc/mounts | sort | uniq)
+
+	[ -n "$result" ] || return 1
+
+	# ensure all expected mount options are set
+	for term in $options; do
+		if echo "$result" | grep -qw "$term"; then
+			found=$((found + 1))
+		fi
+	done
+
+	[ "$found" -eq "$#" ] || return 1
+	return 0
+}
+
+# _cukinia_i2c: Check if i2c device exists
+# Optional: Check of a device address
+# arg1: the bus number
+# arg2: (optional) the device address
+_cukinia_i2c()
+{
+	local bus_number="$1"
+	local device_address="$2"
+	local ret
+
+	_cukinia_prepare "Checking if i2c-$bus_number${device_address:+-$device_address} exists"
+
+	if [ ! -d /sys/bus/i2c/devices/i2c-"$bus_number" ]; then
+		return 1
+	fi
+
+	if [ -z "$device_address" ]; then
+		return 0
+	fi
+
+	if [ ! -x "$(which i2cdetect)" ]; then
+		_cukinia_prepare "cukinia_i2c: i2cdetect is required"
+		return 1
+	fi
+
+	device_address=${device_address#0x}
+	i2cdetect -y "$bus_number" 0x"$device_address" 0x"$device_address" | cut -d ':' -f2 | grep -E "$device_address|UU"
+	ret=$?
+	return $ret
+}
+
+# _cukinia_gpio_libgpiod: Check gpio configuration via libgpiod
+# arg1: (optional) the pins configured in input
+# arg2: (optional) the pins configured in output high
+# arg3: (optional) the pins configured in output low
+# arg4: (optional) the gpiochip used (default:gpiochip0)
+_cukinia_gpio_libgpiod()
+{
+	local input_pins
+	local output_low_pins
+	local output_high_pins
+	local gpiochip="gpiochip0"
+	local direction
+	local value
+
+	while [ $# -gt 0 ]; do
+		case "$1" in
+		-i)
+			input_pins="$2"
+			shift
+			;;
+		-l)
+			output_low_pins="$2"
+			shift
+			;;
+		-h)
+			output_high_pins="$2"
+			shift
+			;;
+		-g)
+			gpiochip="$2"
+			shift
+			break
+			;;
+		esac
+		shift
+	done
+
+	_cukinia_prepare "Checking if gpio pins are well configured via libgpiod"
+	if [ -n "$input_pins" ]; then
+		for pin in $input_pins; do
+			direction=$(gpioinfo "$gpiochip" | grep -E "line +$pin:" | sed 's/ \+/\//g' | cut -d '/' -f5)
+			if [ "input" != "$direction" ]; then
+				return 1
+			fi
+		done
+	fi
+	if [ -n "$output_low_pins" ]; then
+		for pin in $output_low_pins; do
+			direction=$(gpioinfo "$gpiochip" | grep -E "line +$pin:" | sed 's/ \+/\//g' | cut -d '/' -f5)
+			value=$(gpioinfo "$gpiochip" | grep -E "line +$pin:" | sed 's/ \+/\//g' | cut -d '/' -f6)
+			if [ "output/active-low" != "$direction/$value" ]; then
+				return 1
+			fi
+		done
+	fi
+	if [ -n "$output_high_pins" ]; then
+		for pin in $output_high_pins; do
+			direction=$(gpioinfo "$gpiochip" | grep -E "line +$pin:" | sed 's/ \+/\//g' | cut -d '/' -f5)
+			value=$(gpioinfo "$gpiochip" | grep -E "line +$pin:" | sed 's/ \+/\//g' | cut -d '/' -f6)
+			if [ "output/active-high" != "$direction/$value" ]; then
+				return 1
+			fi
+		done
+	fi
+	return 0
+}
+
+# _cukinia_gpio_sysfs: Check gpio configuration via sysfs
+# arg1: (optional) the pins configured in input
+# arg2: (optional) the pins configured in output high
+# arg3: (optional) the pins configured in output low
+# arg4: (optional) the gpiochip used (default:gpiochip0)
+_cukinia_gpio_sysfs()
+{
+	local input_pins
+	local output_low_pins
+	local output_high_pins
+	local gpiochip="gpiochip0"
+	local direction
+	local value
+
+	while [ $# -gt 0 ]; do
+		case "$1" in
+		-i)
+			input_pins="$2"
+			shift
+			;;
+		-l)
+			output_low_pins="$2"
+			shift
+			;;
+		-h)
+			output_high_pins="$2"
+			shift
+			;;
+		-g)
+			gpiochip="$2"
+			shift
+			break
+			;;
+		esac
+		shift
+	done
+
+	_cukinia_prepare "Checking if gpio pins are well configured via sysfs"
+	if [ -n "$input_pins" ]; then
+		for pin in $input_pins; do
+			echo "$pin" > /sys/class/gpio/export
+			direction=$(cat /sys/class/gpio/gpio"${pin}"/direction)
+			echo "$pin" > /sys/class/gpio/unexport
+			if [ "in" != "$direction" ]; then
+				return 1
+			fi
+		done
+	fi
+	if [ -n "$output_low_pins" ]; then
+		for pin in $output_low_pins; do
+			echo "$pin" > /sys/class/gpio/export
+			direction=$(cat /sys/class/gpio/gpio"${pin}"/direction)
+			value=$(cat /sys/class/gpio/gpio"${pin}"/value)
+			echo "$pin" > /sys/class/gpio/unexport
+			if [ "out/0" != "$direction/$value" ]; then
+				return 1
+			fi
+		done
+	fi
+	if [ -n "$output_high_pins" ]; then
+		for pin in $output_high_pins; do
+			echo "$pin" > /sys/class/gpio/export
+			direction=$(cat /sys/class/gpio/gpio"${pin}"/direction)
+			value=$(cat /sys/class/gpio/gpio"${pin}"/value)
+			echo "$pin" > /sys/class/gpio/unexport
+			if [ "out/1" != "$direction/$value" ]; then
+				return 1
+			fi
+		done
+	fi
+	return 0
+}
+
+# _cukinia_knoerror: Check the kernel has booted without important errors
+# arg1: the message priority
+_cukinia_knoerror()
+{
+	local priority="$1"
+	local ret
+	local use_journalctl
+	local p_loop=$priority
+	local priority_dmesg=$priority
+
+	if [ -x "$(which journalctl)" ]; then
+		use_journalctl=1
+	else
+		use_journalctl=0
+	fi
+
+	_cukinia_prepare "Checking that kernel has booted with no error (priority: $priority)"
+
+	if [ "$use_journalctl" -eq 1 ]; then
+		journalctl --dmesg --priority "$priority" | grep "No entries"
+		ret=$?
+	else
+		if dmesg --level "$priority"; then
+			#dmesg is supporting --level option
+			while [ "$p_loop" != 0 ]; do
+				p_loop=$((p_loop-1))
+				priority_dmesg=$priority_dmesg,$p_loop
+			done
+			if [ -z "$(dmesg --level "$priority_dmesg")" ]; then
+				ret=0
+			else
+				ret=1
+			fi
+		else
+			#dmesg is not supporting --level option
+			_cukinia_prepare "Checking that kernel has booted with no error (using grep)"
+			if [ -z "$(dmesg | grep -Ei 'error|fail|warning')" ]; then
+				ret=0
+			else
+				ret=1
+			fi
+
+		fi
+	fi
+	return $ret
+}
+
+# Print elapsed time since cukinia startup (in seconds)
+_time_elapsed()
+{
+	local now=$(date +%s)
+
+	echo $((now - cukinia_epoch))
+}
+
+# Create junit-xml header
+# arg1: path to output file
+_junitxml_start()
+{
+	local outfile="$1"
+
+	cat >$outfile <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+EOF
+}
+
+# Create junit-xml footer
+# arg1: outfile
+_junitxml_end()
+{
+	local outfile="$1"
+
+	# close the current testsuite if needed
+	if [ -n "$__suite_name" ]; then
+		_junitxml_end_suite $outfile
+	fi
+
+	echo "</testsuites>" >>$outfile
+}
+
+# End the current junit-xml testsuite
+# arg1: output file for the <testsuite> block
+_junitxml_end_suite()
+{
+	local name=$__suite_name
+	local outfile="$1"
+	local timestamp
+	local failures
+	local seconds
+	local errors
+	local tests
+	local start
+	local stop
+	local ts
+
+	if [ -z "$name" ]; then
+		return 1
+	fi
+
+	# cleanup suite-specific variables
+	timestamp=$__suite_timestamp
+	failures=$__suite_failures
+	errors=$__suite_errors
+	tests=$__suite_tests
+	unset __suite_timestamp
+	unset __suite_failures
+	unset __suite_errors
+	unset __suite_tests
+	unset __suite_name
+
+
+	# derive suite duration from the timestamp
+	# note: busybox 1.27 'date' may choke on the iso8601 T format
+	ts=$(echo $timestamp | sed -e 's/T/ /')
+	start=$(date -d "$ts" +%s)
+	stop=$(date +%s)
+	seconds=$((stop - start))
+
+	# append the whole testsuite block to the outfile
+	cat >>$outfile <<EOF
+  <testsuite name="$name" package="$name" errors="$errors" tests="$tests" failures="$failures" timestamp="$timestamp" time="$seconds">
+EOF
+	cat $__logfile_tmp.$name >>$outfile
+	rm -f $__logfile_tmp.$name
+	echo "  </testsuite>" >>$outfile
+}
+
+# Start a new <testsuite> section
+# arg1: name of the test suite ([a-zA-Z0-9_]+)
+_junitxml_add_suite()
+{
+	local name="$1"
+
+	# strip the name from any fancy character
+	name="$(echo $name | sed -e 's/[^a-zA-Z0-9_]//g')"
+
+	if [ -z "$name" ]; then
+		return 1
+	fi
+
+	# we should not add an already existing suite name
+	if echo $__suite_list | grep -qw "$name"; then
+		return 1
+	fi
+
+	# close the previous suite if adding a new one
+	if [ -n "$__suite_name" ]; then
+		_junitxml_end_suite $__logfile_tmp
+	fi
+
+
+	# append this test suite to our list
+	__suite_list="$__suite_list $name"
+
+	# suite properties
+	__suite_name="$name"
+	__suite_tests=0
+	__suite_errors=0
+	__suite_failures=0
+	__suite_timestamp=$(date +%Y-%m-%dT%H:%M:%S)
+}
+
+# Add a junit-xml testcase entry
+# arg1: text description for that test
+# arg2: test result (PASS or FAIL)
+_junitxml_add_case()
+{
+	local message="$1"
+	local result="$2"
+	local logfile
+	local varname
+	local suite
+	local name
+
+	# ensure testcase runs in a default test suite
+	if [ -z "$__suite_name" ]; then
+		_junitxml_add_suite default # sets $__suite_name
+	fi
+
+	suite="$__suite_name"
+	logfile="$__logfile_tmp.$suite"
+
+	# escape all forbidden chars in xml {", ', <, >, &}
+	name=$(echo $message | sed -e "
+			 s/&/&amp;/g;
+			 s/'/\&apos;/g;
+			 s/\"/\&quot;/g;
+			 s/</\&lt;/g;
+			 s/>/\&gt;/g;")
+
+	__suite_tests=$((__suite_tests + 1))
+
+	cat >>$logfile <<EOF
+    <testcase classname="${__log_class:-cukinia}" name="$name" time="0">
+EOF
+
+	if [ "$result" != "PASS" ]; then
+		__suite_failures=$((__suite_failures + 1))
+
+		cat >>$logfile <<EOF
+      <failure type="unit-test" message="failed"><![CDATA[$message: FAIL]]></failure>
+EOF
+	fi
+
+	if [ -s "$__stderr_tmp" ]; then
+		cat >>$logfile <<EOF
+      <system-err><![CDATA[$(cat $__stderr_tmp)]]></system-err>
+EOF
+	fi
+
+	if [ -s "$__stdout_tmp" ]; then
+		cat >>$logfile <<EOF
+      <system-out><![CDATA[$(cat $__stdout_tmp)]]></system-out>
+EOF
+	fi
+
+	echo "    </testcase>" >>$logfile
+}
+
+# _colorize: return colorized string
+# arg1: color name
+# arg2..: string
+_colorize()
+{
+	local color="$1"; shift
+	local text="$*"
+	local nc='\033[0m'
+	local c
+
+	if [ -n "$__log_format" ] || [ "$__log_file" != "/dev/stdout" ]; then
+		printf "%s" "$text"
+		return
+	fi
+
+	# Only colorize a few terminal types
+	case "$TERM" in
+	linux*|xterm*|vt102)
+		;;
+	*)
+		echo "$@"
+		return
+		;;
+	esac
+
+	case "$color" in
+	gray)
+		c='\033[1;30m'
+		;;
+	red)
+		c='\033[1;31m'
+		;;
+	green)
+		c='\033[1;32m'
+		;;
+	yellow)
+		c='\033[1;33m'
+		;;
+	blue)
+		c='\033[1;34m'
+		;;
+	purple)
+		c='\033[1;35m'
+		;;
+	cyan)
+		c='\033[1;36m'
+		;;
+	esac
+
+	printf "${c}${text}${nc}"
+}
+
+# _cukinia_run_dir: run all tests file in $1
+_cukinia_run_dir()
+{
+	local dir="$1"
+	local ret=0
+
+	for f in "$dir"/*; do
+		[ -f "$f" ] || continue
+		_cukinia_prepare "External: $f"
+		cukinia_runner "$f" || ret=1
+	done
+
+	return $ret
+}
+
+# version to int utility
+# useful for version checks e.g. using cukinia_test
+# arg1: version string, max 4 x 4 digits (eg. "4.19.135")
+_ver2int()
+{
+	echo "$1" | awk '{
+		split($1, A, ".");
+		print(A[1] * 10^12 + A[2] * 10^8 + A[3] * 10^4 + A[4]);
+	}'
+}
+
+# Template generic cukinia_* functions
+for func in $GENERIC_FUNCTS; do
+	eval "$(cat <<EOF
+cukinia_$func()
+{
+      if [ "$__log_format" = "junitxml" ]; then
+          cukinia_runner _cukinia_$func "\$@" 1>$__stdout_tmp 2>$__stderr_tmp
+      else
+          cukinia_runner _cukinia_$func "\$@"
+      fi
+}
+EOF
+)"
+done
+
+cukinia_tests=0
+cukinia_failures=0
+cukinia_conf_include "$CUKINIA_CONF"
+
+# Finish logging
+case "$__log_format" in
+junitxml)
+	__junitfile_tmp=$(mktemp)
+	_junitxml_start "$__junitfile_tmp"
+	cat "$__logfile_tmp" >>"$__junitfile_tmp"
+	_junitxml_end "$__junitfile_tmp"
+	cat "$__junitfile_tmp" >"$__log_file"
+	;;
+csv)
+	cat "$__logfile_tmp" >"$__log_file"
+	;;
+esac
+
+[ $cukinia_failures -eq 0 ] && exit 0 || exit 1

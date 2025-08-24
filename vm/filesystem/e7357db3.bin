@@ -1,0 +1,65 @@
+kernel/arch/x86/crypto/twofish-i586.ko: kernel/crypto/twofish_common.ko
+kernel/arch/x86/crypto/serpent-sse2-i586.ko: kernel/crypto/crypto_simd.ko kernel/crypto/cryptd.ko kernel/crypto/serpent_generic.ko
+kernel/arch/x86/crypto/aesni-intel.ko: kernel/crypto/crypto_simd.ko kernel/crypto/cryptd.ko
+kernel/fs/overlayfs/overlay.ko:
+kernel/fs/efivarfs/efivarfs.ko:
+kernel/security/keys/encrypted-keys/encrypted-keys.ko:
+kernel/crypto/asymmetric_keys/pkcs8_key_parser.ko:
+kernel/crypto/cryptd.ko:
+kernel/crypto/des_generic.ko: kernel/lib/crypto/libdes.ko
+kernel/crypto/fcrypt.ko:
+kernel/crypto/blowfish_generic.ko: kernel/crypto/blowfish_common.ko
+kernel/crypto/blowfish_common.ko:
+kernel/crypto/twofish_generic.ko: kernel/crypto/twofish_common.ko
+kernel/crypto/twofish_common.ko:
+kernel/crypto/serpent_generic.ko:
+kernel/crypto/sm4_generic.ko: kernel/lib/crypto/libsm4.ko
+kernel/crypto/camellia_generic.ko:
+kernel/crypto/cast_common.ko:
+kernel/crypto/cast5_generic.ko: kernel/crypto/cast_common.ko
+kernel/crypto/cast6_generic.ko: kernel/crypto/cast_common.ko
+kernel/crypto/tea.ko:
+kernel/crypto/khazad.ko:
+kernel/crypto/seed.ko:
+kernel/crypto/chacha_generic.ko: kernel/lib/crypto/libchacha.ko
+kernel/crypto/deflate.ko:
+kernel/crypto/lzo.ko:
+kernel/crypto/lzo-rle.ko:
+kernel/crypto/lz4.ko: kernel/lib/lz4/lz4_compress.ko
+kernel/crypto/lz4hc.ko: kernel/lib/lz4/lz4hc_compress.ko
+kernel/crypto/842.ko: kernel/lib/842/842_decompress.ko kernel/lib/842/842_compress.ko
+kernel/crypto/af_alg.ko:
+kernel/crypto/algif_hash.ko: kernel/crypto/af_alg.ko
+kernel/crypto/algif_skcipher.ko: kernel/crypto/af_alg.ko
+kernel/crypto/algif_rng.ko: kernel/crypto/af_alg.ko
+kernel/crypto/algif_aead.ko: kernel/crypto/af_alg.ko
+kernel/crypto/zstd.ko: kernel/lib/zstd/zstd_compress.ko
+kernel/crypto/xor.ko:
+kernel/crypto/crypto_simd.ko: kernel/crypto/cryptd.ko
+kernel/lib/crypto/libchacha.ko:
+kernel/lib/crypto/libchacha20poly1305.ko: kernel/lib/crypto/libpoly1305.ko kernel/lib/crypto/libchacha.ko
+kernel/lib/crypto/libcurve25519-generic.ko:
+kernel/lib/crypto/libcurve25519.ko:
+kernel/lib/crypto/libdes.ko:
+kernel/lib/crypto/libpoly1305.ko:
+kernel/lib/crypto/libsm4.ko:
+kernel/lib/lz4/lz4_compress.ko:
+kernel/lib/lz4/lz4hc_compress.ko:
+kernel/lib/zstd/zstd_compress.ko:
+kernel/lib/xz/xz_dec_test.ko:
+kernel/lib/crc64.ko:
+kernel/lib/crc4.ko:
+kernel/lib/crc7.ko:
+kernel/lib/libcrc32c.ko:
+kernel/lib/842/842_compress.ko:
+kernel/lib/842/842_decompress.ko:
+kernel/drivers/thermal/intel/x86_pkg_temp_thermal.ko:
+kernel/drivers/counter/counter.ko:
+kernel/net/netfilter/nf_log_syslog.ko:
+kernel/net/netfilter/xt_mark.ko:
+kernel/net/netfilter/xt_nat.ko:
+kernel/net/netfilter/xt_LOG.ko:
+kernel/net/netfilter/xt_MASQUERADE.ko:
+kernel/net/netfilter/xt_addrtype.ko:
+kernel/net/ipv4/netfilter/iptable_nat.ko:
+updates/net/batman-adv/batman-adv.ko: kernel/lib/libcrc32c.ko

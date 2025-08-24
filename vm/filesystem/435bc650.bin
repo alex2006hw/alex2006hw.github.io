@@ -1,0 +1,12 @@
+root:$6$4Ql0rsSuthafhr$ItLU5i64GMSzXwA63gig02.434xxcFl5y8.hjyVt0KgrLt1Yfw1V7OT6WgQ5B4wK.oc6.0NDPFSvp7JD3m/y30:::::::
+daemon:*:::::::
+bin:*:::::::
+sys:*:::::::
+sync:*:::::::
+mail:*:::::::
+www-data:*:::::::
+operator:*:::::::
+nobody:*:::::::
+mosquitto:*:::::::
+sshd:*:::::::
+postgres:*:::::::
