@@ -2275,13 +2275,6 @@ From as far back as I can remember, I have been trained by school-family-society
 &lt;/li&gt;
 &lt;/ul&gt;
 </content:encoded></item><item><title>Measurement of Life</title><link>https://alex2006hw.github.io/posts/articles/live/passions/measurement/</link><guid isPermaLink="true">https://alex2006hw.github.io/posts/articles/live/passions/measurement/</guid><description>true</description><pubDate>Sun, 01 Jan 2012 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;I love to travel&lt;/h3&gt;
-</content:encoded></item><item><title>Tuned Out</title><link>https://alex2006hw.github.io/posts/articles/live/tuned-out/</link><guid isPermaLink="true">https://alex2006hw.github.io/posts/articles/live/tuned-out/</guid><description>true</description><pubDate>Sun, 01 Jan 2012 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;Tuned-out&lt;/h3&gt;
-&lt;p&gt;I find that it is hard to improve my social skills when everyone is so plugged-in and tuned-out.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;I look around and &apos;no eye-contact!&apos; during my daily commuting.  Other than the sounds of the train, I can hear a pin drop.
--- It seems that messaging is the new mode of communication.  In a culture where my tweets is more important that what I say, speaking has less of an apeal.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;/images/tuned-out.jpg&quot; alt=&quot;tuned-out&quot; /&gt;&lt;/p&gt;
 </content:encoded></item><item><title>2bees connects communities</title><link>https://alex2006hw.github.io/posts/articles/projects/2bees/</link><guid isPermaLink="true">https://alex2006hw.github.io/posts/articles/projects/2bees/</guid><description>true</description><pubDate>Sun, 01 Jan 2012 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src=&quot;/images/2bees.jpg&quot; alt=&quot;businessplan&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -2329,6 +2322,13 @@ From as far back as I can remember, I have been trained by school-family-society
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+</content:encoded></item><item><title>Tuned Out</title><link>https://alex2006hw.github.io/posts/articles/live/tuned-out/</link><guid isPermaLink="true">https://alex2006hw.github.io/posts/articles/live/tuned-out/</guid><description>true</description><pubDate>Sun, 01 Jan 2012 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;Tuned-out&lt;/h3&gt;
+&lt;p&gt;I find that it is hard to improve my social skills when everyone is so plugged-in and tuned-out.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I look around and &apos;no eye-contact!&apos; during my daily commuting.  Other than the sounds of the train, I can hear a pin drop.
+-- It seems that messaging is the new mode of communication.  In a culture where my tweets is more important that what I say, speaking has less of an apeal.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/images/tuned-out.jpg&quot; alt=&quot;tuned-out&quot; /&gt;&lt;/p&gt;
 </content:encoded></item><item><title>Build a Robot</title><link>https://alex2006hw.github.io/posts/articles/projects/buildrobot/</link><guid isPermaLink="true">https://alex2006hw.github.io/posts/articles/projects/buildrobot/</guid><description>false</description><pubDate>Sun, 01 Jan 2012 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
 &lt;li&gt;&lt;img src=&quot;/images/robot-gur.jpg&quot; alt=&quot;robot&quot; /&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -2437,6 +2437,8 @@ privateconnections, etc&lt;/p&gt;
 -- predict responses to events using correllations&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+</content:encoded></item><item><title>Build a neuron</title><link>https://alex2006hw.github.io/posts/articles/projects/buildrobot/brain/neuron/</link><guid isPermaLink="true">https://alex2006hw.github.io/posts/articles/projects/buildrobot/brain/neuron/</guid><description>true</description><pubDate>Sun, 01 Jan 2012 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;&lt;a href=&quot;/posts/articles/projects/2bees&quot;&gt;2bees&lt;/a&gt; Social neuron&lt;/h3&gt;
+&lt;p&gt;-- predict responses to events using correllations with feedback&lt;/p&gt;
 </content:encoded></item><item><title>Build an Identity</title><link>https://alex2006hw.github.io/posts/articles/projects/buildrobot/brain/identity/</link><guid isPermaLink="true">https://alex2006hw.github.io/posts/articles/projects/buildrobot/brain/identity/</guid><description>true</description><pubDate>Sun, 01 Jan 2012 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;&lt;a href=&quot;/posts/articles/projects/usertoken&quot;&gt;usertoken&lt;/a&gt; online identity source-of-truth&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -2449,8 +2451,6 @@ privateconnections, etc&lt;/p&gt;
 &lt;p&gt;anchors: assets, verifiable-owner, socialconnections, privateconnections, etc&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-</content:encoded></item><item><title>Build a neuron</title><link>https://alex2006hw.github.io/posts/articles/projects/buildrobot/brain/neuron/</link><guid isPermaLink="true">https://alex2006hw.github.io/posts/articles/projects/buildrobot/brain/neuron/</guid><description>true</description><pubDate>Sun, 01 Jan 2012 00:00:00 GMT</pubDate><content:encoded>&lt;h3&gt;&lt;a href=&quot;/posts/articles/projects/2bees&quot;&gt;2bees&lt;/a&gt; Social neuron&lt;/h3&gt;
-&lt;p&gt;-- predict responses to events using correllations with feedback&lt;/p&gt;
 </content:encoded></item><item><title>Terms of Use</title><link>https://alex2006hw.github.io/posts/terms-of-use/</link><guid isPermaLink="true">https://alex2006hw.github.io/posts/terms-of-use/</guid><description>Your guide to all of the terms of using this site and accessing its content</description><pubDate>Tue, 05 Oct 2010 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;By accessing this web site, you are agreeing to be bound by these web site Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this web site are protected by applicable copyright and trade mark law.&lt;/p&gt;
 &lt;p&gt;&amp;lt;span class=&quot;more&quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/p&gt;
 &lt;h2&gt;Use License&lt;/h2&gt;

@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /static/
+Disallow: /_astro/
 
 Sitemap: https://alex2006hw.github.io/sitemap-index.xml
