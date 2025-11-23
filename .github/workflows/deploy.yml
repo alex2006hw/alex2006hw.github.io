@@ -16,9 +16,9 @@ jobs:
           npm run build
 
       - name: disable jekyll
-        run: echo "Jekyll is disabled" > dist/.nojekyll
+        run: echo "Jekyll is disabled" > .nojekyll
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist # The folder the action should deploy.
+          folder: ./ # The folder the action should deploy.
