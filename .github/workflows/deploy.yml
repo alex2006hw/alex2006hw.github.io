@@ -1,44 +1,38 @@
-name: GitHub Pages
+name: Build and Deploy
 
 on:
   push:
     branches:
-      - main  # Set a branch name to trigger deployment
-  pull_request:
+      - main  # or your default branch
+
+permissions:
+  contents: write
 
 jobs:
-  deploy:
-    runs-on: ubuntu-22.04
-    permissions:
-      contents: write
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
+  build-and-deploy:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: 22
+          cache: npm
 
-      - name: Build
-      - run: npm ci
-      - run: npm run build
+      - name: Install and Build 🔧
+        run: |
+          npm ci
+          npm run build
 
       - name: Add .nojekyll
         run: echo "" > dist/.nojekyll
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
-        # If you're changing the branch from main,
-        # also change the `main` in `refs/heads/main`
-        # below accordingly.
-        if: github.ref == 'refs/heads/main'
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          exclude_assets: ''
-          enable_jekyll: false
+          branch: gh-pages   # Deployment branch
+          folder: dist       # Astro build output
+          clean: true        # Remove old files
+          single-commit: true
