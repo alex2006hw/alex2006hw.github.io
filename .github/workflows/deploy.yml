@@ -19,8 +19,14 @@ jobs:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - name: Build
-        run: npm install && npm run build
+      - run: npm ci
+      - run: npm run build
 
       - name: Add .nojekyll
         run: echo "" > dist/.nojekyll
@@ -34,3 +40,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          exclude_assets: ''
+          enable_jekyll: false
