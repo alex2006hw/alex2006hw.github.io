@@ -1,0 +1,825 @@
+/*************************************************************/
+/*     Normalize
+/*************************************************************/
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section { display: block }
+audio,
+canvas,
+video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+audio:not([controls]) { display: none }
+[hidden] { display: none }
+html {
+    font-size: 100%;
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+}
+body {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.231;
+}
+html,
+button,
+input,
+select,
+textarea {
+    font-family: Lucida Grande, Lucida Sans, sans-serif;
+    color: #222;
+}
+::-moz-selection {
+    background: #b9dbe8;
+    color: #fff;
+    text-shadow: none;
+}
+::selection {
+    background: #b9dbe8;
+    color: #fff;
+    text-shadow: none;
+}
+a { color: #00e }
+a:visited { color: #551a8b }
+a:hover { color: #06e }
+a:focus { outline: thin dotted }
+a:hover,
+a:active { outline: 0 }
+abbr[title] { border-bottom: 1px dotted }
+b,
+strong { font-weight: bold }
+blockquote { margin: 1em 40px }
+dfn { font-style: italic }
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+ins {
+    background: #ff9;
+    color: #000;
+    text-decoration: none;
+}
+mark {
+    background: #ff0;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+pre,
+code,
+kbd,
+samp {
+    font-family: monospace, monospace;
+    _font-family: 'courier new', monospace;
+    font-size: 1em;
+}
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+q { quotes: none }
+q:before,
+q:after {
+    content: "";
+    content: none;
+}
+small { font-size: 85% }
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup { top: -0.5em }
+sub { bottom: -0.25em }
+ul,
+ol {
+    margin: 1em 0;
+    padding: 0 0 0 40px;
+}
+dd { margin: 0 0 0 40px }
+nav ul,
+nav ol {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+}
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+    vertical-align: middle;
+}
+svg:not(:root) { overflow: hidden }
+figure { margin: 0 }
+form { margin: 0 }
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+label { cursor: pointer }
+legend {
+    border: 0;
+    *margin-left: -7px;
+    padding: 0;
+}
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+    *vertical-align: middle;
+}
+button,
+input {
+    line-height: normal;
+    *overflow: visible;
+}
+table button,
+table input { *overflow: auto }
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+}
+input[type="checkbox"],
+input[type="radio"] { box-sizing: border-box }
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+       -moz-box-sizing: content-box;
+            box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none }
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+textarea {
+    overflow: auto;
+    vertical-align: top;
+    resize: vertical;
+}
+input:valid,
+textarea:valid { }
+input:invalid,
+textarea:invalid { background-color: #f0dddd }
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+td { vertical-align: top }
+
+
+/*************************************************************/
+/*  Base Button
+ * CSS3 GITHUB BUTTONS (Nicolas Gallagher)
+ * Licensed under Unlicense
+ * http://github.com/necolas/css3-github-buttons
+ */
+/*************************************************************/
+
+.button {
+    position: relative;
+    overflow: visible;
+    display: inline-block;
+    padding: 0.5em 1em;
+    border: 1px solid #d4d4d4;
+    margin: 0 15px 0 0;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 1px 1px 0 #fff;
+    font: 11px/normal sans-serif;
+    color: #333;
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    background-color: #ececec;
+    background-image: -webkit-linear-gradient(#f4f4f4, #ececec);
+    background-image:    -moz-linear-gradient(#f4f4f4, #ececec);
+    background-image:      -o-linear-gradient(#f4f4f4, #ececec);
+    background-image:         linear-gradient(#f4f4f4, #ececec);
+    -moz-background-clip: padding; /* for Firefox 3.6 */
+    background-clip: padding-box;
+    border-radius: 0.2em;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+}
+.button:hover,
+.button:focus,
+.button:active,
+.button.active {
+    border-color: #3072b3;
+    border-bottom-color: #2a65a0;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    color: #fff;
+    background-color: #3c8dde;
+    background-image: -webkit-linear-gradient(#599bdc, #3072b3);
+    background-image:    -moz-linear-gradient(#599bdc, #3072b3);
+    background-image:      -o-linear-gradient(#599bdc, #3072b3);
+    background-image:         linear-gradient(#599bdc, #3072b3);
+}
+.button:active,
+.button.active {
+    border-color: #2a65a0;
+    border-bottom-color: #3884cd;
+    background-color: #3072b3;
+    background-image: -webkit-linear-gradient(#3072b3, #599bdc);
+    background-image:    -moz-linear-gradient(#3072b3, #599bdc);
+    background-image:      -o-linear-gradient(#3072b3, #599bdc);
+    background-image:         linear-gradient(#3072b3, #599bdc);
+}
+/* overrides extra padding on button elements in Firefox */
+.button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+/* =============================================================================
+   Button icons
+   ========================================================================== */
+
+.button.icon:before {
+    content: "";
+    position: relative;
+    top: 1px;
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin: 0 0.75em 0 -0.25em;
+    background: url(../img/gh-icons.png) 0 99px no-repeat;
+}
+
+.button.fork.icon:before { background-position: 0 -144px; }
+.button.fork.icon:hover:before,
+.button.fork.icon:focus:before,
+.button.fork.icon:active:before { background-position: -12px -144px; }
+
+/*************************************************************/
+/*  Speed Project Approved
+/*************************************************************/
+
+#speedProject {
+    position: absolute;
+    z-index: 999;
+    bottom: 5px;
+    right: 270px;
+    width: 40px;
+    -webkit-transition: all linear .25s;
+       -moz-transition: all linear .25s;
+         -o-transition: all linear .25s;
+            transition: all linear .25s;
+}
+#speedProject:hover {
+    width: 125px;
+    right: 240px;
+    -webkit-transform: rotate(35deg);
+       -moz-transform: rotate(35deg);
+         -o-transform: rotate(35deg);
+        -ms-transform: rotate(35deg);
+            transform: rotate(35deg);
+}
+
+/*************************************************************/
+/*  Global
+/*************************************************************/
+
+html { height: 100% }
+body {
+    background: #999 url(../img/bg-linen.jpg);
+    min-height: 100%;
+    height: 100%;
+}
+
+body.drag .top, body.hasfiles .top { top: 0 }
+.nosupport, body.disabled .support { display: none }
+body.disabled .nosupport { display: block }
+
+.top {
+    position: relative;
+    top: -300px;
+    -webkit-transition: top linear .1s;
+       -moz-transition: top linear .1s;
+         -o-transition: top linear .1s;
+            transition: top linear .1s;
+}
+
+/*************************************************************/
+/*  Header
+/*************************************************************/
+
+header {
+    display: block;
+    width: 100%;
+    min-height: 60px;
+    background: #02457e;
+    color: #fff;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.5);
+    border-bottom: 1px solid #000;
+    box-shadow: inset 0 -1px 0 rgba(255,255,255,0.2);
+}
+header .image {
+    margin: 18px 0 0 24px;
+    float: left;
+    display: block;
+    position: relative;
+}
+header .image:before {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    display: block;
+    top: 1px;
+    left: 2px;
+}
+header .image:after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    display: block;
+    top: -1px;
+    left: 0;
+    z-index: 200;
+    -webkit-transform: rotate(10deg);
+       -moz-transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+         -o-transform: rotate(10deg);
+            transform: rotate(10deg);
+}
+header .image img {
+    height: 24px;
+    width: 24px;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 0 #000;
+    -webkit-transform: rotate(-10deg);
+       -moz-transform: rotate(-10deg);
+        -ms-transform: rotate(-10deg);
+         -o-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+    position: relative;
+    z-index: 300;
+}
+header h1:before {
+    content: "mothereffinganimatedgif";
+    color: white;
+    text-shadow: 0 2px 0 #000, 2px 0 0 #000;
+}
+header h1 {
+    color: transparent;
+    font-family: 'Patua One', sans-serif;
+    margin: 0;
+    padding: 20px 0 0 20px;
+    font-weight: 400;
+    text-shadow: 0 2px 0 #000, 2px 0 0 #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 18px;
+    line-height: 18px;
+    display: block;
+    float: left;
+    width: 300px;
+    text-shadow: none;
+}
+header p,
+footer p {
+    display: block;
+    float: left;
+    line-height: 11px;
+    font-size: 11px;
+    padding: 6px 12px 5px;
+    font-weight: 200;
+    letter-spacing: 0;
+    color: #fff;
+    margin: 16px 0 0 10px;
+    text-shadow: 0 2px 0 #000;
+    border-radius: 30px;
+    border-top: 1px solid rgba(255,255,255,0.35);
+    border-bottom: 1px solid rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.25);
+    background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:    -moz-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:      -o-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:         linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+}
+footer p {
+    padding-top: 0;
+}
+header .social {
+    float: right;
+    margin: 18px 10px 0 0;
+    padding: 0;
+}
+header .social li {
+    list-style: none;
+    display: block;
+    float: left;
+}
+
+/*************************************************************/
+/*  Main
+/*************************************************************/
+
+#main {
+    width: 100%;
+}
+#main .top .files {
+    display: block;
+    background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
+    background-image:    -moz-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
+    background-image:      -o-linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
+    background-image:         linear-gradient(bottom, rgba(0,0,0,0), rgba(0,0,0,0.6)), url(../img/bg.png);
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    padding: 20px 10px;
+    min-height: 130px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+#main .top .files:after{
+    content: "Add more images by dropping those into browser";
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    color: white;
+    opacity: 0.3;
+}
+#main .top .files ul {
+    margin: 0;
+    padding: 0;
+}
+#main .top .files .col {
+    display: block;
+    float: left;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    overflow: hidden;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.5);
+    margin: 0 10px 0 0;
+    position: relative;
+    text-align: center;
+}
+#main .files .col:hover:before {
+    content: "↻";
+    font-size: 20px;
+    pointer-events: none;
+    color: white;
+    text-shadow: 1px 1px 2px #ccc;
+    position: absolute;
+    bottom: -20px;
+    right: 10px;
+    z-index: 400;
+}
+#main .top .files .col.over {
+    background: white;
+}
+#main .top .files .col.moving {
+    -webkit-transform: scale(0.8);
+       -moz-transform: scale(0.8);
+         -o-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+            transform: scale(0.8);
+    background: white;
+    opacity: .8;
+}
+#main .files .col img {
+    max-width: 60px;
+    max-height: 60px;
+}
+#main .files .col .fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+#main .top .controls {
+    display: block;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    color: #999;
+    padding: 4px 20px 10px 20px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+    border-top: 1px solid #111;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    background: #333;
+    font-size: 11px;
+    letter-spacing: 1px;
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:    -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:      -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    background-image:         linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+    overflow: hidden;
+}
+#main .top .controls a {
+    padding: 8px 10px 0 0;
+    display: block;
+    float: left;
+    color: #999;
+    text-decoration: none;
+    font-size: 11px;
+    line-height: 11px;
+    font-family: sans-serif;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+}
+#main .top .controls a:hover {
+    color: #fff;
+}
+#main .top .controls a.play {
+    margin: 0 0 0 20px;
+}
+#main .top .controls a.clear {
+    float: right;
+    margin: 5px 0 0 0;
+    padding: 3px 0 3px 20px;
+    display: block;
+    background: url(../img/garbage.png) no-repeat 0 1px;
+}
+#main .top .controls .size,
+#main .top .controls .rate,
+#main .top .controls .quality {
+    display: block;
+    float: left;
+    margin: 0 20px 0 0;
+}
+#main .top .controls label {
+    display: block;
+    float: left;
+    margin: 8px 0 0 0;
+}
+#main .top .controls input[type="range"]{
+    display: block;
+    float: left;
+    margin: 8px 0 0 10px;
+}
+#main .top .controls output {
+    display: block;
+    float: left;
+    margin: 6px 0 0 5px;
+}
+#main .top .controls output span {
+    font-size: 80%;
+    color: hsl(0, 0%, 43%);
+}
+
+/*************************************************************/
+/*  Drop Area
+/*************************************************************/
+
+#dropArea {
+    width: 660px;
+    padding: 40px 20px;
+    margin: 40px auto 0;
+    position: relative;
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+    background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image:    -moz-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image:      -o-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    background-image:         linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.1) 100%);
+    text-align: center;
+    box-shadow: 0 1px 0 #fff, 0 -1px 0 rgba(0,0,0,0.1), 0 -2px 0 rgba(255,255,255,0.5);
+    text-shadow: 0 1px 0 white;
+    border-radius: 10px;
+}
+#dropArea h2 {
+    color: #333;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 0;
+    padding: 10px 0 10px 60px;
+    background: url(../img/arrow.png) no-repeat -24px -30px;
+    letter-spacing: -1px;
+    text-shadow: 0 -2px 0 rgba(255,255,255,0.25), -2px 0 0 rgba(255,255,255,0.15), 2px 0 0 rgba(255,255,255,0.15);
+    font-size: 42px;
+    line-height: 42px;
+}
+#dropArea h2 em { font-style: normal }
+
+.onlyfiles {
+    display: none;
+}
+.onlyfiles .play,
+.onlyfiles .clear,
+.onlyfiles #downloadlink,
+.onlyfiles #sharelink {
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.35);
+    padding: 8px 20px 8px 30px;
+    border: 1px solid rgba(0,0,0,0.5);
+    text-decoration: none;
+    border-radius: 3px;
+    position: relative;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+    background: rgba(255, 255, 255, 0.8);
+    background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
+    background-image:    -moz-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
+    background-image:      -o-linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
+    background-image:         linear-gradient(bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,0.2) 100%);
+}
+.onlyfiles .play:before,
+.onlyfiles .clear:before,
+.onlyfiles #downloadlink:before,
+.onlyfiles #sharelink:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    display: block;
+    top: 6px;
+    left: 6px;
+    background: url(../img/icons.png) no-repeat 0 0;
+}
+.onlyfiles #sharelink:before{
+    content: '⇒';
+    background: none;
+}
+.onlyfiles .play {
+    color: #001f2e;
+    background-color: #4388c9;
+}
+.onlyfiles .play:before {
+    background-position: 0 -1px;
+}
+.onlyfiles .clear {
+    color: #361d00;
+    background-color: #bf7329;
+}
+.onlyfiles .clear:before {
+    background-position: 0 -21px;
+}
+.onlyfiles #downloadlink {
+    color: #243800;
+    background-color: #81bf29;
+}
+.onlyfiles #downloadlink:before {
+    background-position: 0 -40px;
+}
+.onlyfiles #sharelink {
+    color: #243800;
+    background-color: #81bf29;
+}
+.onlyfiles #sharelink:before {
+    background-position: 0 -40px;
+}
+
+
+body.hasfiles #dropArea h2 { display: none }
+body.hasfiles .onlyfiles { display: block;}
+body.hasfiles .onlyfiles #downloadlink{display: none;}
+body.hasfiles .onlyfiles #sharelink{display: none;}
+body.hasfiles #dropArea {display: none;}
+body.drag #dropArea h2 em { color: #02457e; }
+body.drag #dropArea h2 span { border-color: #4a4; }
+#inimglist li.error,
+#inimglist li.skip {
+    color: red;
+    text-align: center;
+}
+#results {
+    text-align: center;
+}
+
+/*************************************************************/
+/*  Footer
+/*************************************************************/
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background: #02457e;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.5);
+    border-top: 1px solid #000;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+}
+footer #html5-badge {
+    position: absolute;
+    top: -32px;
+    left: 20px;
+}
+footer p {
+    border: 0;
+    background: none;
+    float: right;
+}
+footer a:link, footer a:visited {
+    color: #aaa;
+}
+
+/*************************************************************/
+/*  Helpers
+/*************************************************************/
+
+.ir {
+    display: block;
+    border: 0;
+    text-indent: -999em;
+    overflow: hidden;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    text-align: left;
+    direction: ltr;
+}
+.ir br { display: none }
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+.invisible { visibility: hidden }
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after { clear: both }
+.clearfix { zoom: 1 }
+
+
+/*************************************************************/
+/*  Print
+/*************************************************************/
+
+@media print {
+    * {
+        background: transparent !important;
+        color: black !important;
+        text-shadow: none !important;
+        filter: none !important;
+        -ms-filter: none !important;
+    }
+    a,
+    a:visited { text-decoration: underline }
+    a[href]:after { content: " (" attr(href) ")" }
+    abbr[title]:after { content: " (" attr(title) ")" }
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after { content: "" }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    thead { display: table-header-group }
+    tr,
+    img { page-break-inside: avoid }
+    img { max-width: 100% !important }
+}

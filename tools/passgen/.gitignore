@@ -1,0 +1,54 @@
+# App
+config.json
+*.pem
+*.der
+*.p12
+*.key
+*.crt
+*.pfx
+
+# Bower
+private/bower_components
+
+# Redis
+dump.rdb
+
+# Node.js
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+
+npm-debug.log
+node_modules
+
+# OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+
+# OS X - Thumbnails
+._*
+
+# OS X - Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# SublimeText project files
+*.sublime-workspace
+
+# VIM
+*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~

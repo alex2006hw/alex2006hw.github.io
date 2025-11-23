@@ -1,0 +1,2 @@
+docker build -t dev-box ./docker-image-config
+docker build -t websockproxy .

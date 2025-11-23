@@ -1,0 +1,81 @@
+<!doctype html>
+
+<title>CodeMirror</title>
+<meta charset="utf-8"/>
+
+<link rel="stylesheet" href="codemirror-4.11/lib/codemirror.css">
+<link rel="stylesheet" href="codemirror-4.11/addon/hint/show-hint.css" />
+<script src="codemirror-4.11/lib/codemirror.js"></script>
+<script src="codemirror-4.11/addon/edit/matchbrackets.js"></script>
+<script src="codemirror-4.11/mode/ruby/ruby.js"></script>
+<script src="codemirror-4.11/addon/comment/continuecomment.js"></script>
+<script src="codemirror-4.11/addon/comment/comment.js"></script>
+<script src="codemirror-4.11/mode/javascript/javascript.js"></script>
+<script src="codemirror-4.11/addon/hint/show-hint.js"></script>
+<script src="codemirror-4.11/addon/hint/sql-hint.js"></script>
+<script src="codemirror-4.11/mode/sql/sql.js"></script>
+<style>
+      .CodeMirror {border: 1px solid black; height: 120px; width: 500px;}
+</style>
+
+<article>
+<h2>Ruby mode</h2>
+  <textarea id="code" name="code">
+  # Sample Comment
+  class Test
+    def hello
+      p "hello"
+    end  
+  end
+  </textarea>
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: "text/x-ruby",
+        lineNumbers: true,
+        matchBrackets: true,
+        indentUnit: 4
+      });
+    </script>
+</article>
+
+<article>
+<h2>Javascript mode</h2>
+  <textarea id="code1" name="code">
+  // Sample function
+   function test(col) {
+    var myvar = col;
+    return false;
+  }
+    
+  </textarea>
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("code1"), {
+        mode: "text/javascript",
+        lineNumbers: true,
+        matchBrackets: true,
+        continueComments: "Enter",
+        extraKeys: {"Ctrl-Q": "toggleComment"}
+      });
+    </script>
+</article>
+
+<h2>SQL mode</h2>
+  <textarea id="code2" name="code">
+  SELECT * from my_table;
+  -- comment
+  /* multiline
+     comment */ 
+    
+  </textarea>
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("code2"), {
+        mode: "text/x-sql",
+        smartIndent: true,
+        lineNumbers: true,
+        matchBrackets : true,
+        autofocus: true,
+        extraKeys: {"Ctrl-Space": "autocomplete"}
+      });
+    </script>
+</article>
+

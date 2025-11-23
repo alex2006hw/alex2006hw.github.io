@@ -1,0 +1,79 @@
+extends layout
+
+block body
+  .container
+    .row
+      .col-md-2
+      .col-md-8
+        .form-group
+          input.input-block-level.form-control(id="new-password", type="text")          
+        .form-group.form-actions
+          button.btn.btn-lg.btn-primary(id="generate-password-btn", data-loading-text="Generating...") Generate Password
+        .panel.panel-default
+          .panel-heading Options
+          .panel-body
+            .form-group
+              label(for="password-type") Password type
+              select.form-control(id="password-type")
+                option(selected="true", value="words") Words
+                option(value="random") Random characters
+            .div-password-length
+              .form-group
+                label(for="password-length") Password length
+                select.form-control(id="password-length")
+                  - for (var i=8;i<=64;i++)
+                    if i == 16
+                      option(selected="true", value="#{i}") #{i}
+                    else
+                      option(value="#{i}") #{i}
+            .div-word-count
+              .form-group
+                label(for="word-count") Number of words
+                select.form-control(id="word-count")
+                  - for (var i=2;i<=10;i++)
+                    if i == 3
+                      option(selected="true", value="#{i}") #{i}
+                    else
+                      option(value="#{i}") #{i}
+
+  script(type="text/javascript").
+    $("#generate-password-btn").click(function () {
+      var btn = $(this)
+      btn.button("loading")
+
+      var passwordType = $("#password-type").val();
+
+      var wordCount = $("#word-count").val();
+      var uri = "/wordpass?c="+wordCount;
+
+      if (passwordType == "random") {
+        var passwordLength = $("#password-length").val();
+        uri = "/randompass?l="+passwordLength;
+      }
+
+      $.ajax(uri, {
+        cache:false,
+        dataType:"text",
+        error: function (jqXHR, textStatus, errorThrown) {
+          $("#new-password").val(textStatus);
+          btn.button('reset');
+        },
+        success: function (data, textStatus, jqXHR) {
+          $("#new-password").val(data);
+          btn.button('reset');
+        }
+      });
+    });
+
+    $(".div-password-length").hide();
+  
+    $("#password-type").change(function () {
+      var passwordType = $("#password-type").val();
+      if (passwordType == "random") {
+        $(".div-word-count").fadeOut(300);
+        $(".div-password-length").delay(300).fadeIn(300);        
+      } else {
+        $(".div-password-length").fadeOut(300);
+        $(".div-word-count").delay(300).fadeIn(300);
+      }
+    });
