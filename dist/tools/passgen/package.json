@@ -1,0 +1,15 @@
+{
+  "name": "passgen",
+  "version": "1.0.1",
+  "description": "Password Generator",
+  "main": "passgen.js",
+  "engines": ">=0.10.21",
+  "dependencies": {
+    "express": "3.3.x",
+    "jade": "0.35.x",
+    "async": "0.2.10"
+  },
+  "repository": "",
+  "author": "Greg Rapp",
+  "license": "MIT"
+}

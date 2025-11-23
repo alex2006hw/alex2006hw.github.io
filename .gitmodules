@@ -1,3 +1,6 @@
 [submodule "public/vm"]
 	path = public/vm
 	url = https://github.com/alex2006hw/vm
+[submodule "dist/vm"]
+	path = dist/vm
+	url = https://github.com/alex2006hw/vm
