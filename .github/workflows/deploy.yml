@@ -1,9 +1,9 @@
-name: Build and Deploy
+name: Build and Deploy Astro
 
 on:
   push:
     branches:
-      - main  # or your default branch
+      - main
 
 permissions:
   contents: write
@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
           cache: npm
 
       - name: Install and Build 🔧
@@ -32,7 +32,7 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages   # Deployment branch
-          folder: dist       # Astro build output
-          clean: true        # Remove old files
+          branch: gh-pages
+          folder: dist
+          clean: true
           single-commit: true
