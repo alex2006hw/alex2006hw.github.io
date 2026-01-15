@@ -1,0 +1,2 @@
+<svg id=i height=40 viewbox="0 -.5 8 8"><path d="m0 0h1m1 0h1m1 0h1m-4 1h1m2 0h1m1 1h1m-6 1h1m-2 1h1m-1 1h1" stroke="#738ff5"/><path d="m2 1h2m1 0h1m-4 1h1m2 0h1m0 1h1m-6 1h1m4 0h1m-6 1h1m-2 1h1m5 0h1m-2 1h1" stroke="#535bc9"/><path d="m3 2h2m-3 1h4m-4 1h1m1 0h1m-3 1h6m-7 1h5m-6 1h5" stroke="#244bc1"/><path d="m3 4h1m1 0h1" stroke="#fff"/></svg><script>r=_=>requestAnimationFrame(r,i.style=`position:fixed;left:${x+=a*=2*(x+48<w&x>0)-1}px;top:${y+=b*=2*(y+48<h&y>0)-1}px`);r(w=innerWidth,h=innerHeight,a=b=1+2*Math.random(),x=a*w/5,y=x%h/2)</script>
+
