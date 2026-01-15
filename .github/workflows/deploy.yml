@@ -1,38 +1,41 @@
-name: Build and Deploy Astro
-
+name: Build and Deploy
 on:
   push:
     branches:
       - main
+      - master
 
 permissions:
   contents: write
 
 jobs:
   build-and-deploy:
+    concurrency: ci-${{ github.ref }} # Recommended for non-static sites
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: '20'
+          cache: 'npm'
 
-      - name: Install and Build 🔧
-        run: |
-          npm ci
-          npm run build
+      - name: Install Dependencies
+        # Using legacy-peer-deps because React 19 is installed but react-scripts 5 
+        # usually expects React 18 or older. This prevents install failures.
+        run: npm ci --legacy-peer-deps
 
-      - name: Add .nojekyll
-        run: echo "" > dist/.nojekyll
+      - name: Build
+        # CI=false prevents the build from failing if there are warnings 
+        # (common when using React 19 with older tooling)
+        env:
+          CI: false
+        run: npm run build
 
-      - name: Deploy 🚀
+      - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: main
-          folder: dist
-          clean: true
-          single-commit: true
+          folder: build # The folder the build script generates
+          branch: gh-pages # The branch the action should deploy to.

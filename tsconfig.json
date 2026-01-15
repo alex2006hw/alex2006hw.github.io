@@ -1,24 +1,26 @@
 {
-  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": ".",
-    "strictNullChecks": true,
-    "allowJs": false,
-    "declaration": true,
-    "plugins": [
-      {
-        "name": "@astrojs/ts-plugin"
-      }
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
-    "paths": {
-      "@components/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"],
-      "@constants/*": ["src/constants/*"],
-      "@utils/*": ["src/utils/*"],
-      "@i18n/*": ["src/i18n/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@/*": ["src/*"]
-    }
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src"
+  ]
 }
