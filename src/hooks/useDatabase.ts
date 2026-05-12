@@ -35,7 +35,7 @@ export const useDatabase = () => {
                     requestChunkSize: 4096
                   }
                 ]
-              }
+              } as any
             }
           ],
           workerUrl,
