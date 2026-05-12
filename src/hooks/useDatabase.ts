@@ -17,16 +17,24 @@ export const useDatabase = () => {
         });
         const configData = await res.json();
 
+        // Extract the size into a variable so we can use it twice
+        const dbSize = configData.databaseLength || configData.length;
+
         const rawWorker = await createDbWorker(
           [
             {
               from: "inline",
               config: {
                 serverMode: "chunked",
-                urlPrefix: "/assets/db.sqlite", // <-- The internal key the worker looks for!
-                serverChunkSize: 4096,
-                databaseLengthBytes: configData.databaseLength || configData.length,
-                suffixLength: 1, // <-- Tells the worker to append exactly one character ('0')
+                urlPrefix: "/assets/db.sqlite",
+
+                // 1. Tell the worker the "chunk" on the server is the size of the whole DB
+                serverChunkSize: dbSize,
+                databaseLengthBytes: dbSize,
+
+                suffixLength: 1, // Still points to db.sqlite0
+
+                // 2. Tell the browser to fetch data in tiny 4KB HTTP Range requests
                 requestChunkSize: 4096
               }
             }
