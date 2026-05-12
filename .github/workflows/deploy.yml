@@ -45,6 +45,8 @@ jobs:
           DB_SIZE=$(stat -c%s "build/assets/db.sqlite")
           echo "Calculated DB Size: $DB_SIZE bytes"
 
+          cp build/assets/db.sqlite build/assets/db.sqlite0
+
           # 3. Generate the config.json file with the correct length
           cat <<EOF > build/assets/config.json
           {
