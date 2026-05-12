@@ -9,19 +9,12 @@ export const useDatabase = () => {
       try {
         const workerUrl = "/assets/sqlite.worker.js";
         const wasmUrl = "/assets/sql-wasm.wasm";
+        // CACHE BUSTER:
+        const cb = `?v=${Date.now()}`;
 
+        // 👇 Revert back to jsonconfig!
         const rawWorker = await createDbWorker(
-          [
-            {
-              from: "inline",
-              config: {
-                serverMode: "full",
-                url: "/assets/db.sqlite",
-                requestChunkSize: 4096,
-                length: __DB_FILE_SIZE__ // <-- The CI pipeline will replace this
-              }
-            }
-          ],
+          [ { from: "jsonconfig", configUrl: "/assets/config.json" + cb } ],
           workerUrl,
           wasmUrl
         );
