@@ -28,6 +28,13 @@ jobs:
         # usually expects React 18 or older. This prevents install failures.
         run: npm ci --legacy-peer-deps
 
+      - name: Build
+        # CI=false prevents the build from failing if there are warnings
+        # (common when using React 19 with older tooling)
+        env:
+          CI: false
+        run: npm run build
+
       - name: Generate sql.js config.json dynamically
         run: |
           # 1. Ensure the target directory exists
@@ -41,19 +48,12 @@ jobs:
           # 3. Generate the config.json file with the correct length
           cat <<EOF > public/assets/config.json
           {
-            "serverMode": "full",
+            "serverMode": "chunked",
             "requestChunkSize": 4096,
             "length": $DB_SIZE,
             "url": "/assets/db.sqlite"
           }
           EOF
-
-      - name: Build
-        # CI=false prevents the build from failing if there are warnings
-        # (common when using React 19 with older tooling)
-        env:
-          CI: false
-        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
