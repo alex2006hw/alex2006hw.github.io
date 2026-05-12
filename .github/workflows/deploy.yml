@@ -35,34 +35,35 @@ jobs:
           CI: false
         run: npm run build
 
-      - name: Generate sql.js config.json dynamically
+      - name: Generate Chunked Config for GitHub Pages
         run: |
           # 1. Ensure the target directory exists
           mkdir -p build/assets
 
           # 2. Get the exact byte size of the uncompressed database
-          # Update the path below if your db.sqlite is located somewhere else!
           DB_SIZE=$(stat -c%s "build/assets/db.sqlite")
           echo "Calculated DB Size: $DB_SIZE bytes"
 
+          # 3. Create a duplicate file with the '0' suffix to guarantee the chunk worker finds it
           cp build/assets/db.sqlite build/assets/db.sqlite0
 
-          # 3. Generate the config.json file with the correct length
+          # 4. Generate the bulletproof config.json
           cat <<EOF > build/assets/config.json
           {
             "serverMode": "chunked",
             "requestChunkSize": 4096,
             "databaseLength": $DB_SIZE,
+            "url": "/assets/db.sqlite",
             "serverChunks": [
-                {
-                  "serverUrl": "/assets/db.sqlite",
-                  "url": "/assets/db.sqlite",
-                  "requestChunkSize": 4096
-                }
-              ]
-            }
+              {
+                "serverUrl": "/assets/db.sqlite0",
+                "requestChunkSize": 4096
+              }
+            ]
+          }
           EOF
 
+          # Verify the output in the GitHub Actions log
           cat build/assets/config.json
 
       - name: Deploy to GitHub Pages
