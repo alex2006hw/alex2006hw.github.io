@@ -9,11 +9,19 @@ export const useDatabase = () => {
       try {
         const workerUrl = "/assets/sqlite.worker.js";
         const wasmUrl = "/assets/sql-wasm.wasm";
-        // CACHE BUSTER:
-        const cb = `?v=${Date.now()}`;
 
         const rawWorker = await createDbWorker(
-          [ { from: "jsonconfig", configUrl: "/assets/config.json" + cb } ],
+          [
+            {
+              from: "inline",
+              config: {
+                serverMode: "full",
+                url: "/assets/db.sqlite",
+                requestChunkSize: 4096,
+                length: __DB_FILE_SIZE__ // <-- The CI pipeline will replace this
+              }
+            }
+          ],
           workerUrl,
           wasmUrl
         );
@@ -21,7 +29,7 @@ export const useDatabase = () => {
         console.log("✅ SQL.js Worker Connected");
         setWorker({
             exec: async (sql: string) => {
-                try { return await rawWorker.db.query(sql); } 
+                try { return await rawWorker.db.query(sql); }
                 catch (e) { console.error("SQL Error:", e); throw e; }
             }
         });

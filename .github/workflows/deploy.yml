@@ -1,4 +1,5 @@
 name: Build and Deploy
+
 on:
   push:
     branches:
@@ -23,12 +24,32 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        # Using legacy-peer-deps because React 19 is installed but react-scripts 5 
+        # Using legacy-peer-deps because React 19 is installed but react-scripts 5
         # usually expects React 18 or older. This prevents install failures.
         run: npm ci --legacy-peer-deps
 
+      - name: Generate sql.js config.json dynamically
+        run: |
+          # 1. Ensure the target directory exists
+          mkdir -p public/assets
+
+          # 2. Get the exact byte size of the uncompressed database
+          # Update the path below if your db.sqlite is located somewhere else!
+          DB_SIZE=$(stat -c%s "public/assets/db.sqlite")
+          echo "Calculated DB Size: $DB_SIZE bytes"
+
+          # 3. Generate the config.json file with the correct length
+          cat <<EOF > public/assets/config.json
+          {
+            "serverMode": "full",
+            "requestChunkSize": 4096,
+            "length": $DB_SIZE,
+            "url": "/assets/db.sqlite"
+          }
+          EOF
+
       - name: Build
-        # CI=false prevents the build from failing if there are warnings 
+        # CI=false prevents the build from failing if there are warnings
         # (common when using React 19 with older tooling)
         env:
           CI: false
@@ -38,4 +59,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: build # The folder the build script generates
-          branch: gh-pages # The branch the action should deploy to.
+          branch: gh-pages # The branch the action should deploy to
