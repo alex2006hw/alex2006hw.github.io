@@ -17,25 +17,18 @@ export const useDatabase = () => {
         });
         const configData = await res.json();
 
-        // 2. Use 'inline' config. We map the config ourselves to guarantee 
-        //    the URL is NEVER undefined, even if the CDN serves an old file!
         const rawWorker = await createDbWorker(
           [
             {
               from: "inline",
               config: {
                 serverMode: "chunked",
-                requestChunkSize: 4096,
-                // The fallback handles both old and new config file structures
-                databaseLength: configData.databaseLength || configData.length,
-                serverChunks: [
-                  {
-                    // Hardcoding the path completely prevents the undefined0 error
-                    serverUrl: "/assets/db.sqlite0",
-                    requestChunkSize: 4096
-                  }
-                ]
-              } as any
+                urlPrefix: "/assets/db.sqlite", // <-- The internal key the worker looks for!
+                serverChunkSize: 4096,
+                databaseLengthBytes: configData.databaseLength || configData.length,
+                suffixLength: 1, // <-- Tells the worker to append exactly one character ('0')
+                requestChunkSize: 4096
+              }
             }
           ],
           workerUrl,
