@@ -42,7 +42,7 @@ jobs:
 
           # 2. Get the exact byte size of the uncompressed database
           # Update the path below if your db.sqlite is located somewhere else!
-          DB_SIZE=$(stat -c%s "public/assets/db.sqlite")
+          DB_SIZE=$(stat -c%s "build/assets/db.sqlite")
           echo "Calculated DB Size: $DB_SIZE bytes"
 
           # 3. Generate the config.json file with the correct length
@@ -56,6 +56,7 @@ jobs:
           EOF
 
           cat build/assets/config.json
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
