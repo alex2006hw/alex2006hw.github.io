@@ -52,9 +52,15 @@ jobs:
           {
             "serverMode": "chunked",
             "requestChunkSize": 4096,
-            "length": $DB_SIZE,
-            "url": "/assets/db.sqlite"
-          }
+            "databaseLength": $DB_SIZE,
+            "serverChunks": [
+                {
+                  "serverUrl": "/assets/db.sqlite",
+                  "url": "/assets/db.sqlite",
+                  "requestChunkSize": 4096
+                }
+              ]
+            }
           EOF
 
           cat build/assets/config.json
