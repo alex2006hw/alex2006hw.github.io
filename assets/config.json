@@ -1,6 +1,12 @@
 {
   "serverMode": "chunked",
   "requestChunkSize": 4096,
-  "length": 204800,
-  "url": "/assets/db.sqlite"
-}
+  "databaseLength": 204800,
+  "serverChunks": [
+      {
+        "serverUrl": "/assets/db.sqlite",
+        "url": "/assets/db.sqlite",
+        "requestChunkSize": 4096
+      }
+    ]
+  }
