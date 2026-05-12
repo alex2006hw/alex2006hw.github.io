@@ -38,7 +38,7 @@ jobs:
       - name: Generate sql.js config.json dynamically
         run: |
           # 1. Ensure the target directory exists
-          mkdir -p public/assets
+          mkdir -p build/assets
 
           # 2. Get the exact byte size of the uncompressed database
           # Update the path below if your db.sqlite is located somewhere else!
@@ -46,7 +46,7 @@ jobs:
           echo "Calculated DB Size: $DB_SIZE bytes"
 
           # 3. Generate the config.json file with the correct length
-          cat <<EOF > public/assets/config.json
+          cat <<EOF > build/assets/config.json
           {
             "serverMode": "chunked",
             "requestChunkSize": 4096,
@@ -55,6 +55,7 @@ jobs:
           }
           EOF
 
+          cat build/assets/config.json
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
