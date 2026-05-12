@@ -35,36 +35,34 @@ jobs:
           CI: false
         run: npm run build
 
-      - name: Generate Chunked Config for GitHub Pages
+      - name: Generate Omni-Config for GitHub Pages
         run: |
-          # 1. Ensure the target directory exists
           mkdir -p build/assets
 
-          # 2. Get the exact byte size of the uncompressed database
           DB_SIZE=$(stat -c%s "build/assets/db.sqlite")
           echo "Calculated DB Size: $DB_SIZE bytes"
 
-          # 3. Create a duplicate file with the '0' suffix to guarantee the chunk worker finds it
+          # Create duplicate file for chunking
           cp build/assets/db.sqlite build/assets/db.sqlite0
 
-          # 4. Generate the bulletproof config.json
+          # Write the Omni-Config
           cat <<EOF > build/assets/config.json
           {
             "serverMode": "chunked",
             "requestChunkSize": 4096,
             "databaseLength": $DB_SIZE,
+            "length": $DB_SIZE,
             "url": "/assets/db.sqlite",
+            "serverUrl": "/assets/db.sqlite",
             "serverChunks": [
               {
+                "url": "/assets/db.sqlite0",
                 "serverUrl": "/assets/db.sqlite0",
                 "requestChunkSize": 4096
               }
             ]
           }
           EOF
-
-          # Verify the output in the GitHub Actions log
-          cat build/assets/config.json
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

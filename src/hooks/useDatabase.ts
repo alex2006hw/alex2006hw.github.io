@@ -9,12 +9,12 @@ export const useDatabase = () => {
       try {
         const workerUrl = "/assets/sqlite.worker.js";
         const wasmUrl = "/assets/sql-wasm.wasm";
-        // CACHE BUSTER:
-        const cb = `?v=${Date.now()}`;
+        
+        // This dynamically breaks the GitHub Pages Fastly CDN cache
+        const cacheBuster = `?v=${Date.now()}`;
 
-        // 👇 Revert back to jsonconfig!
         const rawWorker = await createDbWorker(
-          [ { from: "jsonconfig", configUrl: "/assets/config.json" + cb } ],
+          [ { from: "jsonconfig", configUrl: `/assets/config.json${cacheBuster}` } ],
           workerUrl,
           wasmUrl
         );
@@ -33,5 +33,6 @@ export const useDatabase = () => {
     };
     initDB();
   }, []);
+  
   return { worker };
 };
