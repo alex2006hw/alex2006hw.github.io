@@ -38,8 +38,12 @@ export const AdminTerminal: React.FC = () => {
     const terminalRef = useRef<HTMLDivElement>(null);
     const workerRef = useRef<Worker | null>(null);
     
-    const [selectedOS, setSelectedOS] = useState('linux4');
+    const [selectedOS, setSelectedOS] = useState('bzimage');
     const [status, setStatus] = useState("Idle");
+    
+    // PATCH: Added state to track console visibility
+    const [showBootText, setShowBootText] = useState(true);
+    
     const { worker: dbWorker } = useDatabase();
 
     const dbWorkerRef = useRef(dbWorker);
@@ -64,10 +68,10 @@ export const AdminTerminal: React.FC = () => {
         const term = new Terminal({ 
             cursorBlink: true, 
             fontSize: 14, 
-            fontFamily: 'Menlo, Monaco, "Courier New", monospace', // Ensure monospace
+            fontFamily: 'Menlo, Monaco, "Courier New", monospace',
             theme: { background: '#111' },
             convertEol: true,
-            logLevel: 'off' // Prevents parsing error warnings
+            logLevel: 'off'
         });
         const fitAddon = new FitAddon();
         term.loadAddon(fitAddon);
@@ -79,10 +83,11 @@ export const AdminTerminal: React.FC = () => {
                 return;
             }
             term.open(terminalRef.current);
-            try { fitAddon.fit(); } catch(e){}
+            // Delay fit to ensure renderer is ready and dimensions exist
+            setTimeout(() => { try { if (terminalRef.current && terminalRef.current.clientWidth > 0) fitAddon.fit(); } catch(e){} }, 50);
             
             const resizeObserver = new ResizeObserver(() => {
-                requestAnimationFrame(() => { try { fitAddon.fit(); } catch(e){} });
+                requestAnimationFrame(() => { try { if (terminalRef.current && terminalRef.current.clientWidth > 0) fitAddon.fit(); } catch(e){} });
             });
             resizeObserver.observe(terminalRef.current);
             
@@ -92,20 +97,45 @@ export const AdminTerminal: React.FC = () => {
         const startWorker = (t: Terminal) => {
             if (workerRef.current) workerRef.current.terminate();
 
-            // Clear terminal before new boot
-            t.clear(); 
-            t.write(`\x1b[32m>>> Booting ${OS_CONFIGS[selectedOS].name}...\x1b[0m\r\n`);
+            t.clear();
 
             const worker = new Worker("/assets/v86/worker.js");
             workerRef.current = worker;
+                        let osBooted = false;
+            let bootBuffer = "";
 
             worker.onmessage = (e) => {
                 const { type, data } = e.data;
 
                 if (type === 'serial') {
-                    // Safety check for serial data
                     const output = typeof data === 'string' ? data : new TextDecoder().decode(data);
-                    t.write(output);
+                    
+                    if (!osBooted) {
+                        // Bypass buffer for OS options that do not output "mount:"
+                        if (selectedOS === 'freedos') {
+                            osBooted = true;
+                            t.clear();
+                            t.write(output);
+                            return;
+                        }
+                        
+                        bootBuffer += output;
+                        
+                        // Prevent memory runaway. Keep the trailing tail to catch 'mount:'
+                        if (bootBuffer.length > 25000) {
+                            bootBuffer = bootBuffer.slice(-10000);
+                        }
+                        
+                        const mIdx = bootBuffer.indexOf('mount:');
+                        if (mIdx !== -1) {
+                            osBooted = true;
+                            t.clear(); // CRITICAL: Flushes SeaBIOS artifacts and phantom xterm cursors
+                            t.write(bootBuffer.substring(mIdx));
+                            bootBuffer = "";
+                        }
+                    } else {
+                        t.write(output);
+                    }
                 } 
                 else if (type === 'ready') {}
                 else if (type === 'progress') {}
@@ -116,15 +146,14 @@ export const AdminTerminal: React.FC = () => {
                     saveToDB(data, selectedOS);
                 }
             };
-
-            const config = {
+const config = {
                 wasm_path: "/assets/v86/v86.wasm",
                 bios: { url: "/assets/v86/seabios.bin" },
                 vga_bios: { url: "/assets/v86/vgabios.bin" },
                 disable_mouse: true,
                 disable_keyboard: true, 
                 autostart: true,
-                disable_speaker: true, // Fixes Web Audio API error
+                disable_speaker: true, 
                 ...OS_CONFIGS[selectedOS]
             };
             
@@ -143,8 +172,7 @@ export const AdminTerminal: React.FC = () => {
             if (workerRef.current) workerRef.current.terminate();
             term.dispose();
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedOS]);
+    }, [selectedOS, debouncedSave]);
 
     const saveToDB = (arrayBuffer: ArrayBuffer, os: string) => {
         if (!dbWorkerRef.current) return;
@@ -181,23 +209,38 @@ export const AdminTerminal: React.FC = () => {
                 </div>
                 <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                     <span style={{ fontSize: '0.8em', color: status.includes("Save") ? 'lime' : '#888' }}>{status}</span>
+                    
+                    {/* PATCH: Added toggle button for terminal UI */}
+                    <button 
+                        onClick={() => setShowBootText(!showBootText)} 
+                        style={{ padding: '6px 12px', background: '#333', color: 'white', border: '1px solid #555', borderRadius: 4, cursor: 'pointer' }}
+                    >
+                        {showBootText ? '🙈 Hide Boot Header' : '👁️ Show Boot Header'}
+                    </button>
+                    
                     <button onClick={() => requestSave(false)} style={{ padding: '6px 12px', background: '#0070f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}>
                         Save
                     </button>
                 </div>
             </div>
             
-            {/* FIX: Added textAlign: 'left' to force console text to the left side */}
+            {/* PATCH: Wrapping terminal in display toggle logic. We keep the VM running in the background. */}
+            
+            {showBootText && (<div style={{ padding: '5px 10px', background: '#000', color: '#00ff88', fontFamily: 'monospace', fontSize: '0.9em', borderBottom: '1px dashed #333' }}>&gt;&gt;&gt; Booting {OS_CONFIGS[selectedOS].name}...</div>)}
             <div style={{ 
                 flex: 1, 
                 background: 'black', 
                 padding: 10, 
                 position: 'relative', 
                 minHeight: 0,
-                textAlign: 'left' 
+                textAlign: 'left',
+                display: 'block' 
             }}>
                 <div ref={terminalRef} style={{ height: '100%', width: '100%' }}></div>
             </div>
+
+            {/* PATCH: Optional placeholder when console is hidden */}
+            
         </div>
     );
 };

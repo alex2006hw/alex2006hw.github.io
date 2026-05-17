@@ -10,7 +10,7 @@ import { SEO } from './components/SEO';
 function App() {
   const [selectedNode, setSelectedNode] = useState<any>(null);
   // State for active view: 'network' | 'posts' | 'admin'
-  const [activeView, setActiveView] = useState<'network' | 'posts' | 'admin'>('network');
+  const [activeView, setActiveView] = useState<'network' | 'posts' | 'admin'>('admin');
 
   // Helper to determine the base title when no post is selected
   const getViewTitle = () => {

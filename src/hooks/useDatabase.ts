@@ -27,14 +27,9 @@ export const useDatabase = () => {
               config: {
                 serverMode: "chunked",
                 urlPrefix: "/assets/db.sqlite",
-
-                // 1. Tell the worker the "chunk" on the server is the size of the whole DB
                 serverChunkSize: dbSize,
                 databaseLengthBytes: dbSize,
-
-                suffixLength: 1, // Still points to db.sqlite0
-
-                // 2. Tell the browser to fetch data in tiny 4KB HTTP Range requests
+                suffixLength: 1, 
                 requestChunkSize: 4096
               }
             }
@@ -45,8 +40,14 @@ export const useDatabase = () => {
 
         console.log("✅ SQL.js Worker Connected");
         setWorker({
-            exec: async (sql: string) => {
-                try { return await rawWorker.db.query(sql); }
+            // FIX: Pass params directly to db.query, which natively handles them over the Comlink worker
+            exec: async (sql: string, params?: any[]) => {
+                try { 
+                    if (params) {
+                        return await rawWorker.db.query(sql, params);
+                    }
+                    return await rawWorker.db.query(sql); 
+                }
                 catch (e) { console.error("SQL Error:", e); throw e; }
             }
         });

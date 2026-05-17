@@ -78,14 +78,16 @@ export const BlogViewer: React.FC<{ node: any; onClose: () => void }> = ({ node,
         }
     }, [details.content]);
 
-    const handleSubmit = async () => {
+  const handleSubmit = async () => {
         if(!comment.trim()) return;
         const dbId = id.toString().replace('post_', '');
-        const sql = `INSERT INTO comments (post_id, author, content, status) VALUES ('${dbId}', '${author}', '${comment}', 'pending')`;
+        
+        // PATCH: Swapped to parameterized inputs for safety
+        const sql = `INSERT INTO comments (post_id, author, content, status) VALUES (?, ?, ?, ?)`;
 
         if (worker) {
             try {
-                await worker.exec(sql);
+                await worker.exec(sql, [dbId, author, comment, 'pending']);
                 console.log("Comment submitted for review.");
                 setComment("");
                 localStorage.removeItem('draft_comment');

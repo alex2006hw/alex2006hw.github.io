@@ -15,9 +15,12 @@ export const AdminEditor: React.FC = () => {
             initEditor();
         }
         return () => {
-            if (ejInstance.current && typeof ejInstance.current.destroy === 'function') {
-                ejInstance.current.destroy();
-                ejInstance.current = null;
+            // PATCH: Ensure editor is fully ready before attempting destruction to prevent React unmount crashes
+            if (ejInstance.current && ejInstance.current.isReady) {
+                ejInstance.current.isReady.then(() => {
+                    ejInstance.current?.destroy();
+                    ejInstance.current = null;
+                }).catch(e => console.error("Editor cleanup error", e));
             }
         };
     }, []);
@@ -32,22 +35,22 @@ export const AdminEditor: React.FC = () => {
     };
 
     const handleSave = async () => {
-        if (!ejInstance.current) return;
-        const savedData = await ejInstance.current.save();
-        const titleBlock = savedData.blocks.find(b => b.type === 'header');
-        const title = titleBlock ? titleBlock.data.text : 'Untitled Post';
-        const contentJson = JSON.stringify(savedData);
-        const date = new Date().toISOString().split('T')[0];
+        if (!ejInstance.current || !worker) return;
+        try {
+            const savedData = await ejInstance.current.save();
+            const titleBlock = savedData.blocks.find(b => b.type === 'header');
+            const title = titleBlock ? titleBlock.data.text : 'Untitled Post';
+            const contentJson = JSON.stringify(savedData);
+            const date = new Date().toISOString().split('T')[0];
 
-        if(worker) {
-            try {
-                // Escape single quotes for SQL
-                const safeTitle = title.replace(/'/g, "''");
-                const safeContent = contentJson.replace(/'/g, "''");
-                
-                await worker.exec(`INSERT INTO posts (title, date, tags, content, media_type) VALUES ('${safeTitle}', '${date}', 'Tech', '${safeContent}', 'text')`);
-                alert("Post Saved to Memory!");
-            } catch(e) { console.error(e); alert("Save failed"); }
+            // PATCH: Utilizing parameterized query logic to safely insert raw JSON
+            const sql = `INSERT INTO posts (title, date, tags, content, media_type) VALUES (?, ?, ?, ?, ?)`;
+            await worker.exec(sql, [title, date, 'Tech', contentJson, 'text']);
+            
+            alert("Post Saved to Memory!");
+        } catch(e) { 
+            console.error(e); 
+            alert("Save failed"); 
         }
     };
 
