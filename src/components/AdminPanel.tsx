@@ -174,6 +174,7 @@ export const AdminPanel: React.FC = () => {
             active={activeTab === 'terminal'}
             onClick={() => setActiveTab('terminal')}
           />
+          <div id="terminal-submenu-slot"></div>
           <SidebarBtn
             icon="⚙️"
             label="Settings"
