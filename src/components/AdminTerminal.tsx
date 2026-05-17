@@ -28,7 +28,7 @@ export const AdminTerminal: React.FC = () => {
     const emulatorRef = useRef<any>(null);
     const termRef = useRef<Terminal | null>(null);
 
-    const [selectedOS, setSelectedOS] = useState('linux4');
+    const [selectedOS, setSelectedOS] = useState('kolibri');
     const [status, setStatus] = useState("Idle");
     const [activeView, setActiveView] = useState<'serial' | 'vga'>('vga');
     
@@ -266,15 +266,15 @@ export const AdminTerminal: React.FC = () => {
 
             <div style={{ position: 'absolute', inset: 0, display: activeView === 'vga' ? 'flex' : 'none', justifyContent: 'center', alignItems: 'center' }}>
                 <div 
-                    ref={screenRef} 
-                    onClick={() => document.pointerLockElement !== screenRef.current && screenRef.current?.requestPointerLock?.()}
-                    title="Click to lock mouse for accurate syncing. Press ESC to unlock."
-                    style={{ display: 'grid', placeItems: 'center', boxShadow: '0 0 20px rgba(0,0,0,0.5)', overflow: 'hidden', background: '#000', cursor: 'crosshair' }}
-                >
-                    {/* CSS Grid ensures the container doesn't collapse to 0 height */}
-                    <div style={{ gridArea: '1 / 1', whiteSpace: 'pre', font: '14px monospace', lineHeight: '14px', color: 'white' }}></div>
-                    <canvas style={{ display: 'none', gridArea: '1 / 1' }}></canvas>
-                </div>
+                        ref={screenRef} 
+                        onClick={() => document.pointerLockElement !== screenRef.current && screenRef.current?.requestPointerLock?.()}
+                        title="Click to lock mouse for accurate syncing. Press ESC to unlock."
+                        style={{ display: 'grid', placeItems: 'center', boxShadow: '0 0 20px rgba(0,0,0,0.5)', overflow: 'hidden', background: '#000', cursor: 'crosshair', maxWidth: '100%', maxHeight: '100%' }}
+                    >
+                        {/* Constrain elements to 100% of the flex viewport to eliminate clipping */}
+                        <div style={{ gridArea: '1 / 1', whiteSpace: 'pre', font: '14px monospace', lineHeight: '14px', color: 'white', maxWidth: '100%', maxHeight: '100%', overflow: 'hidden' }}></div>
+                        <canvas style={{ display: 'none', gridArea: '1 / 1', maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}></canvas>
+                    </div>
                 {activeView === 'vga' && (
                     <div style={{ position: 'absolute', bottom: 15, background: 'rgba(0,0,0,0.7)', color: 'white', padding: '5px 10px', borderRadius: 4, pointerEvents: 'none', fontSize: 12 }}>
                         Click screen to lock mouse. Press ESC to release.
