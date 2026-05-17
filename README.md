@@ -36,8 +36,7 @@ A **Serverless, Decentralized Blogging Platform** built with React, SQLite (WASM
 ## 🚀 Setup & Install
 Run Install Script:
 ``` Bash
-chmod +x install_full_blog_network.sh
-./install_full_blog_network.sh
+npm install --legacy-peer-deps
 ```
 ### Start Development Server:
 ``` Bash
@@ -46,20 +45,21 @@ npm start
 ### Access App:
 ```
 URL: https://localhost:3000 (Accept self-signed cert).
-Admin Login: 123abc
+Admin Login: abc123
 ```
 ## 📖 Usage Instructions
 ### 1. Admin Tools
 ```
-Login: Click "Admin" tab. Default password is 123abc.
+Login: Click "Admin" tab. Default password is abc123.
 Sidebar: Toggle sidebar with « button.
 New Post: Use the Block Editor (Editor.js) to write content. Click "Publish" to save to local memory DB.
 Comments: View pending comments. Approve or Reject them.
 ```
 ### 2. v86 Terminal Emulator
 ```
-Boot: Select an OS (Linux 4, FreeDOS, Windows 1.01) from the dropdown.
+Boot: Select an OS (Linux 4, FreeDOS, Windows 1.01,...) from the dropdown.
 Console: Use the xterm.js terminal to interact with the OS via Serial Port.
+VGA: VGA emulator is used for all graphics.
 State Management:
 Auto-Save: The emulator saves state to SQL automatically after 5 seconds of inactivity.
 Manual Save: Click "Save State" to persist the snapshot immediately.

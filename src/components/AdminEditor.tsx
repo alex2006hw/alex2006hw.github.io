@@ -7,60 +7,77 @@ import List from '@editorjs/list';
 import { useDatabase } from '../hooks/useDatabase';
 
 export const AdminEditor: React.FC = () => {
-    const ejInstance = useRef<EditorJS | null>(null);
-    const { worker } = useDatabase();
+  const ejInstance = useRef<EditorJS | null>(null);
+  const { worker } = useDatabase();
 
-    useEffect(() => {
-        if (!ejInstance.current) {
-            initEditor();
-        }
-        return () => {
-            // PATCH: Ensure editor is fully ready before attempting destruction to prevent React unmount crashes
-            if (ejInstance.current && ejInstance.current.isReady) {
-                ejInstance.current.isReady.then(() => {
-                    ejInstance.current?.destroy();
-                    ejInstance.current = null;
-                }).catch(e => console.error("Editor cleanup error", e));
-            }
-        };
-    }, []);
-
-    const initEditor = () => {
-        const editor = new EditorJS({
-            holder: 'editorjs',
-            onReady: () => { ejInstance.current = editor; },
-            tools: { header: Header, list: List },
-            placeholder: 'Let`s write an awesome story!'
-        });
+  useEffect(() => {
+    if (!ejInstance.current) {
+      initEditor();
+    }
+    return () => {
+      // PATCH: Ensure editor is fully ready before attempting destruction to prevent React unmount crashes
+      if (ejInstance.current && ejInstance.current.isReady) {
+        ejInstance.current.isReady
+          .then(() => {
+            ejInstance.current?.destroy();
+            ejInstance.current = null;
+          })
+          .catch((e) => console.error('Editor cleanup error', e));
+      }
     };
+  }, []);
 
-    const handleSave = async () => {
-        if (!ejInstance.current || !worker) return;
-        try {
-            const savedData = await ejInstance.current.save();
-            const titleBlock = savedData.blocks.find(b => b.type === 'header');
-            const title = titleBlock ? titleBlock.data.text : 'Untitled Post';
-            const contentJson = JSON.stringify(savedData);
-            const date = new Date().toISOString().split('T')[0];
+  const initEditor = () => {
+    const editor = new EditorJS({
+      holder: 'editorjs',
+      onReady: () => {
+        ejInstance.current = editor;
+      },
+      tools: { header: Header, list: List },
+      placeholder: 'Let`s write an awesome story!',
+    });
+  };
 
-            // PATCH: Utilizing parameterized query logic to safely insert raw JSON
-            const sql = `INSERT INTO posts (title, date, tags, content, media_type) VALUES (?, ?, ?, ?, ?)`;
-            await worker.exec(sql, [title, date, 'Tech', contentJson, 'text']);
-            
-            alert("Post Saved to Memory!");
-        } catch(e) { 
-            console.error(e); 
-            alert("Save failed"); 
-        }
-    };
+  const handleSave = async () => {
+    if (!ejInstance.current || !worker) return;
+    try {
+      const savedData = await ejInstance.current.save();
+      const titleBlock = savedData.blocks.find((b) => b.type === 'header');
+      const title = titleBlock ? titleBlock.data.text : 'Untitled Post';
+      const contentJson = JSON.stringify(savedData);
+      const date = new Date().toISOString().split('T')[0];
 
-    return (
-        <div style={{ padding: 20, color: 'black', background: 'white', borderRadius: 8, maxWidth: 800 }}>
-            <h2 style={{color:'#333'}}>New Blog Post</h2>
-            <div id="editorjs" style={{ border: '1px solid #ccc', padding: 10, minHeight: 300 }}></div>
-            <button onClick={handleSave} style={{ marginTop: 20, padding: '10px 20px', background: '#0070f3', color: 'white', border: 'none', borderRadius: 4, cursor: 'pointer' }}>
-                Publish Post
-            </button>
-        </div>
-    );
+      // PATCH: Utilizing parameterized query logic to safely insert raw JSON
+      const sql = `INSERT INTO posts (title, date, tags, content, media_type) VALUES (?, ?, ?, ?, ?)`;
+      await worker.exec(sql, [title, date, 'Tech', contentJson, 'text']);
+
+      alert('Post Saved to Memory!');
+    } catch (e) {
+      console.error(e);
+      alert('Save failed');
+    }
+  };
+
+  return (
+    <div
+      style={{ padding: 20, color: 'black', background: 'white', borderRadius: 8, maxWidth: 800 }}
+    >
+      <h2 style={{ color: '#333' }}>New Blog Post</h2>
+      <div id="editorjs" style={{ border: '1px solid #ccc', padding: 10, minHeight: 300 }}></div>
+      <button
+        onClick={handleSave}
+        style={{
+          marginTop: 20,
+          padding: '10px 20px',
+          background: '#0070f3',
+          color: 'white',
+          border: 'none',
+          borderRadius: 4,
+          cursor: 'pointer',
+        }}
+      >
+        Publish Post
+      </button>
+    </div>
+  );
 };
