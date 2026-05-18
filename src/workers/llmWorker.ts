@@ -1,9 +1,11 @@
 /* eslint-disable no-restricted-globals */
-import { CreateMLCEngine } from "@mlc-ai/web-llm";
+import { CreateMLCEngine, prebuiltAppConfig } from "@mlc-ai/web-llm";
 import { MQTTBus } from '../utils/mqtt';
 
 const ctx: Worker = self as any;
 let engine: any = null;
+let isInitializing = false;
+let isGenerating = false;
 const mqtt = new MQTTBus();
 
 const mcpRequest = (method: string, params: any = {}): Promise<any> => {
@@ -23,16 +25,37 @@ ctx.addEventListener("message", async (e: MessageEvent) => {
   const { type, payload } = e.data;
   
   if (type === "INIT_LLM") {
+    if (isInitializing || engine) return;
+    isInitializing = true;
     try {
       ctx.postMessage({ type: "PROGRESS", payload: "Loading WebLLM module engine..." });
+      
+      const customAppConfig = { ...prebuiltAppConfig };
+      const deepseekRecord = {
+          model: "https://huggingface.co/mlc-ai/DeepSeek-R1-Distill-Qwen-1.5B-q4f16_1-MLC",
+          model_id: "DeepSeek-R1-Distill-Qwen-1.5B-q4f16_1-MLC",
+          model_lib: "https://raw.githubusercontent.com/mlc-ai/binary-mlc-llm-libs/main/web-llm-models/v0_2_83/base/Qwen2-1.5B-Instruct-q4f16_1_cs1k-webgpu.wasm",
+          low_resource_required: true,
+          overrides: { context_window_size: 2048 }
+      };
+      // Only append if it's not already in the list (in case of future package upgrades)
+      if (!customAppConfig.model_list.find(m => m.model_id === deepseekRecord.model_id)) {
+          customAppConfig.model_list = [...customAppConfig.model_list, deepseekRecord as any];
+      }
+
       engine = await CreateMLCEngine(payload.model, {
         initProgressCallback: (report) => {
           ctx.postMessage({ type: "PROGRESS", payload: report.text });
-        }
+        },
+        appConfig: customAppConfig
+      }, {
+        context_window_size: 2048
       });
-      ctx.postMessage({ type: "READY" });
+      ctx.postMessage({ type: "READY", payload: payload.model });
     } catch (err: any) {
       ctx.postMessage({ type: "ERROR", payload: err.message });
+    } finally {
+      isInitializing = false;
     }
   }
   
@@ -41,6 +64,11 @@ ctx.addEventListener("message", async (e: MessageEvent) => {
       ctx.postMessage({ type: "ERROR", payload: "Engine has not been initialized." });
       return;
     }
+    if (isGenerating) {
+      console.warn("Already generating...");
+      return;
+    }
+    isGenerating = true;
     try {
       ctx.postMessage({ type: "PROGRESS", payload: "Fetching VM state..." });
       
@@ -49,18 +77,18 @@ ctx.addEventListener("message", async (e: MessageEvent) => {
 
       ctx.postMessage({ type: "PROGRESS", payload: "Thinking..." });
       
-      const messages: any[] = [
-        { 
-          role: "system", 
-          content: "You are directly connected to a Linux virtual machine via a terminal console. Fulfill the user's request by outputting ONLY the raw bash commands to execute. Do not include any explanations, greetings, markdown formatting, or backticks. Every response must be immediately executable shell commands. End your commands with a newline character so they execute." 
-        }
-      ];
+      await engine.resetChat();
 
+      let systemContent = "You are directly connected to a Linux virtual machine via a terminal console. Fulfill the user's request by outputting ONLY the raw bash commands to execute. Do not include any explanations, greetings, markdown formatting, or backticks. Every response must be immediately executable shell commands. End your commands with a newline character so they execute.";
+      
       if (serialBuffer) {
-          messages.push({ role: "system", content: `CURRENT TERMINAL SCREEN OUTPUT:\n${serialBuffer}` });
+          systemContent += `\n\nCURRENT TERMINAL SCREEN OUTPUT:\n${serialBuffer}`;
       }
 
-      messages.push({ role: "user", content: payload.prompt });
+      const messages: any[] = [
+        { role: "system", content: systemContent },
+        { role: "user", content: payload.prompt }
+      ];
 
       const response = await engine.chat.completions.create({
         messages: messages,
@@ -81,6 +109,8 @@ ctx.addEventListener("message", async (e: MessageEvent) => {
       ctx.postMessage({ type: "REPLY", payload: reply });
     } catch (err: any) {
       ctx.postMessage({ type: "ERROR", payload: err.message });
+    } finally {
+      isGenerating = false;
     }
   }
 });

@@ -37,6 +37,7 @@ export const AdminTerminal: React.FC = () => {
 
     // WebLLM State variables
     const [aiPrompt, setAiPrompt] = useState("");
+    const [selectedModel, setSelectedModel] = useState("gemma-2-2b-it-q4f16_1-MLC");
     const [serialOutput, setSerialOutput] = useState("");
     const serialBufferRef = useRef<string>("");
 
@@ -268,9 +269,23 @@ export const AdminTerminal: React.FC = () => {
                 <h3 style={{ margin: 0, color: '#00aaff', fontSize: '14px' }}>🧠 LOCAL LLM ASSISTANT</h3>
 
                 {llmStatus === "Uninitialized" ? (
-                    <button onClick={initLlama} style={{ padding: '10px', background: '#00aaff', border: 'none', color: 'black', fontWeight: 'bold', borderRadius: 4, cursor: 'pointer' }}>
-                        Load Llama-3 (WebLLM)
-                    </button>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                        <select
+                            value={selectedModel}
+                            onChange={(e) => setSelectedModel(e.target.value)}
+                            style={{ padding: '6px', background: '#161616', color: 'white', border: '1px solid #333', borderRadius: 4, fontSize: '11px', cursor: 'pointer' }}
+                        >
+                            <option value="Llama-3.2-1B-Instruct-q4f16_1-MLC">Llama-3.2 1B (Fastest - Default)</option>
+                            <option value="DeepSeek-R1-Distill-Qwen-1.5B-q4f16_1-MLC">DeepSeek-R1 1.5B (Math/Logic)</option>
+                            <option value="Qwen2.5-1.5B-Instruct-q4f16_1-MLC">Qwen2.5 1.5B (JSON/System)</option>
+                            <option value="gemma-2-2b-it-q4f16_1-MLC">Gemma-2 2B (Creative/Roleplay)</option>
+                            <option value="Hermes-2-Pro-Llama-3-8B-q4f16_1-MLC">Hermes 2 Pro 8B (q4f16_1)</option>
+                            <option value="Hermes-3-Llama-3.1-8B-q4f16_1-MLC">Hermes 3 8B (Highly Quantized)</option>
+                        </select>
+                        <button onClick={() => initLlama(selectedModel)} style={{ padding: '10px', background: '#00aaff', border: 'none', color: 'black', fontWeight: 'bold', borderRadius: 4, cursor: 'pointer', fontSize: '12px' }}>
+                            Load AI Worker
+                        </button>
+                    </div>
                 ) : (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                         <div style={{ fontSize: '11px', color: '#888' }}>Status: <span style={{ color: '#ffaa00' }}>{llmStatus}</span></div>
@@ -305,7 +320,7 @@ export const AdminTerminal: React.FC = () => {
                         <div style={{ fontSize: '11px', color: '#00ff88', background: '#000', padding: '6px', borderRadius: 4, border: '1px solid #222' }}>{lastAiReply}</div>
                     </div>
                 )}
-                
+
                 <div style={{ marginTop: '5px' }}>
                     <div style={{ fontSize: '10px', color: '#666' }}>SERIAL PORT OUTPUT:</div>
                     <div style={{ fontSize: '11px', color: '#ccc', background: '#111', padding: '6px', borderRadius: 4, border: '1px solid #222', minHeight: '60px', maxHeight: '150px', overflowY: 'auto', whiteSpace: 'pre-wrap', fontFamily: 'monospace' }}>

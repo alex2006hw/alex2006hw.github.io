@@ -4,69 +4,87 @@ interface AIContextProps {
   llmStatus: string;
   llmProgress: string;
   lastAiReply: string;
-  initLlama: () => void;
+  initLlama: (modelId: string) => void;
   sendPrompt: (prompt: string) => void;
   registerListener: (callback: (reply: string) => void) => () => void;
 }
 
 const AIContext = createContext<AIContextProps | undefined>(undefined);
 
+let globalLlmWorker: Worker | null = null;
+let globalMcpWorker: Worker | null = null;
+let globalLlmStatus = "Uninitialized";
+let globalLlmProgress = "";
+let globalLastReply = "";
+
 export const AIProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const llmWorkerRef = useRef<Worker | null>(null);
-  const [llmStatus, setLlmStatus] = useState("Uninitialized");
-  const [llmProgress, setLlmProgress] = useState("");
-  const [lastAiReply, setLastAiReply] = useState("");
+  const [llmStatus, setLlmStatus] = useState(globalLlmStatus);
+  const [llmProgress, setLlmProgress] = useState(globalLlmProgress);
+  const [lastAiReply, setLastAiReply] = useState(globalLastReply);
   const listenersRef = useRef<Array<(reply: string) => void>>([]);
 
-  useEffect(() => {
-    const worker = new Worker(new URL('../workers/llmWorker.ts', import.meta.url), { type: 'module' });
-    const mcpWorker = new Worker(new URL('../workers/mcpWorker.ts', import.meta.url), { type: 'module' });
+  const updateStatus = (status: string) => {
+      globalLlmStatus = status;
+      setLlmStatus(status);
+  };
+  const updateProgress = (progress: string) => {
+      globalLlmProgress = progress;
+      setLlmProgress(progress);
+  };
+  const updateReply = (reply: string) => {
+      globalLastReply = reply;
+      setLastAiReply(reply);
+  };
 
-    worker.addEventListener("message", (e) => {
+  useEffect(() => {
+    if (!globalLlmWorker) {
+      globalLlmWorker = new Worker(new URL('../workers/llmWorker.ts', import.meta.url), { type: 'module' });
+      globalMcpWorker = new Worker(new URL('../workers/mcpWorker.ts', import.meta.url), { type: 'module' });
+    }
+
+    const handleMessage = (e: MessageEvent) => {
       const { type, payload } = e.data;
       if (type === "PROGRESS") {
-        setLlmProgress(payload);
+        updateProgress(payload);
       } else if (type === "READY") {
-        setLlmStatus("Ready");
-        setLlmProgress("Llama-3 loaded successfully.");
+        updateStatus("Ready");
+        updateProgress(`${payload} loaded successfully.`);
       } else if (type === "ERROR") {
-        setLlmStatus("Error");
-        setLlmProgress(`Failure: ${payload}`);
+        updateStatus("Error");
+        updateProgress(`Failure: ${payload}`);
       } else if (type === "REPLY") {
-        setLlmStatus("Ready");
-        setLastAiReply(payload);
+        updateStatus("Ready");
+        updateReply(payload);
         listenersRef.current.forEach(listener => listener(payload));
       }
-    });
+    };
 
-    llmWorkerRef.current = worker;
-    
-    // Auto-start LLM on App start
-    setLlmStatus("Initializing");
-    worker.postMessage({
-        type: "INIT_LLM",
-        payload: { model: "Llama-3.2-1B-Instruct-q4f16_1-MLC" }
-    });
+    globalLlmWorker.addEventListener("message", handleMessage);
+
+    // Sync state on mount just in case it changed between render and effect
+    setLlmStatus(globalLlmStatus);
+    setLlmProgress(globalLlmProgress);
+    setLastAiReply(globalLastReply);
 
     return () => {
-      worker.terminate();
-      mcpWorker.terminate();
+      globalLlmWorker?.removeEventListener("message", handleMessage);
+      // We do not terminate workers here to prevent strict-mode and hot-reload WebGPU crashes
     };
   }, []);
 
-  const initLlama = () => {
-    if (!llmWorkerRef.current) return;
-    setLlmStatus("Initializing");
-    llmWorkerRef.current.postMessage({
+  const initLlama = (modelId: string) => {
+    if (!globalLlmWorker) return;
+    updateStatus("Initializing");
+    globalLlmWorker.postMessage({
       type: "INIT_LLM",
-      payload: { model: "Llama-3.2-1B-Instruct-q4f16_1-MLC" }
+      payload: { model: modelId }
     });
   };
 
   const sendPrompt = (prompt: string) => {
-    if (!prompt.trim() || !llmWorkerRef.current || llmStatus !== "Ready") return;
-    setLlmStatus("Generating");
-    llmWorkerRef.current.postMessage({
+    if (!prompt.trim() || !globalLlmWorker || llmStatus !== "Ready") return;
+    updateStatus("Generating");
+    globalLlmWorker.postMessage({
       type: "GENERATE",
       payload: { prompt }
     });
