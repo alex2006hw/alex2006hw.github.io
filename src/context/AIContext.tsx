@@ -19,8 +19,8 @@ export const AIProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const listenersRef = useRef<Array<(reply: string) => void>>([]);
 
   useEffect(() => {
-    const worker = new Worker(new URL('../workers/llmWorker.ts', import.meta.url));
-    const mcpWorker = new Worker(new URL('../workers/mcpWorker.ts', import.meta.url));
+    const worker = new Worker(new URL('../workers/llmWorker.ts', import.meta.url), { type: 'module' });
+    const mcpWorker = new Worker(new URL('../workers/mcpWorker.ts', import.meta.url), { type: 'module' });
 
     worker.addEventListener("message", (e) => {
       const { type, payload } = e.data;

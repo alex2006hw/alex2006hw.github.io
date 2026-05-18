@@ -117,6 +117,7 @@ export const AdminTerminal: React.FC = () => {
         let unsubTx: (() => void) | null = null;
         let unsubVgaTx: (() => void) | null = null;
         let screenInterval: any = null;
+        let serialFlushInterval: any = null;
 
         const bootV86 = async () => {
             const V86Constructor = window.V86Starter || window.V86 || (window as any).v86?.V86Starter;
@@ -155,9 +156,17 @@ export const AdminTerminal: React.FC = () => {
 
             emulatorRef.current = new V86Constructor(config);
 
+            let localSerialBuffer = "";
+            serialFlushInterval = setInterval(() => {
+                if (localSerialBuffer.length > 0) {
+                    mqttBus.publish('v86/serial/rx', localSerialBuffer);
+                    localSerialBuffer = "";
+                }
+            }, 100);
+
             emulatorRef.current.add_listener("serial0-output-char", (char: string) => {
                 term.write(char);
-                mqttBus.publish('v86/serial/rx', char);
+                localSerialBuffer += char;
             });
 
             unsubTx = mqttBus.subscribe('v86/serial/tx', (text: string) => {
@@ -190,6 +199,16 @@ export const AdminTerminal: React.FC = () => {
                     setStatus("Active");
                 }
             });
+
+            screenInterval = setInterval(() => {
+                if (emulatorRef.current && emulatorRef.current.screen_adapter) {
+                    const textLines = emulatorRef.current.screen_adapter.get_text_screen();
+                    if (textLines && textLines.length > 0) {
+                        const text = textLines.join('\n').replace(/\s+$/g, '');
+                        mqttBus.publish('v86/vga/screen', text);
+                    }
+                }
+            }, 500);
         };
 
         bootV86();
@@ -200,6 +219,8 @@ export const AdminTerminal: React.FC = () => {
             if (onDataDisposable) onDataDisposable.dispose();
             try { if (unsubTx) unsubTx(); } catch (e) { }
             try { if (unsubVgaTx) unsubVgaTx(); } catch (e) { }
+            if (screenInterval) clearInterval(screenInterval);
+            if (serialFlushInterval) clearInterval(serialFlushInterval);
             if (emulatorRef.current) {
                 try { if (emulatorRef.current.v86) emulatorRef.current.destroy(); } catch (e) { }
                 emulatorRef.current = null;

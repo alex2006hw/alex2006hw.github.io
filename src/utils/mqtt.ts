@@ -13,8 +13,10 @@ export class MQTTBus {
     }
 
     publish(topic: string, payload: any) {
-        console.log(`[MQTTBus] Publishing to topic '${topic}':`, payload);
         this.channel.postMessage({ topic, payload });
+        if (this.listeners.has(topic)) {
+            this.listeners.get(topic)!.forEach(cb => cb(payload));
+        }
     }
 
     subscribe(topic: string, callback: (payload: any) => void) {
