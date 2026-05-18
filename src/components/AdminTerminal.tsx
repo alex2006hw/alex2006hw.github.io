@@ -4,6 +4,7 @@ import { FitAddon } from 'xterm-addon-fit';
 import 'xterm/css/xterm.css';
 import _ from 'lodash';
 import { useAI } from '../context/AIContext';
+import { mqttBus } from '../utils/mqtt';
 
 declare global {
     interface Window { V86Starter: any; V86: any; v86: any; }
@@ -27,43 +28,38 @@ export const AdminTerminal: React.FC = () => {
     const screenRef = useRef<HTMLDivElement>(null);
     const emulatorRef = useRef<any>(null);
     const termRef = useRef<Terminal | null>(null);
-    
+
     const { llmStatus, llmProgress, lastAiReply, initLlama, sendPrompt, registerListener } = useAI();
 
-    const [selectedOS, setSelectedOS] = useState('bzimage');
+    const [selectedOS, setSelectedOS] = useState('linux');
     const [status, setStatus] = useState("Idle");
     const [activeView, setActiveView] = useState<'serial' | 'vga'>('vga');
 
     // WebLLM State variables
     const [aiPrompt, setAiPrompt] = useState("");
+    const [serialOutput, setSerialOutput] = useState("");
+    const serialBufferRef = useRef<string>("");
 
-    // Automatically send character chains sequentially down the emulator input channel
-    const injectTextToEmulator = (text: string) => {
-        if (!emulatorRef.current) return;
-        let index = 0;
-        const interval = setInterval(() => {
-            if (index < text.length && emulatorRef.current) {
-                emulatorRef.current.serial0_send(text.charCodeAt(index));
-                index++;
-            } else {
-                clearInterval(interval);
-            }
-        }, 20); // 20ms delay simulation per key down strike
-    };
-
-    // Subscribe to AI replies from context to inject into emulator
     useEffect(() => {
-        const unregister = registerListener((reply) => {
-            injectTextToEmulator(reply);
+        const interval = setInterval(() => {
+            setSerialOutput(serialBufferRef.current);
+        }, 200);
+
+        const unsub = mqttBus.subscribe('v86/vga/screen', (text: string) => {
+            serialBufferRef.current = text;
         });
-        return () => unregister();
-    }, [registerListener]);
+        return () => {
+            clearInterval(interval);
+            unsub();
+        };
+    }, []);
 
     const handleSendPrompt = () => {
         if (!aiPrompt.trim() || llmStatus !== "Ready") return;
         sendPrompt(aiPrompt);
         setAiPrompt("");
     };
+
 
     const saveToOPFS = async (arrayBuffer: ArrayBuffer, os: string) => {
         try {
@@ -118,6 +114,9 @@ export const AdminTerminal: React.FC = () => {
 
         let isActive = true;
         let onDataDisposable: { dispose: () => void } | null = null;
+        let unsubTx: (() => void) | null = null;
+        let unsubVgaTx: (() => void) | null = null;
+        let screenInterval: any = null;
 
         const bootV86 = async () => {
             const V86Constructor = window.V86Starter || window.V86 || (window as any).v86?.V86Starter;
@@ -158,11 +157,34 @@ export const AdminTerminal: React.FC = () => {
 
             emulatorRef.current.add_listener("serial0-output-char", (char: string) => {
                 term.write(char);
+                mqttBus.publish('v86/serial/rx', char);
             });
+
+            unsubTx = mqttBus.subscribe('v86/serial/tx', (text: string) => {
+                console.log("[AdminTerminal] Received v86/serial/tx payload:", JSON.stringify(text));
+                if (!emulatorRef.current) {
+                    console.error("[AdminTerminal] Error: emulatorRef.current is null!");
+                    return;
+                }
+                console.log("[AdminTerminal] Injecting text to emulator...");
+                for (let i = 0; i < text.length; i++) {
+                    const charCode = text.charCodeAt(i);
+                    console.log(`[AdminTerminal] serial0_send charCode: ${charCode} ('${text[i]}')`);
+                    emulatorRef.current.serial0_send(charCode);
+                }
+                console.log("[AdminTerminal] Injection complete.");
+            });
+            unsubVgaTx = mqttBus.subscribe('v86/vga/tx', (text: string) => {
+                if (!emulatorRef.current) return;
+                emulatorRef.current.keyboard_send_text(text);
+            });
+
+
 
             onDataDisposable = term.onData(data => {
                 if (emulatorRef.current) {
                     for (let i = 0; i < data.length; i++) {
+                        console.log(`[AdminTerminal] term.onData manual input charCode: ${data.charCodeAt(i)}`);
                         emulatorRef.current.serial0_send(data.charCodeAt(i));
                     }
                     setStatus("Active");
@@ -176,6 +198,8 @@ export const AdminTerminal: React.FC = () => {
             isActive = false;
             resizeObserver.disconnect();
             if (onDataDisposable) onDataDisposable.dispose();
+            try { if (unsubTx) unsubTx(); } catch (e) { }
+            try { if (unsubVgaTx) unsubVgaTx(); } catch (e) { }
             if (emulatorRef.current) {
                 try { if (emulatorRef.current.v86) emulatorRef.current.destroy(); } catch (e) { }
                 emulatorRef.current = null;
@@ -260,6 +284,13 @@ export const AdminTerminal: React.FC = () => {
                         <div style={{ fontSize: '11px', color: '#00ff88', background: '#000', padding: '6px', borderRadius: 4, border: '1px solid #222' }}>{lastAiReply}</div>
                     </div>
                 )}
+                
+                <div style={{ marginTop: '5px' }}>
+                    <div style={{ fontSize: '10px', color: '#666' }}>SERIAL PORT OUTPUT:</div>
+                    <div style={{ fontSize: '11px', color: '#ccc', background: '#111', padding: '6px', borderRadius: 4, border: '1px solid #222', minHeight: '60px', maxHeight: '150px', overflowY: 'auto', whiteSpace: 'pre-wrap', fontFamily: 'monospace' }}>
+                        {serialOutput || "Waiting for command output..."}
+                    </div>
+                </div>
             </div>
 
             {/* Right Screen Output Display */}

@@ -1,8 +1,23 @@
 /* eslint-disable no-restricted-globals */
 import { CreateMLCEngine } from "@mlc-ai/web-llm";
+import { MQTTBus } from '../utils/mqtt';
 
 const ctx: Worker = self as any;
 let engine: any = null;
+const mqtt = new MQTTBus();
+
+const mcpRequest = (method: string, params: any = {}): Promise<any> => {
+    return new Promise((resolve) => {
+        const id = Math.random().toString(36).substring(7);
+        const unsub = mqtt.subscribe('mcp/response', (res: any) => {
+            if (res.id === id) {
+                unsub();
+                resolve(res.result);
+            }
+        });
+        mqtt.publish('mcp/request', { jsonrpc: "2.0", id, method, params });
+    });
+};
 
 ctx.addEventListener("message", async (e: MessageEvent) => {
   const { type, payload } = e.data;
@@ -27,47 +42,42 @@ ctx.addEventListener("message", async (e: MessageEvent) => {
       return;
     }
     try {
+      ctx.postMessage({ type: "PROGRESS", payload: "Fetching VM state..." });
+      
+      const resourceRes = await mcpRequest("resources/read", { uri: "v86://serial/buffer" });
+      const serialBuffer = resourceRes?.contents?.[0]?.text || "";
+
       ctx.postMessage({ type: "PROGRESS", payload: "Thinking..." });
       
-      // Define tool for executing commands in the VM
-      const tools = [
-        {
-          type: "function",
-          function: {
-            name: "execute_vm_command",
-            description: "Execute a command in the v86 Linux virtual machine over the serial line. Use this to perform actions inside the VM.",
-            parameters: {
-              type: "object",
-              properties: {
-                command: {
-                  type: "string",
-                  description: "The command to run, e.g., 'ls -la\\n' or 'cat file.txt\\n'. Must end with a newline character."
-                }
-              },
-              required: ["command"]
-            }
-          }
+      const messages: any[] = [
+        { 
+          role: "system", 
+          content: "You are directly connected to a Linux virtual machine via a terminal console. Fulfill the user's request by outputting ONLY the raw bash commands to execute. Do not include any explanations, greetings, markdown formatting, or backticks. Every response must be immediately executable shell commands. End your commands with a newline character so they execute." 
         }
       ];
 
+      if (serialBuffer) {
+          messages.push({ role: "system", content: `CURRENT TERMINAL SCREEN OUTPUT:\n${serialBuffer}` });
+      }
+
+      messages.push({ role: "user", content: payload.prompt });
+
       const response = await engine.chat.completions.create({
-        messages: [{ role: "user", content: payload.prompt }],
+        messages: messages,
       });
       
       const message = response.choices[0].message;
       let reply = message.content || "";
+      // Strip markdown code block syntax
+      reply = reply.replace(/```[a-zA-Z]*\n?/g, "").replace(/```\n?/g, "").trim();
+
+      // Call MCP Tool to execute command
+      console.log("[llmWorker] Generated LLM reply:", JSON.stringify(reply));
+      console.log("[llmWorker] Sending tools/call MCP request...");
+      const mcpResult = await mcpRequest("tools/call", { name: "execute_vm_command", arguments: { command: reply } });
+      console.log("[llmWorker] Received MCP tools/call result:", mcpResult);
       
-      if (message.tool_calls && message.tool_calls.length > 0) {
-          for (const call of message.tool_calls) {
-              if (call.function.name === "execute_vm_command") {
-                  try {
-                      const args = JSON.parse(call.function.arguments);
-                      reply += (reply ? "\\n" : "") + args.command;
-                  } catch (e) {}
-              }
-          }
-      }
-      
+      // The reply will now be automatically piped into the serial terminal line via MCP.
       ctx.postMessage({ type: "REPLY", payload: reply });
     } catch (err: any) {
       ctx.postMessage({ type: "ERROR", payload: err.message });
