@@ -6,6 +6,7 @@ import { BlogViewer } from './components/BlogViewer';
 import { AdminPanel } from './components/AdminPanel';
 import { PostList } from './components/PostList';
 import { SEO } from './components/SEO';
+import { AIProvider } from './context/AIContext';
 
 function App() {
   const [selectedNode, setSelectedNode] = useState<any>(null);
@@ -26,8 +27,9 @@ function App() {
 
   return (
     <HelmetProvider>
-      <div
-        className="App"
+      <AIProvider>
+        <div
+          className="App"
         style={{
           height: '100vh',
           display: 'flex',
@@ -170,6 +172,7 @@ function App() {
           />
         </nav>
       </div>
+      </AIProvider>
     </HelmetProvider>
   );
 }

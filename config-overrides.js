@@ -37,5 +37,13 @@ module.exports = function override(config, env) {
         use: [{ loader: 'file-loader' }]
     });
 
+    // 4. Fix Webpack 5 fully specified ESM resolution
+    config.module.rules.push({
+        test: /\.m?js/,
+        resolve: {
+            fullySpecified: false
+        }
+    });
+
     return config;
 };
